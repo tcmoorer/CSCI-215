@@ -6,6 +6,8 @@
 - JS Output - https://www.w3schools.com/js/js_output.asp
 - JS Document Object Model (DOM) - https://www.w3schools.com/js/js_htmldom.asp
 
+# Content
+
 ## Introduction: Why Study JavaScript?
 
 - JavaScript is the world's most popular programming language.
