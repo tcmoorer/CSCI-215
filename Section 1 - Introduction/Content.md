@@ -5,9 +5,9 @@ This section includes a high-level discussion related to JavaScript and the DOM.
 ## Content Links
 
 1. JS Home - https://www.w3schools.com/js/default.asp
-2. JS Introduction - https://www.w3schools.com/js/js_intro.asp
-3. JS Where To - https://www.w3schools.com/js/js_whereto.asp
-4. JS Document Object Model (DOM) - https://www.w3schools.com/js/js_htmldom.asp
+2. Introduction - https://www.w3schools.com/js/js_intro.asp
+3. Where To? - https://www.w3schools.com/js/js_whereto.asp
+4. Document Object Model (DOM) - https://www.w3schools.com/js/js_htmldom.asp
 
 ## 1. Home: Why Study JavaScript?
 

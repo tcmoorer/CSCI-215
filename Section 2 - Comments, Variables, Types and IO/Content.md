@@ -7,7 +7,7 @@ This section includes an introduction to comments, variables, data types and I/O
 1. Comments - https://www.w3schools.com/js/js_comments.asp
 2. Variables - https://www.w3schools.com/js/js_variables.asp
 3. Data Types - https://www.w3schools.com/js/js_datatypes.asp 
-4. Input (Prompt) - https://www.w3schools.com/jsref/met_win_prompt.asp 
+4. Input - https://www.w3schools.com/jsref/met_win_prompt.asp 
 5. Output - https://www.w3schools.com/js/js_output.asp
 
 ## 1. Comments
@@ -157,15 +157,15 @@ if (person != null) {
 
 JavaScript can "display" data in different ways:
 
-- Writing into an HTML element, using innerHTML.
-- Writing into the HTML output using document.write().
-- Writing into an alert box, using window.alert().
-- Writing into the browser console, using console.log().
+- Writing into an HTML element, using `document.elementById(id).innerHTML()`.
+- Writing into the HTML output using `document.write()`.
+- Writing into an alert box, using `window.alert()`.
+- Writing into the browser console, using `console.log()`.
 
 ### document.elementById(id).innerHTML()
 
-To access an HTML element, JavaScript can use the document.getElementById(id) method.
-The `id` attribute defines the HTML element. The innerHTML property defines the HTML 
+To access an HTML element, JavaScript can use the `document.getElementById(id)` method.
+The `id` attribute defines the HTML element. The `innerHTML` property defines the HTML 
 content:
                     
 ```
@@ -207,7 +207,7 @@ For testing purposes, it is convenient to use `document.write()`:
 
 ### window.alert()
 
-You can use an alert box to display data:
+You can use an `alert` box to display data:
 
 ```
 <!DOCTYPE html>
