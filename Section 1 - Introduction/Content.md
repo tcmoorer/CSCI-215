@@ -1,14 +1,15 @@
-# Content Links
+# Overview
 
-- JS Home - https://www.w3schools.com/js/default.asp
-- JS Introduction - https://www.w3schools.com/js/js_intro.asp
-- JS Where To - https://www.w3schools.com/js/js_whereto.asp
-- JS Output - https://www.w3schools.com/js/js_output.asp
-- JS Document Object Model (DOM) - https://www.w3schools.com/js/js_htmldom.asp
+This section includes a high-level discussion related to JavaScript and the DOM.
 
-# Content
+## Content Links
 
-## Introduction: Why Study JavaScript?
+1. JS Home - https://www.w3schools.com/js/default.asp
+2. JS Introduction - https://www.w3schools.com/js/js_intro.asp
+3. JS Where To - https://www.w3schools.com/js/js_whereto.asp
+4. JS Document Object Model (DOM) - https://www.w3schools.com/js/js_htmldom.asp
+
+## 1. Introduction: Why Study JavaScript?
 
 - JavaScript is the world's most popular programming language.
 - JavaScript is the programming language of the Web.
@@ -19,8 +20,61 @@ JavaScript is one of the 3 languages all web developers must learn:
 1. HTML to define the content of web pages
 2. CSS to specify the layout of web pages
 3. JavaScript to program the behavior of web pages
+    
+## 2. JavaScript Intro - What can JavaScript do?
 
-## Where To Add JavaScript
+### JavaScript Can Change HTML Content
+
+One of many JavaScript HTML methods is `getElementById()`.
+
+The example below "finds" an HTML element (with id="demo"), and changes the element content (innerHTML) to "Hello JavaScript":
+           
+```
+document.getElementById("demo").innerHTML = "Hello JavaScript";
+```
+
+### JavaScript Can Change HTML Attribute Values
+
+In this example JavaScript changes the value of the `src` (source) attribute of an `<img>` tag:
+
+```
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <!-- 
+         In this case JavaScript changes the value of the src (source) 
+         attribute of an image.
+    -->
+
+    <button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+
+    <img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+    <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+
+  </body>
+</html>
+```
+
+### JavaScript Can Change HTML Styles (CSS)
+
+Changing the style of an HTML element, is a variant of changing an HTML attribute:
+                                  
+```
+document.getElementById("demo").style.fontSize = "35px";
+```
+
+### JavaScript Can Show / Hide HTML Elements
+
+Showing/Hiding HTML elements can be done by changing the `display` style:
+
+```
+document.getElementById("demo").style.display = "none"; // hide
+document.getElementById("demo").style.display = "block"; // show
+```
+
+## 3. Where To Add JavaScript
 
 ### The `<script>` Tag
 
@@ -48,7 +102,7 @@ script file in the `src` (source) attribute of a `<script>` tag:
 <script src="myScript.js"></script>
 ```
 
-## Document Object Model (DOM)
+## 4. Document Object Model (DOM)
 
 
 When a web page is loaded, the browser creates a `Document Object Model` of the page. The `HTML DOM` 
