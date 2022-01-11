@@ -1,4 +1,4 @@
-# Overview
+# Section 1 - Introduction to JavaScript
 
 This section includes a high-level discussion related to JavaScript and the DOM.
 

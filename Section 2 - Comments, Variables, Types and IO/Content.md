@@ -1,4 +1,4 @@
-# Overview
+# Section 2 - Comments, Variables, Types, and I/O
 
 This section includes an introduction to comments, variables, data types and I/O.
 
