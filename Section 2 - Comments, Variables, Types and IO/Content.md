@@ -38,9 +38,9 @@ document.getElementById("myP").innerHTML = "My first paragraph.";
                
 Using comments to prevent execution of code is suitable for code testing.
 
-### Variables
+## Variables
 
-#### What are Variables?
+### What are Variables?
 
 Variables are containers for storing data (storing data values). In this example, 
 x, y, and z, are variables, declared with the let keyword:
@@ -55,20 +55,20 @@ var z = x + y;
 - y stores the value 6
 - z stores the value 11
 
-#### Variables include 4 parts:
+### Variables include 4 parts:
 
 1. Declaration keyword (var, let, or const)
 2. Identifier (variable name) - a unique name to refer to the variable
 3. Assignment operator (=)
 4. Initial value
 
-#### Keywords 
+### Keywords 
 
-- var - used in older browsers. Valid, but should avoid use.
-- let - used in modern browsers to declare variables whose value can change. Use
-- const - used with arrays or when the value held should not change.
+- `var` - used in older browsers. Valid, but should avoid use.
+- `let` - used in modern browsers to declare variables whose value can change. Use
+- `const` - used with arrays or when the value held should not change.
 
-#### Variable Names
+### Variable Names
 
 The general rules for constructing names for variables (unique identifiers) are:
 
@@ -78,13 +78,13 @@ The general rules for constructing names for variables (unique identifiers) are:
 - Names are case-sensitive (y and Y are different variables)
 - Reserved words (like JavaScript keywords) cannot be used as names
 
-#### The Assignment Operator
+### The Assignment Operator
 
 In JavaScript, the equal sign (=) is an "assignment" operator, not an "equal to" operator.
                        
 ![Anatomy of a Variable](images/variable.png "Anatomy of a Variable")
 
-### Data Types
+## Data Types
 
 A JavaScript variable can hold numbers like 100 and text values like "John Doe". 
 In programming, text values are called text strings.
@@ -109,5 +109,154 @@ adjustments so that you don't have to redefine your different types of data.
 
 **CAUTION**: This means that the same variable can be used to hold different data 
 types:
+
+```
+let x;           // Now x is undefined
+x = 5;           // Now x is a Number
+x = "John";      // Now x is a String
+```
+
+## Input (Prompt)
+
+The `prompt()` method displays a dialog box that prompts the user for input.
+The `prompt()` method returns the input value if the user clicks "OK", otherwise it returns null.
+                                     
+### Syntax
+
+```
+prompt(text, defaultText)
+```
+
+#### Parameters
+
+| Parameter     | Description                                      |
+|---------------|--------------------------------------------------|
+| *text*        | `Required`. The text to display in the dialog box. |
+| *defaultText* | `Optional`. The default input text.                |
+
+#### Return Value
+                
+| Syntax | Description                                                                       |
+| ----------- |-----------------------------------------------------------------------------------|
+| A string | If the user clicks "OK", the input value is returned. Otherwise `null` is returned. |
+                   
+Note values from `prompt()` are Strings.
+
+```
+let person = prompt("Please enter your name", "Harry Potter");
+
+if (person != null) {
+  document.getElementById("demo").innerHTML =
+  "Hello " + person + "! How are you today?";
+}
+```
+
+## Output 
+
+JavaScript can "display" data in different ways:
+
+- Writing into an HTML element, using innerHTML.
+- Writing into the HTML output using document.write().
+- Writing into an alert box, using window.alert().
+- Writing into the browser console, using console.log().
+
+### document.elementById(id).innerHTML()
+
+To access an HTML element, JavaScript can use the document.getElementById(id) method.
+The `id` attribute defines the HTML element. The innerHTML property defines the HTML 
+content:
+                    
+```
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My First Web Page</h1>
+    <p>My First Paragraph</p>
+    
+    <p id="demo"></p>
+    
+    <script>
+      document.getElementById("demo").innerHTML = 5 + 6;
+    </script>
+    
+  </body>
+</html>
+```
+
+### document.write()
+
+For testing purposes, it is convenient to use `document.write()`:
+
+```
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <h1>My First Web Page</h1>
+    <p>My first paragraph.</p>
+
+    <script>
+      document.write(5 + 6);
+    </script>
+
+  </body>
+</html>
+```
+
+### window.alert()
+
+You can use an alert box to display data:
+
+```
+<!DOCTYPE html>
+<html>
+  <body>
+
+   <h1>My First Web Page</h1>
+   <p>My first paragraph.</p>
+
+   <script>
+     window.alert(5 + 6);
+   </script>
+
+  </body>
+</html>
+```
+
+### console.log()
+
+For debugging purposes, you can call the `console.log()` method in the browser to 
+display data.
+               
+```
+<!DOCTYPE html>
+<html>
+  <body>
+
+  <script>
+    console.log(5 + 6);
+  </script>
+
+  </body>
+</html>
+```
+
+### Strings and the + operator
+
+The `+` operator can also be used to concatenate strings.
+           
+```
+let text1 = "John";
+let text2 = "Doe";
+let text3 = text1 + " " + text2;
+```
+
+Output:
+
+```
+John Doe
+```
+
+
 
 
