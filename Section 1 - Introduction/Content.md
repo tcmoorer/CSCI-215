@@ -6,7 +6,7 @@ This section includes a high-level discussion related to JavaScript and the DOM.
 
 1. JS Home - https://www.w3schools.com/js/default.asp
 2. Introduction - https://www.w3schools.com/js/js_intro.asp
-3. Where To? - https://www.w3schools.com/js/js_whereto.asp
+3. Where To Add JavaScript? - https://www.w3schools.com/js/js_whereto.asp
 4. Document Object Model (DOM) - https://www.w3schools.com/js/js_htmldom.asp
 
 ## 1. Home: Why Study JavaScript?
@@ -17,11 +17,11 @@ This section includes a high-level discussion related to JavaScript and the DOM.
 
 JavaScript is one of the 3 languages all web developers must learn:
 
-1. HTML to define the content of web pages
-2. CSS to specify the layout of web pages
-3. JavaScript to program the behavior of web pages
+1. [HTML](https://www.w3schools.com/html/default.asp) to define the content of web pages.
+2. [CSS](https://www.w3schools.com/css/default.asp) to specify the layout of web pages.
+3. [JavaScript](https://www.w3schools.com/js/default.asp) to program the behavior of web pages.
     
-## 2. JS Introduction - What can JavaScript do?
+## 2. Introduction - What can JavaScript do?
 
 ### JavaScript Can Change HTML Content
 
@@ -74,7 +74,7 @@ document.getElementById("demo").style.display = "none"; // hide
 document.getElementById("demo").style.display = "block"; // show
 ```
 
-## 3. Where To Add JavaScript
+## 3. Where To Add JavaScript?
 
 ### The `<script>` Tag
 
