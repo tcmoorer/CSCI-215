@@ -44,7 +44,9 @@ is used in multiple web pages.
 A JavaScript file has the file extension `.js`. To use an external script, put the name of the 
 script file in the `src` (source) attribute of a `<script>` tag:
 
-`<script src="myScript.js"></script>`
+```
+<script src="myScript.js"></script>
+```
 
 ## Document Object Model (DOM)
 
