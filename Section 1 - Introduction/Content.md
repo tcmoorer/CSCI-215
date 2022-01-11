@@ -121,3 +121,5 @@ Dynamic web applications use JavaScript to access and manipulate objects in the 
 - JavaScript can add new HTML elements and attributes
 - JavaScript can react to all existing HTML events in the page
 - JavaScript can create new HTML events in the page
+
+More Info: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
