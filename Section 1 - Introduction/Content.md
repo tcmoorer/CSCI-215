@@ -56,6 +56,7 @@ In this example JavaScript changes the value of the `src` (source) attribute of 
   </body>
 </html>
 ```
+Link: https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb        
 
 ### JavaScript Can Change HTML Styles (CSS)
 
