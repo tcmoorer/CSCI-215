@@ -1,14 +1,16 @@
-# Content Links
+# Overview
 
-- Comments - https://www.w3schools.com/js/js_comments.asp
-- Variables - https://www.w3schools.com/js/js_variables.asp
-- Data Types - https://www.w3schools.com/js/js_datatypes.asp 
-- Input (Prompt) - https://www.w3schools.com/jsref/met_win_prompt.asp 
-- Output - https://www.w3schools.com/js/js_output.asp
+This section includes an introduction to comments, variables, data types and I/O.
 
-# Content
+## Content Links
 
-## Comments
+1. Comments - https://www.w3schools.com/js/js_comments.asp
+2. Variables - https://www.w3schools.com/js/js_variables.asp
+3. Data Types - https://www.w3schools.com/js/js_datatypes.asp 
+4. Input (Prompt) - https://www.w3schools.com/jsref/met_win_prompt.asp 
+5. Output - https://www.w3schools.com/js/js_output.asp
+
+## 1. Comments
 
 ### Single Line Comments
 
@@ -38,7 +40,7 @@ document.getElementById("myP").innerHTML = "My first paragraph.";
                
 Using comments to prevent execution of code is suitable for code testing.
 
-## Variables
+## 2. Variables
 
 ### What are Variables?
 
@@ -84,7 +86,7 @@ In JavaScript, the equal sign (=) is an "assignment" operator, not an "equal to"
                        
 ![Anatomy of a Variable](images/variable.png "Anatomy of a Variable")
 
-## Data Types
+## 3. Data Types
 
 A JavaScript variable can hold numbers like 100 and text values like "John Doe". 
 In programming, text values are called text strings.
@@ -116,7 +118,7 @@ x = 5;           // Now x is a Number
 x = "John";      // Now x is a String
 ```
 
-## Input (Prompt)
+## 4. Input (Prompt)
 
 The `prompt()` method displays a dialog box that prompts the user for input.
 The `prompt()` method returns the input value if the user clicks "OK", otherwise it returns null.
@@ -151,7 +153,7 @@ if (person != null) {
 }
 ```
 
-## Output 
+## 5. Output 
 
 JavaScript can "display" data in different ways:
 
