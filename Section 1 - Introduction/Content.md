@@ -57,7 +57,7 @@ attributes such as `href`, `id`, or `class`.
 
 Dynamic web applications use JavaScript to access and manipulate objects in the DOM in different ways.
   
-![HTML DOM](dom.png)
+![HTML DOM](images/dom.png)
 
 - JavaScript can change all the HTML elements in the page
 - JavaScript can change all the HTML attributes in the page
