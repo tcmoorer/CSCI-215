@@ -9,7 +9,7 @@ This section includes a high-level discussion related to JavaScript and the DOM.
 3. JS Where To - https://www.w3schools.com/js/js_whereto.asp
 4. JS Document Object Model (DOM) - https://www.w3schools.com/js/js_htmldom.asp
 
-## 1. Introduction: Why Study JavaScript?
+## 1. Home: Why Study JavaScript?
 
 - JavaScript is the world's most popular programming language.
 - JavaScript is the programming language of the Web.
@@ -21,7 +21,7 @@ JavaScript is one of the 3 languages all web developers must learn:
 2. CSS to specify the layout of web pages
 3. JavaScript to program the behavior of web pages
     
-## 2. JavaScript Intro - What can JavaScript do?
+## 2. JS Introduction - What can JavaScript do?
 
 ### JavaScript Can Change HTML Content
 

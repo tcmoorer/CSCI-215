@@ -1,8 +1,2 @@
-### DM template
-.idea
-*.dmb
-*.rsc
-*.int
-*.lk
-*.zip
-
+### ignore
+/.idea/
