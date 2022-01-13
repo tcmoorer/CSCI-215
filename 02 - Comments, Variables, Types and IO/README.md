@@ -59,10 +59,10 @@ var z = x + y;
 
 ### Variables include 4 parts:
 
-1. Declaration keyword (var, let, or const)
-2. Identifier (variable name) - a unique name to refer to the variable
-3. Assignment operator (=)
-4. Initial value
+1. **Declaration** keyword (`var`, `let`, or `const`)
+2. **Identifier** (variable name) - a unique name to refer to the variable
+3. **Assignment operator** (`=`)
+4. **Initial value** (optional but recommended)
 
 ### Keywords 
 
@@ -82,7 +82,7 @@ The general rules for constructing names for variables (unique identifiers) are:
 
 ### The Assignment Operator
 
-In JavaScript, the equal sign (=) is an "assignment" operator, not an "equal to" operator.
+In JavaScript, the equal sign (`=`) is an "assignment" operator, not an "equal to" operator.
                        
 ![Anatomy of a Variable](images/variable.png "Anatomy of a Variable")
 
