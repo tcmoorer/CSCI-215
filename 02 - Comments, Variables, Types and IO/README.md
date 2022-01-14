@@ -157,12 +157,12 @@ if (person != null) {
 
 JavaScript can "display" data in different ways:
 
-- Writing into an HTML element, using `document.elementById(id).innerHTML()`.
+- Writing into an HTML element, using `document.elementById(id).innerHTML`.
 - Writing into the HTML output using `document.write()`.
 - Writing into an alert box, using `window.alert()`.
 - Writing into the browser console, using `console.log()`.
 
-### document.elementById(id).innerHTML()
+### document.elementById(id).innerHTML
 
 To access an HTML element, JavaScript can use the `document.getElementById(id)` method.
 The `id` attribute defines the HTML element. The `innerHTML` property defines the HTML 
