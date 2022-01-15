@@ -9,10 +9,10 @@ as replacing text in a string.
 
 ## Content Links
 
-- Operators - https://www.w3schools.com/js/js_operators.asp
-- Type Conversion - https://www.w3schools.com/js/js_type_conversion.asp
-- String Methods - https://www.w3schools.com/js/js_string_methods.asp
-- String Templates - https://www.w3schools.com/js/js_string_templates.asp
+- Operators - <https://www.w3schools.com/js/js_operators.asp>
+- Type Conversion - <https://www.w3schools.com/js/js_type_conversion.asp>
+- String Methods - <https://www.w3schools.com/js/js_string_methods.asp>
+- String Templates - <https://www.w3schools.com/js/js_string_templates.asp>
 
 ## Operators
            
@@ -45,7 +45,7 @@ let z = x + y;
 | ++       | Increment |
 | --       | Decrement |
 
-More Info: https://www.w3schools.com/js/js_arithmetic.asp
+More Info: <https://www.w3schools.com/js/js_arithmetic.asp>
          
 ### Operator Precedence
 
@@ -133,7 +133,7 @@ Comparison and operators are used to test for `true` or `false`.
 | \<=      | less than or equal to         | 
 | ?        | ternary                       | 
 
-More Info: https://www.w3schools.com/js/js_comparisons.asp
+More Info: <https://www.w3schools.com/js/js_comparisons.asp>
 
 Examples
 
@@ -169,7 +169,7 @@ Given that `x = 6` and `y = 3`, the table below explains the logical operators:
 | &#124;&#124;   | logical `or` | (x == 5 &#124;&#124; y == 5) is false |
 | !        | logical `not` | !(x == y) is true |
 
-More Info: https://www.w3schools.com/js/js_comparisons.asp
+More Info: <https://www.w3schools.com/js/js_comparisons.asp>
 
 
 ## Type Conversion

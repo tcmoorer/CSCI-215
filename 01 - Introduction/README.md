@@ -4,10 +4,10 @@ This section includes a high-level discussion related to JavaScript and the DOM.
 
 ## Content Links
 
-1. JS Home - https://www.w3schools.com/js/default.asp
-2. Introduction - https://www.w3schools.com/js/js_intro.asp
-3. Where To Add JavaScript? - https://www.w3schools.com/js/js_whereto.asp
-4. Document Object Model (DOM) - https://www.w3schools.com/js/js_htmldom.asp
+1. JS Home - <https://www.w3schools.com/js/default.asp>
+2. Introduction - <https://www.w3schools.com/js/js_intro.asp>
+3. Where To Add JavaScript? - <https://www.w3schools.com/js/js_whereto.asp>
+4. Document Object Model (DOM) - <https://www.w3schools.com/js/js_htmldom.asp>
 
 ## 1. Home: Why Study JavaScript?
 
@@ -56,7 +56,7 @@ In this example JavaScript changes the value of the `src` (source) attribute of 
   </body>
 </html>
 ```
-Link: https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb        
+Link: <https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb>        
 
 ### JavaScript Can Change HTML Styles (CSS)
 
@@ -122,4 +122,4 @@ Dynamic web applications use JavaScript to access and manipulate objects in the 
 - JavaScript can react to all existing HTML events in the page
 - JavaScript can create new HTML events in the page
 
-More Info: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
+More Info: <https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction>

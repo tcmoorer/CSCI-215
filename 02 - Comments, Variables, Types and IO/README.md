@@ -4,11 +4,11 @@ This section includes an introduction to comments, variables, data types and I/O
 
 ## Content Links
 
-1. Comments - https://www.w3schools.com/js/js_comments.asp
-2. Variables - https://www.w3schools.com/js/js_variables.asp
-3. Data Types - https://www.w3schools.com/js/js_datatypes.asp 
-4. Input - https://www.w3schools.com/jsref/met_win_prompt.asp 
-5. Output - https://www.w3schools.com/js/js_output.asp
+1. Comments - <https://www.w3schools.com/js/js_comments.asp>
+2. Variables - <https://www.w3schools.com/js/js_variables.asp>
+3. Data Types - <https://www.w3schools.com/js/js_datatypes.asp> 
+4. Input - <https://www.w3schools.com/jsref/met_win_prompt.asp> 
+5. Output - <https://www.w3schools.com/js/js_output.asp>
 
 ## 1. Comments
 
