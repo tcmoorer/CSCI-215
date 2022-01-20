@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Welcome to CSCI-215!</title>
+</head>
+<body>
+<script type="text/Javascript">
+
+    // arrays can hold any number of values
+    const myArray = [20,11,39];
+    const myArray = ["coffee grounds", "water", "sugar"];
+    const myArray = new Array(3.14, "water", true);
+
+    // access values/attributes of an array
+    const myArray = ["Lions", "Tigers", "Bears"];
+    document.write(`all values: ${myArray}<br>`);
+    document.write(`index 0: ${myArray[0]}<br>`);
+    document.write(`index 1: ${myArray[1]}<br>`);
+    document.write(`index 2: ${myArray[2]}<br>`);
+    document.write(`array length: ${myArray.length}<br>`);
+    
+    // loop through or over array values and write to console
+    const coffeeStuffArray = ["coffee grounds", "water", "sugar"];
+    for (let i=0; i < coffeeStuffArray.length; i++) {
+        console.log(`${i} = ${coffeeStuffArray[i]}`);
+    }
+
+</script>
+</body>
+</html>
