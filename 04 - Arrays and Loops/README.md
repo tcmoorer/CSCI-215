@@ -233,5 +233,5 @@ while (i < 10) {
 }
 ```
 
-> **Note**: a `for` loop can be used when the number of elements are known and `while` loops is used when the number of element or iterations is not known. In many cases `for` loops and `while` loops can be used interchangeably. 
+> **Note**: a `for` loop can be used when the number of elements are known and `while` loops is used when the number of elements or iterations is not known. In many cases `for` loops and `while` loops can be used interchangeably. 
 
