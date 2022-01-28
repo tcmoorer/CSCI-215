@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Welcome to CSCI-215!</title>
+</head>
+<body>
+<h1>Calculate area of Pizza Slice</h1>
+<p id="output"></p>
+<script type="text/Javascript">
+    /*
+        Calculate area of Pizza Slice (triangle)
+
+        According to Guinness, the largest circular pizza ever baked weighed was made in Norwood, South Africa by
+        Norwood Hypermarket on December 8, 1990. It weighed 26,883 pounds. The pizza measured 122 feet, 8 inches
+        in diameter, weighed 26,883 pounds, and contained 9,920 pounds of flour, 3,960 pounds of cheese, 1,763
+        pounds of mushrooms, 1,984 pounds of tomato purée, and 1,984 pounds of chopped tomatoes.
+
+        Write the following program using JavaScript:
+
+            1. Input: Prompt user to enter base length
+            2. Input: Prompt user to enter height length
+            3. Calculate: compute the area
+            4. Output: Display base and height from the user to console in a template using interpolation
+            5. Output: Display calculated area to the DOM in a template using interpolation
+
+        Given:
+            • Area of a triangle = (base * height) / 2
+
+    */
+
+    // collect input
+    let base = prompt("Enter base:");
+    let height = prompt("Enter height");
+
+    // perform calculations
+    let area = (base * height) / 2;
+
+    // display output
+    console.log(`base: ${base}, height: ${height}`);
+    document.getElementById('output').innerHTML = `The area of the pizza slice is ${area}`;
+
+</script>
+</body>
+</html>

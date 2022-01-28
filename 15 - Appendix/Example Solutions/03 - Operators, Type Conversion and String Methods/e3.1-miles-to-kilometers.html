@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Welcome to CSCI-215!</title>
+</head>
+<body>
+<h1>Convert Miles to Kilometers</h1>
+<p>
+    You entered <span id="mi"></span> miles which is equal to <span id="km"></span> kilometers.
+</p>
+<script type="text/Javascript">
+    /*
+        Convert Miles to Kilometers
+
+        On December 25th, 2021 the Web Space Telescope was launched from earth and will reach its
+        destination at the L2 Lagrange point. This point is approximately 900,000 miles from earth
+        and will take about 30 days to complete the journey. A Lagrange point is a point in space at
+        which a small body, under the gravitational influence of two large ones, will remain
+        approximately at rest relative to them.
+
+        See: https://www.jwst.nasa.gov/content/webbLaunch/whereIsWebb.html
+
+        Write a program using JavaScript to convert miles to kilometers:
+
+        1. Input: Prompt user to enter some number of miles
+        2. Calculate: Convert miles to kilometers
+        3. Output: Display the user input and the calculated output in the UI.
+
+        Given: Conversion factor is 1.60934
+
+    */
+
+    // define constants
+    const CONVERSION_FACTOR = 1.60934;
+
+    // collect input
+    let mi = prompt("Enter some number of miles:");
+
+    // perform calculations
+    let km = mi * CONVERSION_FACTOR;
+
+    // display output
+    document.getElementById('mi').innerHTML = mi;
+    document.getElementById('km').innerHTML = km;
+
+</script>
+</body>
+</html>

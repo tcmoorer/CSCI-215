@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Welcome to CSCI-215!</title>
+</head>
+<body>
+<h1>Area of a Triangle</h1>
+<p>
+	A triangle with a base of <span id="base"></span> and a height of <span id="height"></span>
+	has an area of <span id="area"></span>.
+</p>
+<script type="text/Javascript">
+	/*
+		Area of a Rectangle
+
+		Prompt the user for the base and height of a rectangle. Calculate the area and display the result in the html
+		tags above.
+
+		Formula: area = (base times height) divided by 2;
+
+	*/
+
+	// collect input
+	let base = prompt("Enter base:");
+	let height = prompt("Enter height:");
+
+	// perform calculations
+	let area = (base * height) / 2;
+
+	// display output
+	document.getElementById('base').innerHTML = base;
+	document.getElementById('height').innerHTML = height;
+	document.getElementById('area').innerHTML = area;
+
+</script>
+</body>
+</html>
