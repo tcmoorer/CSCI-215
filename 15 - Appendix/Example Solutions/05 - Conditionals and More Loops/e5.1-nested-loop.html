@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Welcome to CSCI-215!</title>
+</head>
+<body>
+<h1>Display Graphic Output of Product Count</h1>
+<script type="text/Javascript">
+
+    /*
+        Display Graphic Output of Product Count
+
+        Write a JavaScript program to match the following:
+
+            1. Accept input of Fruit and count values (see sample below).
+            2. For each product:
+                a. Print the product name
+                b. Print the first letter of the product the number of times equal to the count value
+            3. Display the total number of items across all products.
+
+         Sample Input:
+            Apples,2;Bananas,5;Cherries,9
+         Sample Output:
+            Apples: aa
+            Bananas: bbbbb
+            Cherries: ccccccccc
+            ------
+            Total Items: 16
+    */
+
+    let input = "Apples,2;Bananas,5;Cherries,9";
+    const array1 = input.split(";");
+    let totalItems = 0;
+
+    for (let i=0; i<array1.length; i++) {
+
+        const array2 = array1[i].split(",");
+        totalItems += parseInt(array2[1]);
+        document.write(`${array2[0]}: `);
+
+        // display graphic of number of items using the lowercase first letter of the name
+        for (let j=0; j < array2[1]; j++) {
+            document.write(`${array2[0].substring(0,1).toLowerCase()}`);
+        }
+        document.write(`<br>`);
+    }
+
+    document.write(`------ <br>`);
+    document.write(`Total Items: ${totalItems} <br>`);
+
+</script>
+</body>
+</html>
