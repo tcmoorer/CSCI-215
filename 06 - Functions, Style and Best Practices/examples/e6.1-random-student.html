@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>Welcome to CSCI-215!</title>
+</head>
+<body>
+<h1>Random Student Chooser: <span id="studentName"></span></h1>
+<p id="index"></p>
+<p id="students"></p>
+<script type="text/Javascript">
+
+    const studentsArray = [
+        'Harris, Walker',
+        'Baker, Lynn',
+        'Thorpe, Ethan',
+        'Ramsden, Sammi',
+        'Fisher, Brendan',
+        'Stadtmueller, Ian',
+        'Dinning, Rachel',
+        'Reddick, Mel',
+        'Urbina Salgado, Gaby',
+        'Morraye, Annie',
+        'Olivera, Tianna',
+        'Nelson, Melita',
+        'Pittman, Stephanie',
+        'Bresciani, Marco',
+        'Gadsden, Kayla',
+        'Harrell, West',
+        'Allen, Alex',
+        'Rentz, Ian',
+        'Thornley, Thomas',
+        'Brine, Isabella',
+        'Murray, Addison',
+        'Aguilar Garcia, Luis',
+        'Bare, Robert',
+    ];
+
+    // sort array of names
+    shuffle(studentsArray);
+    // choose random number between 0 and students.length-1
+    let studentIndex = randomNumber(0, studentsArray.length-1).toFixed(0);
+    console.log(`min=0, max=${studentsArray.length}, randomIndex=${studentIndex}`)
+
+    // update UI
+    document.getElementById("studentName").innerHTML = studentsArray[studentIndex];
+    document.getElementById("index").innerHTML = `Random index: ${studentIndex}`;
+
+    // display list of student names
+    let studentNames = '';
+    for (let i=0; i<studentsArray.length; i++) {
+        studentNames += `${i} - ${studentsArray[i]} <br/>`;
+    }
+    document.getElementById("students").innerHTML = studentNames;
+
+    /**
+     * The de-facto unbiased shuffle algorithm is the Fisher-Yates (aka Knuth) Shuffle.
+     * See https://bost.ocks.org/mike/shuffle/
+     * @param array
+     * @returns {*}
+     */
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+        // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+
+    /**
+     * Any random number between min (included) and max (not included):
+     * @param min
+     * @param max
+     * @returns {*}
+     */
+    function randomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+ 
+</script>
+</body>
+</html>
