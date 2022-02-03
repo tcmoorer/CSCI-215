@@ -2,9 +2,9 @@
 
 ## Overview
 
-Arrays and loops are an essential constructs in the majority of programing languages. The ability
-to define a list of values and iterate over the list performing operations is a critical
-skill to master.
+Functions isolate sections of code that perform specific taks so that they can be reused. The use of common coding 
+styles and best practices within teams and organizations improve the quality, consistency, and maintainability of 
+application code.
 
 ## Content Links
 
