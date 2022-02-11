@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Miles to Kilometers</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <div class="card mt-5" style="background-color: #efefef;">
+                <div class="card-body">
+                    <h5 class="card-title">Miles to Kilometers</h5>
+                    <p class="card-text">Enter the number of miles to convert to kilometers.</p>
+                    <!-- input field with button -->
+                    <div class="input-group mt-3">
+                        <input type="text" class="form-control" id="miles" placeholder="Enter miles to convert to kilometers" aria-label="Enter miles" aria-describedby="button-addon2">
+                        <button class="btn btn-primary" type="button" onclick="convertMilesToKilometers()" id="button-addon2">Convert</button>
+                    </div>
+                    <!-- display result -->
+                    <div class="text-center my-5" style="font-size: 80px;">
+                        <span id="kilometers"></span> km
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+<script>
+    const CONVERSION_FACTOR = 1.60934;
+
+    /**
+     * function receives the event, performs the calculation and displays the result
+     */
+    function convertMilesToKilometers() {
+        let miles = document.getElementById('miles').value;
+        let kilometers = miles * CONVERSION_FACTOR;
+        document.getElementById('kilometers').innerHTML = kilometers.toFixed(1);
+    }
+
+</script>
+</body>
+</html>

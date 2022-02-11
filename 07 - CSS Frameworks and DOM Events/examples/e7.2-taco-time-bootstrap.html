@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Taco Time</title>
+</head>
+<body onload="initPage()">
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <div class="card mt-5" id="menuBoard">
+                <div class="card-body">
+                    <h5 class="card-title">Taco Time Menu Board</h5>
+                    <p class="card-text small">
+                        In October 1933, White Star Cafeteria created a week-long campaign in order to let locals know that they
+                        were offering "Mexican tacos" each Tuesday. Throughout the next several decades, a number of restaurants
+                        had designated Tuesday as the day for special deals on tacos.
+                    </p>
+                    <p class="card-text">Choose from the following menu items:</p>
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-2">Taco</div>
+                        <div class="col-2 text-center">...........</div>
+                        <div class="col-2 text-end">$<span id="tacoCost"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-2">Burritos</div>
+                        <div class="col-2 text-center">............</div>
+                        <div class="col-2 text-end">$<span id="burritoCost"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-3 my-5">
+            
+            <h3 class="my-5 text-center">Enter Order</h3>
+            <!-- select tacos -->
+            <div class="row my-2">
+                <div class="col-5">
+                    Tacos Count:
+                </div>
+                <div class="col-7">
+                    <select id="tacoCountChoose" class="form-select" aria-label="Choose" onchange="calcTacoTotal()">
+                        <option value="0">Choose</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            </div>
+            <!-- select burritos -->
+            <div class="row my-2">
+                <div class="col-5">
+                    Burrito Count:
+                </div>
+                <div class="col-7">
+                    <select id="burritoCountChoose" class="form-select" aria-label="Choose" onchange="calcBurritoTotal()">
+                        <option value="0">Choose</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-2 my-5"></div>
+        <div class="col-3 my-5">
+            <h3 class="my-5 text-center">Order Details</h3>
+            <div class="row">
+                <div class="col-6">(<span id="tacoCount"></span>) Tacos:</div>
+                <div class="col-6 text-end">$<span id="tacoTotal"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-6">(<span id="burritoCount"></span>) Burritos:</div>
+                <div class="col-6 text-end">$<span id="burritoTotal"></span></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-6">Subtotal:</div>
+                <div class="col-6 text-end">$<span id="subTotal"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-6">Tax Amount:</div>
+                <div class="col-6 text-end">$<span id="taxAmount"></span></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-6">Grand Total:</div>
+                <div class="col-6 text-end">$<span id="grandTotal"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const TACO_PRICE = 1.19;
+    const BURRITO_PRICE = 2.49;
+    const TAX = .065;
+    let tacoCount = 0;
+    let tacoTotal = 0;
+    let burritoCount = 0;
+    let burritoTotal = 0;
+    let subTotal = 0;
+    let taxTotal = 0;
+    let grandTotal = 0;
+
+    /**
+     * Do stuff when the page loads
+     */
+    function initPage() {
+        // style the menu board
+        document.getElementById('menuBoard').style.backgroundColor = '#456D6A';
+        document.getElementById('menuBoard').style.color = '#fff';
+        document.getElementById('menuBoard').style.borderWidth = '20px';
+        document.getElementById('menuBoard').style.borderColor = '#B6977D';
+        // set prices based on constant values
+        document.getElementById('tacoCost').innerHTML = String(TACO_PRICE);
+        document.getElementById('burritoCost').innerHTML = String(BURRITO_PRICE);
+        // init totals
+        calcTacoTotal();
+        calcBurritoTotal();
+    }
+
+    /**
+     * Calc taco total
+     */
+    function calcTacoTotal() {
+        // get value from select list
+        tacoCount = document.getElementById('tacoCountChoose').value;
+        // calc order total
+        tacoTotal = tacoCount * TACO_PRICE;
+        // update UI
+        document.getElementById('tacoCount').innerHTML = tacoCount;
+        document.getElementById('tacoTotal').innerHTML = tacoTotal.toFixed(2);
+        // call common function to calc grand total
+        calcGrandTotal();
+    }
+
+    /**
+     * Calc burrito total
+     */
+    function calcBurritoTotal() {
+        // get value from select list
+        burritoCount = document.getElementById('burritoCountChoose').value;
+        // calc order total
+        burritoTotal = burritoCount * BURRITO_PRICE;
+        // update UI
+        document.getElementById('burritoCount').innerHTML = burritoCount;
+        document.getElementById('burritoTotal').innerHTML = burritoTotal.toFixed(2);
+        // call common function to calc grand total
+        calcGrandTotal();
+    }
+
+    /**
+     * Calculate totals
+     */
+    function calcGrandTotal() {
+        subTotal = tacoTotal + burritoTotal;
+        taxTotal = subTotal * TAX;
+        grandTotal = subTotal + taxTotal;
+        // update in UI
+        document.getElementById('subTotal').innerHTML = subTotal.toFixed(2);
+        document.getElementById('taxAmount').innerHTML = taxTotal.toFixed(2);
+        document.getElementById('grandTotal').innerHTML = grandTotal.toFixed(2);
+    }
+
+</script>
+</body>
+</html>
