@@ -2,6 +2,8 @@
 
 ## Overview
 
+This section covers CSS and a popular CSS Framework, Bootstrap. We will cover the grid layout system, alerts, forms, and form validation. 
+There will also be a review of JavaScript events and several examples of functions will be covered. 
 
 ## Content Links
 
@@ -33,7 +35,7 @@ More Info: <https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade>
 
 ## Bootstrap CSS
 
-Get started with Bootstrap, the world’s most popular framework for building responsive, mobile-first sites, and a template starter page.
+Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, and a template starter page.
 
 ### Add to Pages via CDN
 
@@ -73,7 +75,7 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
 
 ### Layout Grid
 
-Bootstrap’s grid system uses a series of containers, rows, and columns to layout and align content. It’s built with 
+Bootstrap's grid system uses a series of containers, rows, and columns to layout and align content. It's built with 
 flexbox and is fully responsive. Grids can be nested to build complex UIs.
 
 ```
