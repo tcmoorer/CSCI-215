@@ -2,7 +2,7 @@
 
 ## Overview
 
-Functions isolate sections of code that perform specific taks so that they can be reused. The use of common coding 
+Functions isolate sections of code that perform specific tasks so that they can be reused. The use of common coding 
 styles and best practices within teams and organizations improve the quality, consistency, and maintainability of 
 application code.
 
