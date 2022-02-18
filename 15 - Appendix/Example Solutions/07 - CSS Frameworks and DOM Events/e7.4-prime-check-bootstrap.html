@@ -1,0 +1,122 @@
+<!--
+    ----
+     Rework the 'Prime Number Checker' example from section 5 to use bootstrap UI elements, events and functions as
+     illustrated in examples e7.1 and e7.2.
+    ----
+
+    Prime Number Checker
+
+    A prime number is a positive integer greater than 1 that is only divisible by 1 and itself.
+    For example, 2, 3, 5, 7, 11 are the first few prime numbers. Write a JavaScript program that
+    will accept a single numeric value and determine if it is a prime number or not. For cases
+    when the number is not a prime number include all divisors.
+
+    The solution should include the following elements:
+
+    - use Bootstrap's grid for layout
+    - use input field to receive the number
+    - validate that the value from the user is a number, display a 'danger' alert if needed
+    - use an event to call a function that performs the prime check and displays the result
+
+-->
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Prime check</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <div class="card mt-5" style="background-color: #efefef;">
+                <div id="respMsgAlert" class="alert alert-danger visually-hidden" role="alert">
+                    <div id="respMsgText"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Prime Number Check</h5>
+                    <p class="card-text">Enter the number to check if it is Prime.</p>
+                    <!-- input field with button -->
+                    <div class="input-group mt-3">
+                        <input type="text" class="form-control" id="numberToEvaluate" placeholder="Enter a number" aria-label="Enter a number" aria-describedby="button-addon2">
+                        <button class="btn btn-primary" type="button" onclick="checkPrime()" id="button-addon2">Check</button>
+                    </div>
+                    <!-- display result -->
+                    <div class="text-center my-5" style="font-size: 40px;">
+                        <span id="primeCheckResults"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+<script>
+
+    /**
+     * Clear the display
+     */
+    function clearDisplay() {
+        document.getElementById('respMsgText').innerHTML = '';
+        document.getElementById('respMsgAlert').classList.add('visually-hidden');
+        document.getElementById('primeCheckResults').innerHTML = '';
+    }
+
+    /**
+     * This is the main function where the prime number is evaluated and the results are displayed
+     */
+    function checkPrime() {
+        clearDisplay();
+        
+        // get value by id from the UI
+        let number = document.getElementById('numberToEvaluate').value;
+        console.log(number);
+
+        // if the input is valid evaluate if the number is a prime
+        if (isValid(number)) {
+            const divsors = [];
+            let isPrime = true;
+            for (let i=2; i<number; i++) {
+                if (number%i == 0) {
+                    isPrime = false;
+                    divsors.push(i);
+                }
+            }
+            // output
+            if (isPrime) {
+                document.getElementById('primeCheckResults').innerHTML = `${number} is a Prime Number :)`;
+            } else {
+                document.getElementById('primeCheckResults').innerHTML = `${number} is not a Prime Number it is divisible by ${divsors}`;
+            }
+        } else {
+            // alert
+            document.getElementById('respMsgText').innerHTML = `The input '${number}' is not a valid number`;
+            document.getElementById('respMsgAlert').classList.remove('visually-hidden');
+        }
+    }
+
+    /**
+     * Move validation to a function to clean up the code and make it more readable.
+     * @param number
+     * @returns {boolean}
+     */
+    function isValid(number) {
+        if (number - number === 0 && number > 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>
