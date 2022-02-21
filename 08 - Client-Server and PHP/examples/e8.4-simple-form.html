@@ -1,0 +1,94 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+          crossorigin="anonymous">
+</head>
+<style>
+    .errorMsg {
+        color:red;
+        font-weight: bold;
+    }
+    .required {
+        color:red;
+        font-weight: bold;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h1 class="mt-3">Contact Us</h1>
+            <p>
+                Complete the form below to send us a message.
+            </p>
+            <div id="respMsgAlert" class="alert alert-danger visually-hidden" role="alert">
+                <div id="respMsgText"></div>
+            </div>
+            <form name="formOne" action="https://tcmoorer.people.cofc.edu/CSCI215/Spring2022/08/e8.3-echo.php" method="get">
+                <div class="mb-3">
+                    <label for="userName" class="form-label"><span class="required">*</span> Name</label>
+                    <input type="text" class="form-control" name="userName" id="userName" onfocus="clearUserNameValidation()" onblur="validateName()">
+                    <div id="userNameValidation" class="errorMsg"></div>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+            </form>
+            <span class="required">*</span> denotes a value is required to proceed.
+        </div>
+        <div id="" class="col-4"></div>
+    </div>
+</div>
+<script>
+    const NAME_MAX_LENGTH = 20;
+    let pageIsValid = false;
+
+    /**
+     *  Submit form if valid
+     */
+    function submitForm(){
+        if (pageIsValid) {
+            // clear alert info and hide
+            document.getElementById('respMsgText').innerHTML = '';
+            document.getElementById('respMsgAlert').classList.add('visually-hidden');
+            // submit the form info
+            document.formOne.submit();
+        } else {
+            // set alert text and show
+            document.getElementById('respMsgText').innerHTML = 'Form is not valid. Please correct errors before submitting.';
+            document.getElementById('respMsgAlert').classList.remove('visually-hidden');
+        }
+    }
+
+    /**
+     * Clear validation
+     */
+    function clearUserNameValidation() {
+        document.getElementById('userNameValidation').innerHTML = '';
+    }
+
+    /**
+     * Validate the Name provided
+     */
+    function validateName() {
+        let userName = document.getElementById('userName').value;
+        if (userName.length === 0) {
+            document.getElementById('userNameValidation').innerHTML = 'Name is required!';
+            pageIsValid = false;
+        } else if (userName.length > NAME_MAX_LENGTH) {
+            document.getElementById('userNameValidation').innerHTML = `Name cannot exceed ${NAME_MAX_LENGTH} characters!`;
+            pageIsValid = false;
+        } else {
+            pageIsValid = true;
+        }
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
