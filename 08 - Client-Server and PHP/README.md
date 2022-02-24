@@ -1,7 +1,9 @@
 # Section 8 - Client/Server and PHP
 
 ## Overview
-
+         
+A foundation in client/server concepts is essential in designing and maintaining rich internet applications. Frequently,
+the client (i.e. the browser) receives information from a "back end" server that is displayed dynamically. 
 
 ## Content Links
 
