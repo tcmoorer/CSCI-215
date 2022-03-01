@@ -1,0 +1,47 @@
+<html>
+<body onload="init()">
+<h1>JavaScript Object Example</h1>
+<div id="results"></div>
+<script>
+    const myObj = {
+        name: "",
+        cars: []
+    }
+
+    function init() {
+        myObj.name = "Dave";
+        myObj.age = 42;
+        myObj.cars = [
+            {
+                name:"Ford",
+                models:["Fiesta", "Focus", "Mustang"]
+            }, {
+                name:"BMW",
+                models:["320", "X3", "X5"]
+            }, {
+                name:"Fiat",
+                models:["500", "Panda"]
+            }
+        ];
+        printResults();
+    }
+
+    function printResults() {
+        let outputString = '';
+        outputString += `<h2>Name: ${myObj.name} (${myObj.age})</h2>`;
+        outputString += `<h3>Car Inventory</h3>`;
+        // print array values
+        for (let i in myObj.cars) {
+            outputString += `<h4>${myObj.cars[i].name}</h4>`;
+            outputString += `<ol>`;
+            for (let j in myObj.cars[i].models) {
+                outputString += `<li>${myObj.cars[i].models[j]}</li>`;
+            }
+            outputString += `</ol>`;
+        }
+        document.getElementById('results').innerHTML = outputString;
+    }
+
+</script>
+</body>
+</html>

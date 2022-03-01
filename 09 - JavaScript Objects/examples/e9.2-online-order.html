@@ -1,0 +1,68 @@
+<html>
+<head>
+</head>
+<body onload="init()">
+<h1>Online Order</h1>
+<div id="results"></div>
+<script type="text/javascript">
+
+    const orderInfo = {
+        "customer":  null,
+        "cart": []
+    };
+
+    function init() {
+        // customer info
+        orderInfo.customer = {};
+        orderInfo.customer.firstName = "Bill";
+        orderInfo.customer.lastName = "Smith";
+        orderInfo.customer.address = "123 Main Street";
+        orderInfo.customer.city = "Charleston";
+        orderInfo.customer.state = "South Carolina";
+        orderInfo.customer.zipCode = "29407";
+        orderInfo.customer.emailAddress = "wildbill@aol.com";
+        orderInfo.customer.phoneNumber = "(843) 555-1212";
+        // cart info
+        orderInfo.cart = [
+            {
+                id: '121',
+                desc: 'Ping Pong Balls',
+                unitPrice: 3.45,
+                quantity: 5
+            }, {
+                id: '141',
+                desc: 'Tennis Balls',
+                unitPrice: 6.45,
+                quantity: 4
+            }
+        ]
+        printResults();
+    }
+
+    function printResults() {
+        let outputString = '';
+        for (let key in orderInfo) {
+            let value = orderInfo[key];
+            //console.log( key + ": " + value );
+            if (key == "customer") {
+                outputString += `<h2>Customer Info</h2>`;
+                for (let customerAttribute in value) {
+                    outputString += `${customerAttribute} : ${value[customerAttribute]}<br>`;
+                }
+            }
+            if (key == "cart") {
+                outputString += `<h2>Cart Info</h2>`;
+                const cartArray = orderInfo[key];
+                for (let i=0; i<cartArray.length; i++) {
+                    let itemId = cartArray[i].id;
+                    let itemDesc = cartArray[i].desc;
+                    let itemValue = (cartArray[i].unitPrice * cartArray[i].quantity).toFixed(2);
+                    outputString += `(${itemId}) ${itemDesc}: $${itemValue} ($${cartArray[i].unitPrice} x ${cartArray[i].quantity})<br>`;
+                }
+            }
+            document.getElementById('results').innerHTML = outputString;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!--
+   Modify Tip Calculator
+
+   In this in-class exercise, you will modify your Tip Calculator application from Quiz #5 and
+   modify it to use an object instead of different variables.
+
+   The original solution used the following variables:
+
+   - amount - the user entered amount to calculate the tax for
+   - tipPercent - the value from the select list i.e. 15%
+   - tipAmount - the amount * tipPercent
+   - grandTotal - the amount + tipAmount
+
+   Your application should have the following elements:
+
+   - Define an object called 'tipCalculatorModel' with the attributes above.
+   - Create an onload event that initializes the object with appropriate default values.
+   - Modify your existing application to use the 'tipCalculatorModel' instead of different variables.
+
+-->
+<html>
+<head>
+</head>
+<body onload="init()">
+<h1>Online Order</h1>
+<div id="results"></div>
+<script type="text/javascript">
+
+    const tipCalculatorModel = {
+        "amount":  null
+    };
+
+    /**
+     *  Create default values for your model
+     */
+    function init() {
+        tipCalculatorModel.amount = 0.00;
+    }
+
+</script>
+</body>
+</html>
