@@ -1,0 +1,13 @@
+<html>
+<body>
+<div id="demo"></div>
+<script>
+    const ajaxRequest = new XMLHttpRequest();
+    ajaxRequest.onload = function() {
+        document.getElementById("demo").innerHTML = this.responseText;
+    }
+    ajaxRequest.open("GET", "e10.1-ajax-info.txt");
+    ajaxRequest.send();
+</script>
+</body>
+</html>
