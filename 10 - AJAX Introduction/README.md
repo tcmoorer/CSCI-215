@@ -2,7 +2,7 @@
 
 ## Overview
 
-AJAX is the cornerstone of modern web applications. The ability to asyncronously access data, perform calculations and 
+AJAX is the cornerstone of modern web applications. The ability to asynchronously access data, perform calculations and 
 dynamically update the DOM is a very important skill in the modern web developers tool box.
 
 ## Content Links
