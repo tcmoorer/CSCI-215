@@ -14,7 +14,14 @@
      * Load remote content 
      */
     function loadRemoteContent() {
-        // TODO
+        const ajaxRequest = new XMLHttpRequest();
+        ajaxRequest.onload = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML = this.responseText;
+            }
+        }
+        ajaxRequest.open("GET", "https://tcmoorer.people.cofc.edu/CSCI215/Spring2022/10/e10.1-ajax-info.php");
+        ajaxRequest.send();
     }
     
 </script>

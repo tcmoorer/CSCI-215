@@ -1,0 +1,46 @@
+<!--
+    Use AJAX to call e10.2-hello.php e10.2-world.php and load the results in the DOM.
+
+    This example illustrates a technique of sending multiple ajax requests in parallel via the common loadAjax() method
+    and providing different callback methods to process the different responses.
+
+    In both cases the content from the remote resource is simply displayed to the user without modification.
+-->
+<html>
+<body>
+<div id="hello"></div>
+<div id="world"></div>
+<script>
+
+    loadAjax("https://tcmoorer.people.cofc.edu/CSCI215/Spring2022/10/e10.2-hello.php", processHello);
+    loadAjax("https://tcmoorer.people.cofc.edu/CSCI215/Spring2022/10/e10.2-world.php", processWorld);
+
+    /**
+     * Queue up multiple
+     * @param url
+     * @param cFunction
+     */
+    function loadAjax(url, cFunction) {
+        const ajaxRequest = new XMLHttpRequest();
+        ajaxRequest.onload = function() { cFunction(this); }
+        ajaxRequest.open("GET", url);
+        ajaxRequest.send();
+    }
+
+    /**
+     * Process hello content
+     */
+    function processHello(ajaxRequest) {
+        document.getElementById("hello").innerHTML = ajaxRequest.responseText;
+    }
+
+    /**
+     * Process world content
+     */
+    function processWorld(ajaxRequest) {
+        document.getElementById("world").innerHTML = ajaxRequest.responseText;
+    }
+
+</script>
+</body>
+</html>

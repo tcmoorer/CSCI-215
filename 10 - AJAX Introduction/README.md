@@ -2,7 +2,8 @@
 
 ## Overview
 
-Blah, blah...
+AJAX is the cornerstone of modern web applications. The ability to asyncronously access data, perform calculations and 
+dynamically update the DOM is a very important skill in the modern web developers tool box.
 
 ## Content Links
 
@@ -10,6 +11,7 @@ Blah, blah...
   - XMLHttpRequest - <https://www.w3schools.com/js/js_ajax_http.asp>
   - AJAX Request - <https://www.w3schools.com/js/js_ajax_http_send.asp>
   - AJAX Response - <https://www.w3schools.com/js/js_ajax_http_response.asp>
+- Cross-Origin Resource Sharing (CORS) - <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS>
 
 ## AJAX - Asynchronous JavaScript And XML
 
@@ -47,60 +49,83 @@ The `XMLHttpRequest` object can be used to exchange data with a web server behin
 All modern browsers (Chrome, Firefox, IE, Edge, Safari, Opera) have a built-in `XMLHttpRequest` object.
             
 ```
-variable = new XMLHttpRequest();
+const ajaxRequest = new XMLHttpRequest();
 ```
 
-### Define a Callback Function
+### Define the `onload` Callback Function
 
-A callback function is a function passed as a parameter to another function.
-
-In this case, the callback function should contain the code to execute when the response is ready.
+The `onload` event is fired when an XMLHttpRequest transaction completes successfully. 
+Define a callback function to handle the response.
     
 ```
-xhttp.onload = function() {
-  // What to do when the response is ready
+ajaxRequest.onload = function() {
+  // Process the response when it is ready
 }
 ```
 
-### Send a Request
+### Define the URL and Send the Request with `open()` and `send()`
 
-To send a request to a server, you can use the `open()` and `send()` methods of the `XMLHttpRequest` object:
+To send a request to a server, you use the `open()` and `send()` methods of the `XMLHttpRequest` object. The `open` 
+method initializes the request and includes the http method (`GET` or `POST`) and the URL to call with any parameters. 
+In a later section, the use of `POST` will be discussed. The `send()` method sends the request and the `onload` method
+will be called when the request completes. 
 
 ```
-xhttp.open("GET", "ajax_info.txt");
-xhttp.send();
+ajaxRequest.open("GET", "ajax_info.php");
+ajaxRequest.send();
 ```
              
 This is a complete example of an AJAX call:
 
 ```
 // Create an XMLHttpRequest object
-const xhttp = new XMLHttpRequest();
+const ajaxRequest = new XMLHttpRequest();
 
 // Define a callback function
-xhttp.onload = function() {
-  // Here you can use the Data
+ajaxRequest.onload = function() {
+  // Process the response when it is ready
 }
 
 // Send a request
-xhttp.open("GET", "ajax_info.txt");
-xhttp.send();
+ajaxRequest.open("GET", "ajax_info.php");
+ajaxRequest.send();
 ```
-          
+
+### Access Across Domains and CORS (Cross-Origin Resource Sharing)
+                    
+Sometimes web applications need to recieve information from multiple domains. In the diagram
+below resources (CSS files, images, fonts, and data) are collected from different web server domains. 
+
+![CORS Diagram Example](images/CORS-Diagram.png)
+
+For security reasons, modern browsers do not allow access across domains by default. This means that both the web 
+page (HTML) and the server files it uses (PHP), must be located on the same server.
+ 
+There are two workarounds:
+1. Upload the HTML and PHP files to your student account and test the HTML file (that uses the PHP file) via your student URL.
+2. Add a CORS (Cross-Origin Resource Sharing) header to the PHP page. This will allow requests from different domains (ex. localhost) to be allowed. 
+
+```
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET');
+header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
+header('Content-Type: application/json');
+```
+
 ## GET Requests
 
 A simple GET request:
    
 ```
-xhttp.open("GET", "demo_get.asp");
-xhttp.send();
+ajaxRequest.open("GET", "demo_get.asp");
+ajaxRequest.send();
 ```
 
 A GET request with parameters (information added to the URL):
 
 ```
-xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford");
-xhttp.send();
+ajaxRequest.open("GET", "demo_get2.asp?fname=Henry&lname=Ford");
+ajaxRequest.send();
 ```
 
 ### Server Response
@@ -110,6 +135,8 @@ xhttp.send();
 The `responseText` property returns the server response as a JavaScript string, and you can use it accordingly:
 
 ```
-document.getElementById("demo").innerHTML = xhttp.responseText;
+document.getElementById("demo").innerHTML = ajaxRequest.responseText;
 ```
+     
+This technique is useful when the response from the remote server is diplayed "as is" without modification.
 

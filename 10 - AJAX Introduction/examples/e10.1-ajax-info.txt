@@ -1,2 +1,0 @@
-<h1>Ajax Info</h1>
-<h2>This info was provided by the ajax_info.txt file</h2>

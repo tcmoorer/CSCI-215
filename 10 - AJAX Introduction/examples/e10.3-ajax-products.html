@@ -1,0 +1,41 @@
+<!--
+    Use AJAX to call e10.3-ajax-products.php and load the results in the DOM.
+
+    This example illustrates a technique of providing an id to a simple GET request and displaying the response.
+-->
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+          crossorigin="anonymous">
+    <style>
+        .cursor {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <h2>Product IDs</h2>
+            <ul>
+                <li class="cursor" onclick="loadRemoteContent('d05347de-491f-11ec-81d3-0242ac130000')">Apple</li>
+                <li class="cursor" onclick="loadRemoteContent('d05347de-491f-11ec-81d3-0242ac130001')">Banana</li>
+                <li class="cursor" onclick="loadRemoteContent('d05349fa-491f-11ec-81d3-0242ac130002')">Cherry</li>
+                <li class="cursor" onclick="loadRemoteContent('d0534aea-491f-11ec-81d3-0242ac130003')">Grapes</li>
+                <li class="cursor" onclick="loadRemoteContent('d0534d4c-491f-11ec-81d3-0242ac130004')">Orange</li>
+            </ul>
+        </div>
+        <div class="col-4">
+            <h2>Product Description</h2>
+            <div id="additionalInfo"></div>
+        </div>
+    </div>
+</div>
+<script>
+    //TODO
+
+</script>
+</body>
+</html>
