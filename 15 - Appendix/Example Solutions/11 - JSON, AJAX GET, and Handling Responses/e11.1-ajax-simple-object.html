@@ -1,0 +1,78 @@
+<!--
+    Call a server side PHP file that provides person information.
+    Demonstrates the JSON.parse function to transform JSON formatted strings into JavaScript objects.
+-->
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+          crossorigin="anonymous">
+    <style>
+    </style>
+</head>
+<body onload="init()">
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h2>Person Info</h2>
+            <div class="row">
+                <div class="col-6">Name:</div>
+                <div class="col-6" id="personName"></div>
+            </div>
+            <div class="row">
+                <div class="col-6">Occupation:</div>
+                <div class="col-6" id="personOccupation"></div>
+            </div>
+            <div class="row">
+                <div class="col-6">Age:</div>
+                <div class="col-6" id="personAge"></div>
+            </div>
+            <div class="row">
+                <div class="col-6">Home Town:</div>
+                <div class="col-6" id="personBorn"></div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+<script>
+
+    /**
+     * Called on page load
+     */
+    function init() {
+        getPersonInfo();
+    }
+
+    /**
+     * GET person info
+     */
+    function getPersonInfo() {
+        const ajaxRequest = new XMLHttpRequest();
+        // callback function called when ajax response is returned
+        ajaxRequest.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // convert the string response (in JSON format) into a JavaScript object
+                // person has the expected attributes of: firstName, lastName, occupation, age, born (birth city)
+                const person = JSON.parse(this.responseText);
+                // update UI
+                document.getElementById('personName').innerHTML = `${person.lastName}, ${person.firstName}`;
+                document.getElementById('personOccupation').innerHTML = person.occupation;
+                document.getElementById('personAge').innerHTML = person.age;
+                document.getElementById('personBorn').innerHTML = person.born;
+            }
+        };
+        ajaxRequest.open("GET", "https://tcmoorer.people.cofc.edu/CSCI215/Spring2022/11/e11.1-simple-object.php");
+        ajaxRequest.send();
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

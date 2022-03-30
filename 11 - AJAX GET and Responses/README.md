@@ -2,7 +2,8 @@
 
 ## Overview
 
-Blah, blah...
+A key concept with AJAX is the ability to transform data between systems.This section covers the techniques and 
+methods to transform objects into JSON and the reverse of JSON into objects.
 
 ## Content Links
 
@@ -17,9 +18,9 @@ Blah, blah...
 - PHP Superglobals $_GET - <https://www.w3schools.com/php/php_superglobals.asp>
         
 
-## AJAX
+## AJAX Overview
 
-See Section 10
+See Section 10. Go on. Go back and look there. 
 
 ## JSON
 

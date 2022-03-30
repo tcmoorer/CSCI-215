@@ -1,0 +1,183 @@
+<!--
+    TO-DO:
+    - Do Higher/Lower Guessing game in class using objects and AJAX
+    - Use dev tools to observe network traffic and request/response values
+    - Use debugger to observe state changes
+    - Run the php file either locally or through your cofc student website
+-->
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+          crossorigin="anonymous">
+    <style>
+        .linkify {
+            cursor: pointer;
+            color: blue;
+        }
+        .errorMsg {
+            color:red;
+            font-weight: bold;
+        }
+        .required {
+            color:red;
+            font-weight: bold;
+        }
+        #answer {
+            font-size: 50px;
+            font-weight: bold;
+        }
+        .correct {
+            color: darkgreen;
+        }
+        .incorrect {
+            color: darkred;
+        }
+    </style>
+</head>
+<body onload="init()">
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-4">
+            <h2>Guessing Game</h2>
+            <p>Choose a number between 0 and 250.</p>
+            <form name="formOne">
+                <div class="mb-3">
+                    <label for="userGuess" class="form-label"><span class="required">*</span> Enter your guess:</label>
+                    <input type="text" class="form-control" name="userGuess" id="userGuess" onfocus="clearValidation()">
+                    <div id="userGuessValidation" class="errorMsg"></div>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="testUserGuess()">Submit</button>
+            </form>
+            <h3>User Guesses</h3>
+            <ol id="guessHistory"></ol>
+        </div>
+        <div class="col-4">
+            <h2>Response</h2>
+            <div id="answer" class="correct"></div>
+            <p id="reset" class="visually-hidden">Nice game! <span onclick="init()" class="linkify">Start over?</span></p>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<script>
+
+    let targetNumber = 0;
+    let userGuess = 0;
+    let isValid = true;
+    const MIN = 0;
+    const MAX = 250;
+
+    /**
+     * Choose random number between 0 and 250 as the target.
+     */
+    function init() {
+        targetNumber = randomIntFromInterval(MIN, MAX);
+        document.getElementById("userGuess").value = '';
+        document.getElementById("guessHistory").innerHTML = '';
+        document.getElementById("answer").innerHTML = '';
+        document.getElementById("answer").classList.add('correct');
+        document.getElementById("reset").classList.add('visually-hidden');
+    }
+
+    /**
+     * Test if the user's guess is right/wrong
+     */
+    function testUserGuess() {
+        validate();
+        if (isValid) {
+            const ajaxRequest = new XMLHttpRequest();
+            ajaxRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // convert the string response (in JSON format) into a JavaScript object
+                    const guessResponse = JSON.parse(this.responseText);
+                    // add to history
+                    recordHistory(guessResponse);
+                    if (guessResponse.gameOver === "true") {
+                        handleSuccess(guessResponse);
+                    } else {
+                        handleFailure(guessResponse);
+                    }
+                }
+            };
+            ajaxRequest.open("GET", "https://tcmoorer.people.cofc.edu/CSCI215/Spring2022/11/e11.2-ajax-guess.php?target=" + targetNumber + "&guess=" + userGuess, true);
+            ajaxRequest.send();
+        }
+    }
+
+    /**
+     * This function is called when the user correctly guesses the result
+     * @param guessResponse
+     */
+    function handleSuccess(guessResponse) {
+        let elementAnswer = document.getElementById("answer");
+        elementAnswer.classList.remove('incorrect');
+        elementAnswer.classList.add('correct');
+        elementAnswer.innerText = guessResponse.message;
+        // show the 'reset' button so the user can start a new game
+        let elementReset = document.getElementById("reset");
+        elementReset.classList.remove('visually-hidden');
+    }
+
+    /**
+     * This function is called when the user guesses incorrectly
+     * @param guessResponse
+     */
+    function handleFailure(guessResponse) {
+        let element = document.getElementById("answer");
+        element.classList.remove('correct');
+        element.classList.add('incorrect');
+        element.innerText = guessResponse.message;
+    }
+
+    /**
+     * Record user guesses in the UI
+     * @param guessResponse
+     */
+    function recordHistory(guessResponse) {
+        let guessHistory = document.getElementById("guessHistory").innerHTML;
+        guessHistory += `<li>Guess: ${userGuess}, Response: ${guessResponse.message}</li>`;
+        document.getElementById("guessHistory").innerHTML = guessHistory;
+    }
+
+    /**
+     * Clear validation
+     */
+    function clearValidation() {
+        document.getElementById("userGuessValidation").innerHTML = '';
+    }
+
+    /**
+     * Validate input
+     */
+    function validate() {
+        userGuess = document.getElementById("userGuess").value;
+        // test if input is a number i.e. one or more digits
+        let regExp = new RegExp("^\\d+$");
+        isValid = regExp.test(userGuess);
+        if (!isValid) {
+            document.getElementById("userGuessValidation").innerHTML = `${userGuess} is not a valid number. Try again.`;
+        }
+    }
+
+    /**
+     * Generate a random number between two nummbers - see
+     * https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
+     * @param min
+     * @param max
+     * @returns {number}
+     */
+    function randomIntFromInterval(min, max) { // min and max included
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
