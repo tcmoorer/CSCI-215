@@ -1,0 +1,98 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+          crossorigin="anonymous">
+</head>
+<body onload="init()">
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <table class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Unit</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="respMsgText">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end">Sub Total:</td>
+                        <td class="text-end">$<span id="subtotal"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-end">Tax Amount:</td>
+                        <td class="text-end">$<span id="taxAmount"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-end">Grand Total:</td>
+                        <td class="text-end">$<span id="grandTotal"></span></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div>
+    <script type="text/javascript">
+
+        // faux cartInfo
+        const cartInfo = [];
+        let subtotal = 0;
+        const TAX_RATE = .045;
+        let taxAmount = 0;
+        let grandTotal = 0;
+
+        /**
+         * Initialize page
+         */
+        function init() {
+            cartInfo[0] = {id: 1, name: "Apples", unitPrice: 1.99, quantity: 12};
+            cartInfo[1] = {id: 2, name: "Bananas", unitPrice: .49, quantity: 9};
+            submitCartInfo();
+        }
+
+        /**
+         *  POST cart info (from object), process response and update elements in the UI.
+         */
+        function submitCartInfo() {
+            let ajaxRequest = new XMLHttpRequest();
+            ajaxRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseArray = JSON.parse(this.responseText);
+                    // print array response
+                    let outputString = '';
+                    for (let i=0; i<responseArray.length; i++) {
+                        subtotal += responseArray[i].unitPrice * responseArray[i].quantity;
+                        outputString += `<tr>
+                                            <td>${responseArray[i].name}</td>
+                                            <td>$${responseArray[i].unitPrice}</td>
+                                            <td>${responseArray[i].quantity}</td>
+                                            <td>$${subtotal.toFixed(2)}</td>
+                                        </tr>`;
+                    }
+                    taxAmount = subtotal * TAX_RATE;
+                    grandTotal = subtotal + taxAmount;
+                    document.getElementById("respMsgText").innerHTML = outputString;
+                    document.getElementById("subtotal").innerHTML = subtotal.toFixed(2);
+                    document.getElementById("taxAmount").innerHTML = taxAmount.toFixed(2);
+                    document.getElementById("grandTotal").innerHTML = grandTotal.toFixed(2);
+                }
+            };
+
+            ajaxRequest.open("POST", "https://tcmoorer.people.cofc.edu/CSCI215/Spring2022/12/e12.3-echo.php", true);
+            ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            ajaxRequest.send(JSON.stringify(cartInfo));
+        }
+
+    </script>
+</body>
+</html>
