@@ -2,7 +2,10 @@
 
 ## Overview
 
-Blah...
+HTML5 included a standard API to store information in the browser. This section 
+provides an introduction to this feature and the basics of using it. At the end
+of this section you should have the ability to use the WebStorage API to store,
+access and update items saved using WebStorage. 
 
 ## Content Links
 
@@ -17,6 +20,28 @@ The Web Storage API is a simple syntax for storing and retrieving data in the br
 localStorage.setItem("name", "John Doe");
 localStorage.getItem("name");
 ```
+
+###Two scopes:
+
+1. **localStorage** - The localStorage object provides access to a local storage for a particular Web Site. It allows you to store, read, add, modify, and delete data items for that domain. The data is stored with no expiration date, and will not be deleted when the browser is closed. The data will be available for days, weeks, and years.
+
+2. **sessionStorage** - The sessionStorage object is identical to the localStorage object. The difference is that the sessionStorage object stores data for one session. The data is deleted when the browser is closed.
+
+| Property / Method | Description |
+|----------------|---|
+| `key(n)` | Returns the name of the nth key in the storage |
+| `length` | Returns the number of data items stored in the Storage object |
+| `getItem(keyname)` | Returns the value of the specified key name |
+| `setItem(keyname, value)` | Adds that key to the storage, or update that key's value if it already exists |
+| `removeItem(keyname)` | Removes that key from the storage |
+| `clear()` | Empty all key out of the storage |
+
+
+| Property | Description |
+|----------|---|
+| `window.localStorage` | Allows to save key/value pairs in a web browser. Stores the data with no expiration date |
+| `window.sessionStorage` | Allows to save key/value pairs in a web browser. Stores the data for one session |
+       
 
 ## The localStorage Object
 

@@ -1,0 +1,80 @@
+<html>
+<head></head>
+<body onload="initStorage()">
+
+<div onclick="addItem()">Add to Storage</div>
+<div onclick="incrementQty()">(+) Increment</div>
+<div onclick="decrementQty()">(-) Decrement</div>
+
+<div id="total"></div>
+
+<script>
+
+    const items = [];
+
+    function initStorage() {
+        let itemsJSON = JSON.stringify(items);
+        sessionStorage.setItem("items", itemsJSON);
+    }
+
+    function addItem() {
+        // 1. get items from storage and convert to object array
+        let items = JSON.parse(sessionStorage.getItem("items"));
+
+        // 2. add item to array
+        let item = { name: 'Apple', price: 1.99, qty: 1 };
+        items.push(item);
+
+        // 3. save updates in storage
+        let itemsJSON = JSON.stringify(items);
+        sessionStorage.setItem("items", itemsJSON);
+
+        // update total
+        calcTotal();
+    }
+
+    function incrementQty() {
+        // get item from storage and increment qty by 1
+        let items = JSON.parse(sessionStorage.getItem("items"));
+        for (let i=0; i<items.length; i++) {
+            items[i].qty += 1;
+        }
+        // save back into storage
+        let itemsJSON = JSON.stringify(items);
+        sessionStorage.setItem("items", itemsJSON);
+        calcTotal();
+    }
+
+    function decrementQty() {
+        // get item from storage and decrement qty by 1
+        let items = JSON.parse(sessionStorage.getItem("items"));
+        for (let i=0; i<items.length; i++) {
+            items[i].qty -= 1;
+        }
+        // save back into storage
+        let itemsJSON = JSON.stringify(items);
+        sessionStorage.setItem("items", itemsJSON);
+        calcTotal();
+    }
+    
+    function calcTotal() {
+        // get items from storage
+        let items = JSON.parse(sessionStorage.getItem("items"));
+        let totalDiv = document.getElementById("total");
+        totalDiv.innerHTML = "";
+        let totalDivStr = "";
+        // loop and calc item total (price * qty)
+        for (let i=0; i<items.length; i++) {
+            // update div 'total' with
+            totalDivStr += `<div>
+								${items[i].name}: Price: ${items[i].price},
+								Qty: ${items[i].qty},
+								Total ${items[i].price * items[i].qty}
+							</div>`;
+        }
+        totalDiv.innerHTML = totalDivStr;
+    }
+
+</script>
+</body>
+</html>
