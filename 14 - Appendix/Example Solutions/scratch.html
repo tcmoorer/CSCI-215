@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Welcome to CSCI-215!</title>
+</head>
+<body>
+<div id='div1'></div>
+<script type="text/Javascript">
+
+    let a = ["chicken", "donkey", "pig", "horse"];
+    let b = "cat";
+
+    console.log(check(a, b));
+
+    function check(value, array) {
+
+        let value1 = "no";
+        for (let i=0; i < array.length; i++)
+        {
+            let food = array[i];
+            if (food == value)
+            {
+                value1 = "yes";
+                break;
+            }
+
+        }
+
+        return value1;
+    }
+</script>
+</body>
+</html>
