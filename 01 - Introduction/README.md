@@ -1,11 +1,15 @@
-# Section 1 - Introduction to JavaScript
+# Section 01: Introduction to JavaScript
 
-This section includes a high-level discussion related to JavaScript and the DOM.
+## Learning Outcomes
+This section includes a high-level introduction to JavaScript and the Document Object Model or DOM.
+- High-level intro to JavaScript features
+- Where JavaScript is added in an HTML file
+- Intro to Document Object Model (DOM)
 
-## Content Links
+## Resources
 
-1. JS Home - <https://www.w3schools.com/js/default.asp>
-2. Introduction - <https://www.w3schools.com/js/js_intro.asp>
+1. JavaScript Home - <https://www.w3schools.com/js/default.asp>
+2. JavaScript Introduction - <https://www.w3schools.com/js/js_intro.asp>
 3. Where To Add JavaScript? - <https://www.w3schools.com/js/js_whereto.asp>
 4. Document Object Model (DOM) - <https://www.w3schools.com/js/js_htmldom.asp>
 
