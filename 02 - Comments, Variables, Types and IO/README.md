@@ -1,8 +1,12 @@
 # Section 2 - Comments, Variables, Types, and I/O
+## Learning Outcomes 
+This section includes an overview of the fundamental building blocks in JavaScript applications.
+- **Comments** - single and multiline comments
+- **Variables** - hold values in applications
+- **Data Types** - two basic data types and what "weakly typed" means
+- **Basic input/output** - overview of some techniques for input and output
 
-This section includes an introduction to comments, variables, data types and I/O.
-
-## Content Links
+## Resources
 
 1. Comments - <https://www.w3schools.com/js/js_comments.asp>
 2. Variables - <https://www.w3schools.com/js/js_variables.asp>
@@ -37,14 +41,12 @@ be ignored by JavaScript.
 document.getElementById("myH").innerHTML = "My First Page";
 document.getElementById("myP").innerHTML = "My first paragraph.";
  ```
-               
-Using comments to prevent execution of code is suitable for code testing.
 
 ## 2. Variables
 
 ### What are Variables?
 
-Variables are containers for storing data (storing data values). In this example, 
+Variables are containers for storing data values. In this example, 
 x, y, and z, are variables, declared with the let keyword:
               
 ```

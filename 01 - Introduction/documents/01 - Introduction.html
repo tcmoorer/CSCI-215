@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>IntelliJ Markdown Preview</title>               
+  <style>/* Reworked by IntelliJ Team The MIT License (MIT) Copyright (c) JetBrains Adapted from https://github.com/sindresorhus/github-markdown-css The MIT License (MIT) Copyright (c) Sindre Sorhus &lt;sindresorhus@gmail.com&gt; (sindresorhus.com) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */ @font-face { font-family: octicons-anchor; src: url(data:font/woff;charset=utf-8;base64,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) format('woff'); } body { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, freesans, sans-serif; font-size: 14px; line-height: 1.6; word-wrap: break-word; margin: 0 2em; } strong { font-weight: bold; } img { border: 0; } input { color: inherit; font: inherit; margin: 0; line-height: normal; } html input[disabled] { cursor: default; } input[type="checkbox"] { box-sizing: border-box; padding: 0; } body * { box-sizing: border-box; } input { font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; } a { text-decoration: none; } a:hover, a:active { text-decoration: underline; } hr { height: 1px; padding: 0; margin: 20px 0; border: 0 none; } hr:before { display: table; content: ""; } hr:after { display: table; clear: both; content: ""; } blockquote { margin: 0; } ul, ol { padding: 0; margin-top: 0; margin-bottom: 0; } ol ol, ul ol { list-style-type: lower-roman; } ul ul ol, ul ol ol, ol ul ol, ol ol ol { list-style-type: lower-alpha; } dd { margin-left: 0; } .octicon { font: normal normal normal 16px/1 octicons-anchor; display: inline-block; text-decoration: none; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } .octicon-link:before { content: '\f05c'; } .markdown-body &gt; *:first-child { margin-top: 0 !important; } .markdown-body &gt; *:last-child { margin-bottom: 0 !important; } .anchor { position: absolute; top: 0; left: 0; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; } .anchor:focus { outline: none; } h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; } h1 .octicon-link, h2 .octicon-link, h3 .octicon-link, h4 .octicon-link, h5 .octicon-link, h6 .octicon-link { display: none; color: #000; vertical-align: middle; } h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; } h1:hover .anchor .octicon-link, h2:hover .anchor .octicon-link, h3:hover .anchor .octicon-link, h4:hover .anchor .octicon-link, h5:hover .anchor .octicon-link, h6:hover .anchor .octicon-link { display: inline-block; } h1 { font-size: 2.2em; padding-top: 0.6em; } h1 .anchor { line-height: 1; } h2 { font-size: 1.8em; line-height: 1.2; padding-top: 0.6em; } h2 .anchor { line-height: 1.2; } h3 { font-size: 1.3em; line-height: 1; padding-top: 0.6em; } h3 .anchor { line-height: 1.2; } h4 { font-size: 1em; } h4 .anchor { line-height: 1.2; } h5 { font-size: 1em; } h5 .anchor { line-height: 1.1; } h6 { font-size: 1em; } h6 .anchor { line-height: 1.1; } p, blockquote, ul, ol, dl, table, pre { margin-top: 16px; margin-bottom: 16px; } ul, ol { padding-left: 2em; } ul ul, ul ol, ol ol, ol ul { margin-top: 0; margin-bottom: 0; } li &gt; p { margin-top: 0; margin-bottom: 0; } dl { padding: 0; } dl dt { padding: 0; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; } dl dd { padding: 0 16px; margin-bottom: 16px; } blockquote { padding: 10px 10px 10px 16px; border-left: 2px solid; border-radius: 0 3px 3px 0; } blockquote &gt; :first-child { margin-top: 0; } blockquote &gt; :last-child { margin-bottom: 0; } table { display: block; width: 100%; overflow: auto; word-break: normal; border-collapse: collapse; border-spacing: 0; font-size: 1em; } table th { font-weight: bold; } table th, table td { padding: 6px 13px; background: transparent; } table tr { border-top: 1px solid; } img { max-width: 100%; box-sizing: border-box; } code { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } pre &gt; code { padding: 0; margin: 0; font-size: 100%; word-break: normal; white-space: pre; background: transparent; border: 0; } .highlight { margin-bottom: 16px; } .highlight pre, pre { font: 0.85em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 16px; overflow: auto; line-height: 1.45; border-radius: 3px; } pre code { display: inline; max-width: initial; padding: 0; margin: 0; overflow: initial; line-height: inherit; word-wrap: normal; background-color: transparent; border: 0; } pre code:before, pre code:after { content: normal; } kbd { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } .task-list-item { list-style-type: none; } .task-list-item + .task-list-item { margin-top: 3px; } .task-list-item input { margin: 0 0.35em 0.25em -0.6em; vertical-align: middle; } :checked + .radio-label { z-index: 1; position: relative; } span.user-del { text-decoration: line-through; } ::-webkit-scrollbar { width: 6px; height: 6px; } ::-webkit-scrollbar-thumb { -webkit-border-radius: 10px; } ::-webkit-scrollbar-track:vertical { -webkit-box-shadow: -1px 0 0 #ededed; } ::-webkit-scrollbar-track { background-color: transparent; } ::-webkit-scrollbar { width: 6px; } </style>
+  <style>body { background-color: rgba(255, 255, 255, 255.0); font-size: 14px !important; } body, p, blockquote, ul, ol, dl, table, pre, code, tr { color: rgba(8, 8, 8, 255.0); } a { color: rgba(36, 112, 179, 255.0); } table td, table th { border: 1px solid rgba(209, 209, 209, 255.0); } hr { background-color: rgba(209, 209, 209, 255.0); } kbd, tr { border: 1px solid rgba(209, 209, 209, 255.0); } h6 { color: rgba(153, 153, 153, 255.0); } blockquote { border-left: 2px solid rgba(36, 112, 179, 0.4); } ::-webkit-scrollbar-thumb { background-color: rgba(0, 0, 0, 0.2); } blockquote, code, pre { background-color: rgba(212, 222, 231, 0.24705882352941178); }</style>
+  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .code-fence-highlighter-copy-button { float: right; display: flex; } .code-fence-highlighter-copy-button-icon { max-width: 1em; } .code-fence:hover .code-fence-highlighter-copy-button-icon { /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon.png"); } .code-fence:hover .code-fence-highlighter-copy-button:hover .code-fence-highlighter-copy-button-icon { /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon-hovered.png"); cursor: pointer; } </style>
+  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .run-icon &gt; img { max-width: 1em; vertical-align: text-top; margin-right: 0.3em; } .code-block { position: absolute; left: 1em; } .hidden { display: none; }</style>
+ </head> 
+ <body>
+  <div md-src-pos="0..4499">
+   <h1 md-src-pos="0..40">Section 01: Introduction to JavaScript</h1>
+   <h2 md-src-pos="42..62">Learning Outcomes</h2>
+   <p md-src-pos="63..162"><span md-src-pos="63..162">This section includes a high-level introduction to JavaScript and the Document Object Model or DOM.</span></p>
+   <ul md-src-pos="163..287">
+    <li md-src-pos="163..204">High-level intro to JavaScript features</li>
+    <li md-src-pos="205..248">Where JavaScript is added in an HTML file</li>
+    <li md-src-pos="249..287">Intro to Document Object Model (DOM)</li>
+   </ul>
+   <h2 md-src-pos="289..301">Resources</h2>
+   <ol md-src-pos="303..594">
+    <li md-src-pos="303..366">JavaScript Home - <a href="https://www.w3schools.com/js/default.asp" md-src-pos="324..366">https://www.w3schools.com/js/default.asp</a></li>
+    <li md-src-pos="367..439">JavaScript Introduction - <a href="https://www.w3schools.com/js/js_intro.asp" md-src-pos="396..439">https://www.w3schools.com/js/js_intro.asp</a></li>
+    <li md-src-pos="440..515">Where To Add JavaScript? - <a href="https://www.w3schools.com/js/js_whereto.asp" md-src-pos="470..515">https://www.w3schools.com/js/js_whereto.asp</a></li>
+    <li md-src-pos="516..594">Document Object Model (DOM) - <a href="https://www.w3schools.com/js/js_htmldom.asp" md-src-pos="549..594">https://www.w3schools.com/js/js_htmldom.asp</a></li>
+   </ol>
+   <h2 md-src-pos="596..629">1. Home: Why Study JavaScript?</h2>
+   <ul md-src-pos="631..777">
+    <li md-src-pos="631..693">JavaScript is the world's most popular programming language.</li>
+    <li md-src-pos="694..746">JavaScript is the programming language of the Web.</li>
+    <li md-src-pos="747..777">JavaScript is easy to learn.</li>
+   </ul>
+   <p md-src-pos="779..846"><span md-src-pos="779..845">JavaScript is one of the 3 languages all web developers must learn</span>:</p>
+   <ol md-src-pos="848..1121">
+    <li md-src-pos="848..937"><a href="https://www.w3schools.com/html/default.asp" md-src-pos="851..901">HTML</a> to define the content of web pages.</li>
+    <li md-src-pos="938..1025"><a href="https://www.w3schools.com/css/default.asp" md-src-pos="941..989">CSS</a> to specify the layout of web pages.</li>
+    <li md-src-pos="1026..1121"><a href="https://www.w3schools.com/js/default.asp" md-src-pos="1029..1083">JavaScript</a> to program the behavior of web pages.</li>
+   </ol>
+   <h2 md-src-pos="1127..1171">2. Introduction - What can JavaScript do?</h2>
+   <h3 md-src-pos="1173..1211">JavaScript Can Change HTML Content</h3>
+   <p md-src-pos="1213..1271"><span md-src-pos="1213..1251">One of many JavaScript HTML methods is</span> <code md-src-pos="1252..1270">getElementById()</code><span md-src-pos="1270..1271">.</span></p>
+   <p md-src-pos="1273..1399"><span md-src-pos="1273..1290">The example below</span> "<span md-src-pos="1292..1297">finds</span>" <span md-src-pos="1299..1314">an HTML element</span> (<span md-src-pos="1316..1324">with id=</span>"<span md-src-pos="1325..1329">demo</span>")<span md-src-pos="1331..1332">,</span> <span md-src-pos="1333..1364">and changes the element content</span> (<span md-src-pos="1366..1375">innerHTML</span>) <span md-src-pos="1377..1379">to</span> "<span md-src-pos="1381..1397">Hello JavaScript</span>":</p>
+   <pre class="code-fence" md-src-pos="1412..1483"><code md-src-pos="1412..1483">
+     <div class="code-fence-highlighter-copy-button" data-fence-content="ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImRlbW8iKS5pbm5lckhUTUwgPSAiSGVsbG8gSmF2YVNjcmlwdCI7Cg==">
+    
+      <img class="code-fence-highlighter-copy-button-icon">
+
+     </div><span md-src-pos="1412..1416"></span><span md-src-pos="1416..1499">document.getElementById("demo").innerHTML = "Hello JavaScript";</span>
+<span md-src-pos="1500..1500"></span><span md-src-pos="1480..1483"></span></code></pre>
+   <h3 md-src-pos="1485..1532">JavaScript Can Change HTML Attribute Values</h3>
+   <p md-src-pos="1534..1629"><span md-src-pos="1534..1585">In this example JavaScript changes the value of the</span> <code md-src-pos="1586..1591">src</code> (<span md-src-pos="1593..1599">source</span>) <span md-src-pos="1601..1616">attribute of an</span> <code md-src-pos="1617..1624">&lt;img&gt;</code> <span md-src-pos="1625..1628">tag</span>:</p>
+   <pre class="code-fence" md-src-pos="1631..2092"><code md-src-pos="1631..2092">
+     <div class="code-fence-highlighter-copy-button" data-fence-content="PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxib2R5PgoKICAgIDwhLS0gCiAgICAgICAgIEluIHRoaXMgY2FzZSBKYXZhU2NyaXB0IGNoYW5nZXMgdGhlIHZhbHVlIG9mIHRoZSBzcmMgKHNvdXJjZSkgCiAgICAgICAgIGF0dHJpYnV0ZSBvZiBhbiBpbWFnZS4KICAgIC0tPgoKICAgIDxidXR0b24gb25jbGljaz0iZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ215SW1hZ2UnKS5zcmM9J3BpY19idWxib24uZ2lmJyI+VHVybiBvbiB0aGUgbGlnaHQ8L2J1dHRvbj4KCiAgICA8aW1nIGlkPSJteUltYWdlIiBzcmM9InBpY19idWxib2ZmLmdpZiIgc3R5bGU9IndpZHRoOjEwMHB4Ij4KCiAgICA8YnV0dG9uIG9uY2xpY2s9ImRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdteUltYWdlJykuc3JjPSdwaWNfYnVsYm9mZi5naWYnIj5UdXJuIG9mZiB0aGUgbGlnaHQ8L2J1dHRvbj4KCiAgPC9ib2R5Pgo8L2h0bWw+Cg==">
+    
+      <img class="code-fence-highlighter-copy-button-icon">
+
+     </div><span md-src-pos="1631..1635"></span><span md-src-pos="1635..1656">&lt;!DOCTYPE html&gt;</span>
+<span md-src-pos="1657..1669">&lt;html&gt;</span>
+<span md-src-pos="1670..1684">  &lt;body&gt;</span>
+<span md-src-pos="1685..1685"></span>
+<span md-src-pos="1686..1698">    &lt;!-- </span>
+<span md-src-pos="1699..1770">         In this case JavaScript changes the value of the src (source) </span>
+<span md-src-pos="1771..1802">         attribute of an image.</span>
+<span md-src-pos="1803..1813">    --&gt;</span>
+<span md-src-pos="1814..1814"></span>
+<span md-src-pos="1815..1941">    &lt;button onclick="document.getElementById('myImage').src='pic_bulbon.gif'"&gt;Turn on the light&lt;/button&gt;</span>
+<span md-src-pos="1942..1942"></span>
+<span md-src-pos="1943..2043">    &lt;img id="myImage" src="pic_bulboff.gif" style="width:100px"&gt;</span>
+<span md-src-pos="2044..2044"></span>
+<span md-src-pos="2045..2173">    &lt;button onclick="document.getElementById('myImage').src='pic_bulboff.gif'"&gt;Turn off the light&lt;/button&gt;</span>
+<span md-src-pos="2174..2174"></span>
+<span md-src-pos="2175..2190">  &lt;/body&gt;</span>
+<span md-src-pos="2191..2204">&lt;/html&gt;</span>
+<span md-src-pos="2205..2205"></span><span md-src-pos="2089..2092"></span></code></pre>
+   <p md-src-pos="2093..2178"><span md-src-pos="2093..2097">Link</span>: <a href="https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb" md-src-pos="2099..2170">https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb</a></p>
+   <h3 md-src-pos="2180..2223">JavaScript Can Change HTML Styles (CSS)</h3>
+   <p md-src-pos="2225..2307"><span md-src-pos="2225..2263">Changing the style of an HTML element,</span> <span md-src-pos="2264..2306">is a variant of changing an HTML attribute</span>:</p>
+   <pre class="code-fence" md-src-pos="2343..2407"><code md-src-pos="2343..2407">
+     <div class="code-fence-highlighter-copy-button" data-fence-content="ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImRlbW8iKS5zdHlsZS5mb250U2l6ZSA9ICIzNXB4IjsK">
+    
+      <img class="code-fence-highlighter-copy-button-icon">
+
+     </div><span md-src-pos="2343..2347"></span><span md-src-pos="2347..2423">document.getElementById("demo").style.fontSize = "35px";</span>
+<span md-src-pos="2424..2424"></span><span md-src-pos="2404..2407"></span></code></pre>
+   <h3 md-src-pos="2409..2453">JavaScript Can Show / Hide HTML Elements</h3>
+   <p md-src-pos="2455..2528"><span md-src-pos="2455..2511">Showing/Hiding HTML elements can be done by changing the</span> <code md-src-pos="2512..2521">display</code> <span md-src-pos="2522..2527">style</span>:</p>
+   <pre class="code-fence" md-src-pos="2530..2666"><code md-src-pos="2530..2666">
+     <div class="code-fence-highlighter-copy-button" data-fence-content="ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImRlbW8iKS5zdHlsZS5kaXNwbGF5ID0gIm5vbmUiOyAvLyBoaWRlCmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJkZW1vIikuc3R5bGUuZGlzcGxheSA9ICJibG9jayI7IC8vIHNob3cK">
+    
+      <img class="code-fence-highlighter-copy-button-icon">
+
+     </div><span md-src-pos="2530..2534"></span><span md-src-pos="2534..2617">document.getElementById("demo").style.display = "none"; // hide</span>
+<span md-src-pos="2618..2702">document.getElementById("demo").style.display = "block"; // show</span>
+<span md-src-pos="2703..2703"></span><span md-src-pos="2663..2666"></span></code></pre>
+   <h2 md-src-pos="2668..2698">3. Where To Add JavaScript?</h2>
+   <h3 md-src-pos="2700..2722">The <code md-src-pos="2708..2718">&lt;script&gt;</code> Tag</h3>
+   <p md-src-pos="2724..2794"><span md-src-pos="2724..2732">In HTML,</span> <span md-src-pos="2733..2768">JavaScript code is inserted between</span> <code md-src-pos="2769..2788">&lt;script&gt;&lt;/script&gt;</code> <span md-src-pos="2789..2794">tags.</span></p>
+   <h3 md-src-pos="2796..2831">JavaScript Functions and Events</h3>
+   <p md-src-pos="2833..3022"><span md-src-pos="2833..2885">A JavaScript function is a block of JavaScript code,</span> <span md-src-pos="2886..2911">that can be executed when</span> "<span md-src-pos="2913..2919">called</span>" <span md-src-pos="2921..2925">for.</span> <span md-src-pos="2926..2929">For</span> <span md-src-pos="2931..2939">example,</span> <span md-src-pos="2940..2986">a function can be called when an event occurs,</span> <span md-src-pos="2987..3022">like when the user clicks a button.</span></p>
+   <h3 md-src-pos="3024..3062">JavaScript in <code md-src-pos="3042..3050">&lt;head&gt;</code> or <code md-src-pos="3054..3062">&lt;body&gt;</code></h3>
+   <p md-src-pos="3064..3216"><span md-src-pos="3064..3120">You can place any number of scripts in an HTML document.</span> <span md-src-pos="3121..3149">Scripts can be placed in the</span> <code md-src-pos="3150..3158">&lt;body&gt;</code><span md-src-pos="3158..3159">,</span> <span md-src-pos="3161..3170">or in the</span> <code md-src-pos="3171..3179">&lt;head&gt;</code> <span md-src-pos="3180..3204">section of an HTML page,</span> <span md-src-pos="3205..3216">or in both.</span></p>
+   <h3 md-src-pos="3218..3241">External JavaScript</h3>
+   <p md-src-pos="3243..3370"><span md-src-pos="3243..3288">Scripts can also be placed in external files.</span> <span md-src-pos="3289..3338">External scripts are practical when the same code</span> <span md-src-pos="3340..3370">is used in multiple web pages.</span></p>
+   <p md-src-pos="3372..3532"><span md-src-pos="3372..3412">A JavaScript file has the file extension</span> <code md-src-pos="3413..3418">.js</code><span md-src-pos="3418..3419">.</span> <span md-src-pos="3420..3446">To use an external script,</span> <span md-src-pos="3447..3466">put the name of the</span> <span md-src-pos="3468..3486">script file in the</span> <code md-src-pos="3487..3492">src</code> (<span md-src-pos="3494..3500">source</span>) <span md-src-pos="3502..3516">attribute of a</span> <code md-src-pos="3517..3527">&lt;script&gt;</code> <span md-src-pos="3528..3531">tag</span>:</p>
+   <pre class="code-fence" md-src-pos="3534..3577"><code md-src-pos="3534..3577">
+     <div class="code-fence-highlighter-copy-button" data-fence-content="PHNjcmlwdMKgc3JjPSJteVNjcmlwdC5qcyI+PC9zY3JpcHQ+Cg==">
+    
+      <img class="code-fence-highlighter-copy-button-icon">
+
+     </div><span md-src-pos="3534..3538"></span><span md-src-pos="3538..3595">&lt;script&nbsp;src="myScript.js"&gt;&lt;/script&gt;</span>
+<span md-src-pos="3596..3596"></span><span md-src-pos="3574..3577"></span></code></pre>
+   <h2 md-src-pos="3579..3612">4. Document Object Model (DOM)</h2>
+   <p md-src-pos="3615..3861"><span md-src-pos="3615..3641">When a web page is loaded,</span> <span md-src-pos="3642..3663">the browser creates a</span> <code md-src-pos="3664..3687">Document Object Model</code> <span md-src-pos="3688..3700">of the page.</span> <span md-src-pos="3701..3704">The</span> <code md-src-pos="3705..3715">HTML DOM</code> <span md-src-pos="3717..3750">model is constructed as a tree of</span> <code md-src-pos="3751..3760">Objects</code><span md-src-pos="3760..3761">.</span> <span md-src-pos="3762..3797">Elements are the tree of html tags.</span> <span md-src-pos="3798..3815">Elements can have</span> <span md-src-pos="3817..3835">attributes such as</span> <code md-src-pos="3836..3842">href</code><span md-src-pos="3842..3843">,</span> <code md-src-pos="3844..3848">id</code><span md-src-pos="3848..3849">,</span> <span md-src-pos="3850..3852">or</span> <code md-src-pos="3853..3860">class</code><span md-src-pos="3860..3861">.</span></p>
+   <p md-src-pos="3863..3965"><span md-src-pos="3863..3965">Dynamic web applications use JavaScript to access and manipulate objects in the DOM in different ways.</span></p>
+   <p md-src-pos="3969..3996"><img src="http://localhost:63342/4f800f8a-bbed-4dd8-b03c-00449c9f6698/266335661/fileSchemeResource/7c69c004731b27e3586e0e2726966b5e-dom.png?_ijt=1d5j0nkkem2me2jbs303i7f13h" alt="HTML DOM" __idea-generated="true" md-src-pos="3969..3996" data-original-src="file:/Users/tcm/OneDrive%20-%20College%20of%20Charleston/CSCI-215/01%20-%20Introduction/images/dom.png"></p>
+   <ul md-src-pos="3998..4401">
+    <li md-src-pos="3998..4055">JavaScript can change all the HTML elements in the page</li>
+    <li md-src-pos="4056..4115">JavaScript can change all the HTML attributes in the page</li>
+    <li md-src-pos="4116..4170">JavaScript can change all the CSS styles in the page</li>
+    <li md-src-pos="4171..4232">JavaScript can remove existing HTML elements and attributes</li>
+    <li md-src-pos="4233..4286">JavaScript can add new HTML elements and attributes</li>
+    <li md-src-pos="4287..4349">JavaScript can react to all existing HTML events in the page</li>
+    <li md-src-pos="4350..4401">JavaScript can create new HTML events in the page</li>
+   </ul>
+   <p md-src-pos="4403..4499"><span md-src-pos="4403..4412">More Info</span>: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" md-src-pos="4414..4499">https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction</a></p>
+  </div>
+ </body>
+</html>
