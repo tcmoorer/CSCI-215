@@ -1,5 +1,5 @@
 # Section 2 - Comments, Variables, Types, and I/O
-## Learning Outcomes 
+## Learning Outcomes
 This section includes an overview of the fundamental building blocks in JavaScript applications.
 - **Comments** - single and multiline comments
 - **Variables** - hold values in applications
@@ -10,28 +10,28 @@ This section includes an overview of the fundamental building blocks in JavaScri
 
 1. Comments - <https://www.w3schools.com/js/js_comments.asp>
 2. Variables - <https://www.w3schools.com/js/js_variables.asp>
-3. Data Types - <https://www.w3schools.com/js/js_datatypes.asp> 
-4. Input - <https://www.w3schools.com/jsref/met_win_prompt.asp> 
+3. Data Types - <https://www.w3schools.com/js/js_datatypes.asp>
+4. Input - <https://www.w3schools.com/jsref/met_win_prompt.asp>
 5. Output - <https://www.w3schools.com/js/js_output.asp>
 
 ## 1. Comments
 
 ### Single Line Comments
 
-Single line comments start with `//`. Any text between `//` and the end of the line will 
+Single line comments start with `//`. Any text between `//` and the end of the line will
 be ignored by JavaScript (will not be executed).
-  
-```
+
+```javascript
 let x = 5;      // Declare x, give it the value of 5
 let y = x + 2;  // Declare y, give it the value of x + 2
 ```
 
 ### Multi-line Comments
 
-Multi-line comments start with `/*` and end with `*/`. Any text between `/*` and `*/` will 
+Multi-line comments start with `/*` and end with `*/`. Any text between `/*` and `*/` will
 be ignored by JavaScript.
 
- ```
+ ```javascript
 /*
    The code below will change
    the heading with id = "myH"
@@ -46,10 +46,10 @@ document.getElementById("myP").innerHTML = "My first paragraph.";
 
 ### What are Variables?
 
-Variables are containers for storing data values. In this example, 
+Variables are containers for storing data values. In this example,
 x, y, and z, are variables, declared with the let keyword:
-              
-```
+
+```javascript
 var x = 5;
 var y = 6;
 var z = x + y;
@@ -66,7 +66,7 @@ var z = x + y;
 3. **Assignment operator** (`=`)
 4. **Initial value** (optional but recommended)
 
-### Keywords 
+### Keywords
 
 - `var` - used in older browsers. Valid, but should avoid use.
 - `let` - used in modern browsers to declare variables whose value can change. Use
@@ -85,36 +85,36 @@ The general rules for constructing names for variables (unique identifiers) are:
 ### The Assignment Operator
 
 In JavaScript, the equal sign (`=`) is an "assignment" operator, not an "equal to" operator.
-                       
+
 ![Anatomy of a Variable](images/variable.png "Anatomy of a Variable")
 
 ## 3. Data Types
 
-A JavaScript variable can hold numbers like 100 and text values like "John Doe". 
+A JavaScript variable can hold numbers like 100 and text values like "John Doe".
 In programming, text values are called text strings.
 
-JavaScript handles two basic data types: 
+JavaScript handles two basic data types:
 
-- **Strings** are written inside double or single quotes. 
+- **Strings** are written inside double or single quotes.
 - **Numbers** are written without quotes.
 
 If you put a number in quotes, it will be treated as a text string.
 
-***JavaScript is "Weakly Typed" or "Untyped" Language - What does that mean?*** 
+***JavaScript is "Weakly Typed" or "Untyped" Language - What does that mean?***
 
-The data type is not explicitly included when declaring variables. The type is 
+The data type is not explicitly included when declaring variables. The type is
 inferred based on the value the variable holds:
 
-- If the value is declared inside quotes it is treated as a string. 
-- If the value is a number it is treated as a number. 
+- If the value is declared inside quotes it is treated as a string.
+- If the value is a number it is treated as a number.
 
-JavaScript will "try" figure out what type of data you have and make the necessary 
+JavaScript will "try" figure out what type of data you have and make the necessary
 adjustments so that you don't have to redefine your different types of data.
 
-**CAUTION**: This means that the same variable can be used to hold different data 
+**CAUTION**: This means that the same variable can be used to hold different data
 types:
 
-```
+```javascript
 let x;           // Now x is undefined
 x = 5;           // Now x is a Number
 x = "John";      // Now x is a String
@@ -124,10 +124,10 @@ x = "John";      // Now x is a String
 
 The `prompt()` method displays a dialog box that prompts the user for input.
 The `prompt()` method returns the input value if the user clicks "OK", otherwise it returns null.
-                                     
+
 ### Syntax
 
-```
+```javascript
 prompt(text, defaultText)
 ```
 
@@ -139,14 +139,14 @@ prompt(text, defaultText)
 | *defaultText* | `Optional`. The default input text.                |
 
 #### Return Value
-                
+
 | Syntax | Description                                                                       |
 | ----------- |-----------------------------------------------------------------------------------|
 | A string | If the user clicks "OK", the input value is returned. Otherwise `null` is returned. |
-                   
+
 Note values from `prompt()` are Strings.
 
-```
+```javascript
 let person = prompt("Please enter your name", "Harry Potter");
 
 if (person != null) {
@@ -155,7 +155,7 @@ if (person != null) {
 }
 ```
 
-## 5. Output 
+## 5. Output
 
 JavaScript can "display" data in different ways:
 
@@ -167,22 +167,22 @@ JavaScript can "display" data in different ways:
 ### document.elementById(id).innerHTML
 
 To access an HTML element, JavaScript can use the `document.getElementById(id)` method.
-The `id` attribute defines the HTML element. The `innerHTML` property defines the HTML 
+The `id` attribute defines the HTML element. The `innerHTML` property defines the HTML
 content:
-                    
-```
+
+```javascript
 <!DOCTYPE html>
 <html>
   <body>
     <h1>My First Web Page</h1>
     <p>My First Paragraph</p>
-    
+
     <p id="demo"></p>
-    
+
     <script>
       document.getElementById("demo").innerHTML = 5 + 6;
     </script>
-    
+
   </body>
 </html>
 ```
@@ -191,7 +191,7 @@ content:
 
 For testing purposes, it is convenient to use `document.write()`:
 
-```
+```javascript
 <!DOCTYPE html>
 <html>
   <body>
@@ -211,7 +211,7 @@ For testing purposes, it is convenient to use `document.write()`:
 
 You can use an `alert` box to display data:
 
-```
+```javascript
 <!DOCTYPE html>
 <html>
   <body>
@@ -229,10 +229,10 @@ You can use an `alert` box to display data:
 
 ### console.log()
 
-For debugging purposes, you can call the `console.log()` method in the browser to 
+For debugging purposes, you can call the `console.log()` method in the browser to
 display data.
-               
-```
+
+```javascript
 <!DOCTYPE html>
 <html>
   <body>
@@ -248,8 +248,8 @@ display data.
 ### Strings and the + operator
 
 The `+` operator can also be used to concatenate strings.
-           
-```
+
+```javascript
 let text1 = "John";
 let text2 = "Doe";
 let text3 = text1 + " " + text2;
@@ -257,10 +257,6 @@ let text3 = text1 + " " + text2;
 
 Output:
 
-```
+```javascript
 John Doe
 ```
-
-
-
-

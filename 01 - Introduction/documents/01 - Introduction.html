@@ -1,128 +1,879 @@
-<!doctype html>
-<html>
- <head> 
-  <title>IntelliJ Markdown Preview</title>               
-  <style>/* Reworked by IntelliJ Team The MIT License (MIT) Copyright (c) JetBrains Adapted from https://github.com/sindresorhus/github-markdown-css The MIT License (MIT) Copyright (c) Sindre Sorhus &lt;sindresorhus@gmail.com&gt; (sindresorhus.com) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */ @font-face { font-family: octicons-anchor; src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff'); } body { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, freesans, sans-serif; font-size: 14px; line-height: 1.6; word-wrap: break-word; margin: 0 2em; } strong { font-weight: bold; } img { border: 0; } input { color: inherit; font: inherit; margin: 0; line-height: normal; } html input[disabled] { cursor: default; } input[type="checkbox"] { box-sizing: border-box; padding: 0; } body * { box-sizing: border-box; } input { font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; } a { text-decoration: none; } a:hover, a:active { text-decoration: underline; } hr { height: 1px; padding: 0; margin: 20px 0; border: 0 none; } hr:before { display: table; content: ""; } hr:after { display: table; clear: both; content: ""; } blockquote { margin: 0; } ul, ol { padding: 0; margin-top: 0; margin-bottom: 0; } ol ol, ul ol { list-style-type: lower-roman; } ul ul ol, ul ol ol, ol ul ol, ol ol ol { list-style-type: lower-alpha; } dd { margin-left: 0; } .octicon { font: normal normal normal 16px/1 octicons-anchor; display: inline-block; text-decoration: none; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } .octicon-link:before { content: '\f05c'; } .markdown-body &gt; *:first-child { margin-top: 0 !important; } .markdown-body &gt; *:last-child { margin-bottom: 0 !important; } .anchor { position: absolute; top: 0; left: 0; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; } .anchor:focus { outline: none; } h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; } h1 .octicon-link, h2 .octicon-link, h3 .octicon-link, h4 .octicon-link, h5 .octicon-link, h6 .octicon-link { display: none; color: #000; vertical-align: middle; } h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; } h1:hover .anchor .octicon-link, h2:hover .anchor .octicon-link, h3:hover .anchor .octicon-link, h4:hover .anchor .octicon-link, h5:hover .anchor .octicon-link, h6:hover .anchor .octicon-link { display: inline-block; } h1 { font-size: 2.2em; padding-top: 0.6em; } h1 .anchor { line-height: 1; } h2 { font-size: 1.8em; line-height: 1.2; padding-top: 0.6em; } h2 .anchor { line-height: 1.2; } h3 { font-size: 1.3em; line-height: 1; padding-top: 0.6em; } h3 .anchor { line-height: 1.2; } h4 { font-size: 1em; } h4 .anchor { line-height: 1.2; } h5 { font-size: 1em; } h5 .anchor { line-height: 1.1; } h6 { font-size: 1em; } h6 .anchor { line-height: 1.1; } p, blockquote, ul, ol, dl, table, pre { margin-top: 16px; margin-bottom: 16px; } ul, ol { padding-left: 2em; } ul ul, ul ol, ol ol, ol ul { margin-top: 0; margin-bottom: 0; } li &gt; p { margin-top: 0; margin-bottom: 0; } dl { padding: 0; } dl dt { padding: 0; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; } dl dd { padding: 0 16px; margin-bottom: 16px; } blockquote { padding: 10px 10px 10px 16px; border-left: 2px solid; border-radius: 0 3px 3px 0; } blockquote &gt; :first-child { margin-top: 0; } blockquote &gt; :last-child { margin-bottom: 0; } table { display: block; width: 100%; overflow: auto; word-break: normal; border-collapse: collapse; border-spacing: 0; font-size: 1em; } table th { font-weight: bold; } table th, table td { padding: 6px 13px; background: transparent; } table tr { border-top: 1px solid; } img { max-width: 100%; box-sizing: border-box; } code { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } pre &gt; code { padding: 0; margin: 0; font-size: 100%; word-break: normal; white-space: pre; background: transparent; border: 0; } .highlight { margin-bottom: 16px; } .highlight pre, pre { font: 0.85em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 16px; overflow: auto; line-height: 1.45; border-radius: 3px; } pre code { display: inline; max-width: initial; padding: 0; margin: 0; overflow: initial; line-height: inherit; word-wrap: normal; background-color: transparent; border: 0; } pre code:before, pre code:after { content: normal; } kbd { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } .task-list-item { list-style-type: none; } .task-list-item + .task-list-item { margin-top: 3px; } .task-list-item input { margin: 0 0.35em 0.25em -0.6em; vertical-align: middle; } :checked + .radio-label { z-index: 1; position: relative; } span.user-del { text-decoration: line-through; } ::-webkit-scrollbar { width: 6px; height: 6px; } ::-webkit-scrollbar-thumb { -webkit-border-radius: 10px; } ::-webkit-scrollbar-track:vertical { -webkit-box-shadow: -1px 0 0 #ededed; } ::-webkit-scrollbar-track { background-color: transparent; } ::-webkit-scrollbar { width: 6px; } </style>
-  <style>body { background-color: rgba(255, 255, 255, 255.0); font-size: 14px !important; } body, p, blockquote, ul, ol, dl, table, pre, code, tr { color: rgba(8, 8, 8, 255.0); } a { color: rgba(36, 112, 179, 255.0); } table td, table th { border: 1px solid rgba(209, 209, 209, 255.0); } hr { background-color: rgba(209, 209, 209, 255.0); } kbd, tr { border: 1px solid rgba(209, 209, 209, 255.0); } h6 { color: rgba(153, 153, 153, 255.0); } blockquote { border-left: 2px solid rgba(36, 112, 179, 0.4); } ::-webkit-scrollbar-thumb { background-color: rgba(0, 0, 0, 0.2); } blockquote, code, pre { background-color: rgba(212, 222, 231, 0.24705882352941178); }</style>
-  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .code-fence-highlighter-copy-button { float: right; display: flex; } .code-fence-highlighter-copy-button-icon { max-width: 1em; } .code-fence:hover .code-fence-highlighter-copy-button-icon { /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon.png"); } .code-fence:hover .code-fence-highlighter-copy-button:hover .code-fence-highlighter-copy-button-icon { /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon-hovered.png"); cursor: pointer; } </style>
-  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .run-icon &gt; img { max-width: 1em; vertical-align: text-top; margin-right: 0.3em; } .code-block { position: absolute; left: 1em; } .hidden { display: none; }</style>
- </head> 
- <body>
-  <div md-src-pos="0..4499">
-   <h1 md-src-pos="0..40">Section 01: Introduction to JavaScript</h1>
-   <h2 md-src-pos="42..62">Learning Outcomes</h2>
-   <p md-src-pos="63..162"><span md-src-pos="63..162">This section includes a high-level introduction to JavaScript and the Document Object Model or DOM.</span></p>
-   <ul md-src-pos="163..287">
-    <li md-src-pos="163..204">High-level intro to JavaScript features</li>
-    <li md-src-pos="205..248">Where JavaScript is added in an HTML file</li>
-    <li md-src-pos="249..287">Intro to Document Object Model (DOM)</li>
-   </ul>
-   <h2 md-src-pos="289..301">Resources</h2>
-   <ol md-src-pos="303..594">
-    <li md-src-pos="303..366">JavaScript Home - <a href="https://www.w3schools.com/js/default.asp" md-src-pos="324..366">https://www.w3schools.com/js/default.asp</a></li>
-    <li md-src-pos="367..439">JavaScript Introduction - <a href="https://www.w3schools.com/js/js_intro.asp" md-src-pos="396..439">https://www.w3schools.com/js/js_intro.asp</a></li>
-    <li md-src-pos="440..515">Where To Add JavaScript? - <a href="https://www.w3schools.com/js/js_whereto.asp" md-src-pos="470..515">https://www.w3schools.com/js/js_whereto.asp</a></li>
-    <li md-src-pos="516..594">Document Object Model (DOM) - <a href="https://www.w3schools.com/js/js_htmldom.asp" md-src-pos="549..594">https://www.w3schools.com/js/js_htmldom.asp</a></li>
-   </ol>
-   <h2 md-src-pos="596..629">1. Home: Why Study JavaScript?</h2>
-   <ul md-src-pos="631..777">
-    <li md-src-pos="631..693">JavaScript is the world's most popular programming language.</li>
-    <li md-src-pos="694..746">JavaScript is the programming language of the Web.</li>
-    <li md-src-pos="747..777">JavaScript is easy to learn.</li>
-   </ul>
-   <p md-src-pos="779..846"><span md-src-pos="779..845">JavaScript is one of the 3 languages all web developers must learn</span>:</p>
-   <ol md-src-pos="848..1121">
-    <li md-src-pos="848..937"><a href="https://www.w3schools.com/html/default.asp" md-src-pos="851..901">HTML</a> to define the content of web pages.</li>
-    <li md-src-pos="938..1025"><a href="https://www.w3schools.com/css/default.asp" md-src-pos="941..989">CSS</a> to specify the layout of web pages.</li>
-    <li md-src-pos="1026..1121"><a href="https://www.w3schools.com/js/default.asp" md-src-pos="1029..1083">JavaScript</a> to program the behavior of web pages.</li>
-   </ol>
-   <h2 md-src-pos="1127..1171">2. Introduction - What can JavaScript do?</h2>
-   <h3 md-src-pos="1173..1211">JavaScript Can Change HTML Content</h3>
-   <p md-src-pos="1213..1271"><span md-src-pos="1213..1251">One of many JavaScript HTML methods is</span> <code md-src-pos="1252..1270">getElementById()</code><span md-src-pos="1270..1271">.</span></p>
-   <p md-src-pos="1273..1399"><span md-src-pos="1273..1290">The example below</span> "<span md-src-pos="1292..1297">finds</span>" <span md-src-pos="1299..1314">an HTML element</span> (<span md-src-pos="1316..1324">with id=</span>"<span md-src-pos="1325..1329">demo</span>")<span md-src-pos="1331..1332">,</span> <span md-src-pos="1333..1364">and changes the element content</span> (<span md-src-pos="1366..1375">innerHTML</span>) <span md-src-pos="1377..1379">to</span> "<span md-src-pos="1381..1397">Hello JavaScript</span>":</p>
-   <pre class="code-fence" md-src-pos="1412..1483"><code md-src-pos="1412..1483">
-     <div class="code-fence-highlighter-copy-button" data-fence-content="ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImRlbW8iKS5pbm5lckhUTUwgPSAiSGVsbG8gSmF2YVNjcmlwdCI7Cg==">
-    
-      <img class="code-fence-highlighter-copy-button-icon">
+      <!DOCTYPE html>
+      <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>README</title>
+            <style>.markdown-preview:not([data-use-github-style]) { padding: 2em; font-size: 1.2em; color: rgb(171, 178, 191); background-color: rgb(40, 44, 52); overflow: auto; }
+.markdown-preview:not([data-use-github-style]) > :first-child { margin-top: 0px; }
+.markdown-preview:not([data-use-github-style]) h1, .markdown-preview:not([data-use-github-style]) h2, .markdown-preview:not([data-use-github-style]) h3, .markdown-preview:not([data-use-github-style]) h4, .markdown-preview:not([data-use-github-style]) h5, .markdown-preview:not([data-use-github-style]) h6 { line-height: 1.2; margin-top: 1.5em; margin-bottom: 0.5em; color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) h1 { font-size: 2.4em; font-weight: 300; }
+.markdown-preview:not([data-use-github-style]) h2 { font-size: 1.8em; font-weight: 400; }
+.markdown-preview:not([data-use-github-style]) h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview:not([data-use-github-style]) h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) strong { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) del { color: rgb(124, 135, 156); }
+.markdown-preview:not([data-use-github-style]) a, .markdown-preview:not([data-use-github-style]) a code { color: rgb(82, 139, 255); }
+.markdown-preview:not([data-use-github-style]) img { max-width: 100%; }
+.markdown-preview:not([data-use-github-style]) > p { margin-top: 0px; margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) > ul, .markdown-preview:not([data-use-github-style]) > ol { margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) blockquote { margin: 1.5em 0px; font-size: inherit; color: rgb(124, 135, 156); border-color: rgb(75, 83, 98); border-width: 4px; }
+.markdown-preview:not([data-use-github-style]) hr { margin: 3em 0px; border-top: 2px dashed rgb(75, 83, 98); background: none; }
+.markdown-preview:not([data-use-github-style]) table { margin: 1.5em 0px; }
+.markdown-preview:not([data-use-github-style]) th { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) th, .markdown-preview:not([data-use-github-style]) td { padding: 0.66em 1em; border: 1px solid rgb(75, 83, 98); }
+.markdown-preview:not([data-use-github-style]) code { color: rgb(255, 255, 255); background-color: rgb(58, 63, 75); }
+.markdown-preview:not([data-use-github-style]) pre.editor-colors { margin: 1.5em 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(49, 54, 63); }
+.markdown-preview:not([data-use-github-style]) kbd { color: rgb(255, 255, 255); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(75, 83, 98) rgb(75, 83, 98) rgb(62, 68, 81); border-image: initial; background-color: rgb(58, 63, 75); }
+.markdown-preview[data-use-github-style] { font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif; line-height: 1.6; overflow-wrap: break-word; padding: 30px; font-size: 16px; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); overflow: scroll; }
+.markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
+.markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
+.markdown-preview[data-use-github-style] a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview[data-use-github-style] .absent { color: rgb(204, 0, 0); }
+.markdown-preview[data-use-github-style] .anchor { position: absolute; top: 0px; left: 0px; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; }
+.markdown-preview[data-use-github-style] .anchor:focus { outline: none; }
+.markdown-preview[data-use-github-style] h1, .markdown-preview[data-use-github-style] h2, .markdown-preview[data-use-github-style] h3, .markdown-preview[data-use-github-style] h4, .markdown-preview[data-use-github-style] h5, .markdown-preview[data-use-github-style] h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; }
+.markdown-preview[data-use-github-style] h1 .octicon-link, .markdown-preview[data-use-github-style] h2 .octicon-link, .markdown-preview[data-use-github-style] h3 .octicon-link, .markdown-preview[data-use-github-style] h4 .octicon-link, .markdown-preview[data-use-github-style] h5 .octicon-link, .markdown-preview[data-use-github-style] h6 .octicon-link { display: none; color: rgb(0, 0, 0); vertical-align: middle; }
+.markdown-preview[data-use-github-style] h1:hover .anchor, .markdown-preview[data-use-github-style] h2:hover .anchor, .markdown-preview[data-use-github-style] h3:hover .anchor, .markdown-preview[data-use-github-style] h4:hover .anchor, .markdown-preview[data-use-github-style] h5:hover .anchor, .markdown-preview[data-use-github-style] h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; }
+.markdown-preview[data-use-github-style] h1:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h2:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h3:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h4:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h5:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h6:hover .anchor .octicon-link { display: inline-block; }
+.markdown-preview[data-use-github-style] h1 tt, .markdown-preview[data-use-github-style] h2 tt, .markdown-preview[data-use-github-style] h3 tt, .markdown-preview[data-use-github-style] h4 tt, .markdown-preview[data-use-github-style] h5 tt, .markdown-preview[data-use-github-style] h6 tt, .markdown-preview[data-use-github-style] h1 code, .markdown-preview[data-use-github-style] h2 code, .markdown-preview[data-use-github-style] h3 code, .markdown-preview[data-use-github-style] h4 code, .markdown-preview[data-use-github-style] h5 code, .markdown-preview[data-use-github-style] h6 code { font-size: inherit; }
+.markdown-preview[data-use-github-style] h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom: 1px solid rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h1 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h2 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h3 { font-size: 1.5em; line-height: 1.43; }
+.markdown-preview[data-use-github-style] h3 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h4 { font-size: 1.25em; }
+.markdown-preview[data-use-github-style] h4 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h5 { font-size: 1em; }
+.markdown-preview[data-use-github-style] h5 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] h6 { font-size: 1em; color: rgb(119, 119, 119); }
+.markdown-preview[data-use-github-style] h6 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] p, .markdown-preview[data-use-github-style] blockquote, .markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol, .markdown-preview[data-use-github-style] dl, .markdown-preview[data-use-github-style] table, .markdown-preview[data-use-github-style] pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] hr { height: 4px; padding: 0px; margin: 16px 0px; background-color: rgb(231, 231, 231); border: 0px none; }
+.markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol { padding-left: 2em; }
+.markdown-preview[data-use-github-style] ul.no-list, .markdown-preview[data-use-github-style] ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview[data-use-github-style] ul ul, .markdown-preview[data-use-github-style] ul ol, .markdown-preview[data-use-github-style] ol ol, .markdown-preview[data-use-github-style] ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] li > p { margin-top: 16px; }
+.markdown-preview[data-use-github-style] dl { padding: 0px; }
+.markdown-preview[data-use-github-style] dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview[data-use-github-style] dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] blockquote { padding: 0px 15px; color: rgb(119, 119, 119); border-left: 4px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] blockquote > :first-child { margin-top: 0px; }
+.markdown-preview[data-use-github-style] blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] table { display: block; width: 100%; overflow: auto; word-break: keep-all; }
+.markdown-preview[data-use-github-style] table th { font-weight: bold; }
+.markdown-preview[data-use-github-style] table th, .markdown-preview[data-use-github-style] table td { padding: 6px 13px; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] table tr { background-color: rgb(255, 255, 255); border-top: 1px solid rgb(204, 204, 204); }
+.markdown-preview[data-use-github-style] table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+.markdown-preview[data-use-github-style] img { max-width: 100%; box-sizing: border-box; }
+.markdown-preview[data-use-github-style] .emoji { max-width: none; }
+.markdown-preview[data-use-github-style] span.frame { display: block; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.frame > span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0px 0px; overflow: hidden; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] span.frame span img { display: block; float: left; }
+.markdown-preview[data-use-github-style] span.frame span span { display: block; padding: 5px 0px 0px; clear: both; color: rgb(51, 51, 51); }
+.markdown-preview[data-use-github-style] span.align-center { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-center > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-center span img { margin: 0px auto; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-right { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-right > span { display: block; margin: 13px 0px 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] span.align-right span img { margin: 0px; text-align: right; }
+.markdown-preview[data-use-github-style] span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-left span { margin: 13px 0px 0px; }
+.markdown-preview[data-use-github-style] span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-right > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] code, .markdown-preview[data-use-github-style] tt { padding: 0.2em 0px; margin: 0px; font-size: 85%; background-color: rgba(0, 0, 0, 0.04); border-radius: 3px; }
+.markdown-preview[data-use-github-style] code::before, .markdown-preview[data-use-github-style] tt::before, .markdown-preview[data-use-github-style] code::after, .markdown-preview[data-use-github-style] tt::after { letter-spacing: -0.2em; content: " "; }
+.markdown-preview[data-use-github-style] code br, .markdown-preview[data-use-github-style] tt br { display: none; }
+.markdown-preview[data-use-github-style] del code { text-decoration: inherit; }
+.markdown-preview[data-use-github-style] pre > code { padding: 0px; margin: 0px; font-size: 100%; word-break: normal; white-space: pre; background: transparent; border: 0px; }
+.markdown-preview[data-use-github-style] .highlight { margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] .highlight pre, .markdown-preview[data-use-github-style] pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; background-color: rgb(247, 247, 247); border-radius: 3px; }
+.markdown-preview[data-use-github-style] .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview[data-use-github-style] pre { overflow-wrap: normal; }
+.markdown-preview[data-use-github-style] pre code, .markdown-preview[data-use-github-style] pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; overflow-wrap: normal; background-color: transparent; border: 0px; }
+.markdown-preview[data-use-github-style] pre code::before, .markdown-preview[data-use-github-style] pre tt::before, .markdown-preview[data-use-github-style] pre code::after, .markdown-preview[data-use-github-style] pre tt::after { content: normal; }
+.markdown-preview[data-use-github-style] kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: rgb(85, 85, 85); vertical-align: middle; background-color: rgb(252, 252, 252); border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-image: initial; border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; }
+.markdown-preview[data-use-github-style] a { color: rgb(51, 122, 183); }
+.markdown-preview[data-use-github-style] code { color: inherit; }
+.markdown-preview[data-use-github-style] pre.editor-colors { padding: 0.8em 1em; margin-bottom: 1em; font-size: 0.85em; border-radius: 4px; overflow: auto; }
+.markdown-preview pre.editor-colors { user-select: auto; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors .horizontal-scrollbar { visibility: hidden; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors:hover .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors:hover .horizontal-scrollbar { visibility: visible; }
+.markdown-preview .task-list-item input[type="checkbox"] { position: absolute; margin: 0.25em 0px 0px -1.4em; }
+.markdown-preview .task-list-item { list-style-type: none; }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+.line-number.bracket-matcher.bracket-matcher {
+  color: #abb2bf;
+  background-color: #3a3f4b;
+}
 
-     </div><span md-src-pos="1412..1416"></span><span md-src-pos="1416..1499">document.getElementById("demo").innerHTML = "Hello JavaScript";</span>
-<span md-src-pos="1500..1500"></span><span md-src-pos="1480..1483"></span></code></pre>
-   <h3 md-src-pos="1485..1532">JavaScript Can Change HTML Attribute Values</h3>
-   <p md-src-pos="1534..1629"><span md-src-pos="1534..1585">In this example JavaScript changes the value of the</span> <code md-src-pos="1586..1591">src</code> (<span md-src-pos="1593..1599">source</span>) <span md-src-pos="1601..1616">attribute of an</span> <code md-src-pos="1617..1624">&lt;img&gt;</code> <span md-src-pos="1625..1628">tag</span>:</p>
-   <pre class="code-fence" md-src-pos="1631..2092"><code md-src-pos="1631..2092">
-     <div class="code-fence-highlighter-copy-button" data-fence-content="PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxib2R5PgoKICAgIDwhLS0gCiAgICAgICAgIEluIHRoaXMgY2FzZSBKYXZhU2NyaXB0IGNoYW5nZXMgdGhlIHZhbHVlIG9mIHRoZSBzcmMgKHNvdXJjZSkgCiAgICAgICAgIGF0dHJpYnV0ZSBvZiBhbiBpbWFnZS4KICAgIC0tPgoKICAgIDxidXR0b24gb25jbGljaz0iZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ215SW1hZ2UnKS5zcmM9J3BpY19idWxib24uZ2lmJyI+VHVybiBvbiB0aGUgbGlnaHQ8L2J1dHRvbj4KCiAgICA8aW1nIGlkPSJteUltYWdlIiBzcmM9InBpY19idWxib2ZmLmdpZiIgc3R5bGU9IndpZHRoOjEwMHB4Ij4KCiAgICA8YnV0dG9uIG9uY2xpY2s9ImRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdteUltYWdlJykuc3JjPSdwaWNfYnVsYm9mZi5naWYnIj5UdXJuIG9mZiB0aGUgbGlnaHQ8L2J1dHRvbj4KCiAgPC9ib2R5Pgo8L2h0bWw+Cg==">
-    
-      <img class="code-fence-highlighter-copy-button-icon">
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+.spell-check-corrections {
+  width: 25em !important;
+}
 
-     </div><span md-src-pos="1631..1635"></span><span md-src-pos="1635..1656">&lt;!DOCTYPE html&gt;</span>
-<span md-src-pos="1657..1669">&lt;html&gt;</span>
-<span md-src-pos="1670..1684">  &lt;body&gt;</span>
-<span md-src-pos="1685..1685"></span>
-<span md-src-pos="1686..1698">    &lt;!-- </span>
-<span md-src-pos="1699..1770">         In this case JavaScript changes the value of the src (source) </span>
-<span md-src-pos="1771..1802">         attribute of an image.</span>
-<span md-src-pos="1803..1813">    --&gt;</span>
-<span md-src-pos="1814..1814"></span>
-<span md-src-pos="1815..1941">    &lt;button onclick="document.getElementById('myImage').src='pic_bulbon.gif'"&gt;Turn on the light&lt;/button&gt;</span>
-<span md-src-pos="1942..1942"></span>
-<span md-src-pos="1943..2043">    &lt;img id="myImage" src="pic_bulboff.gif" style="width:100px"&gt;</span>
-<span md-src-pos="2044..2044"></span>
-<span md-src-pos="2045..2173">    &lt;button onclick="document.getElementById('myImage').src='pic_bulboff.gif'"&gt;Turn off the light&lt;/button&gt;</span>
-<span md-src-pos="2174..2174"></span>
-<span md-src-pos="2175..2190">  &lt;/body&gt;</span>
-<span md-src-pos="2191..2204">&lt;/html&gt;</span>
-<span md-src-pos="2205..2205"></span><span md-src-pos="2089..2092"></span></code></pre>
-   <p md-src-pos="2093..2178"><span md-src-pos="2093..2097">Link</span>: <a href="https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb" md-src-pos="2099..2170">https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb</a></p>
-   <h3 md-src-pos="2180..2223">JavaScript Can Change HTML Styles (CSS)</h3>
-   <p md-src-pos="2225..2307"><span md-src-pos="2225..2263">Changing the style of an HTML element,</span> <span md-src-pos="2264..2306">is a variant of changing an HTML attribute</span>:</p>
-   <pre class="code-fence" md-src-pos="2343..2407"><code md-src-pos="2343..2407">
-     <div class="code-fence-highlighter-copy-button" data-fence-content="ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImRlbW8iKS5zdHlsZS5mb250U2l6ZSA9ICIzNXB4IjsK">
-    
-      <img class="code-fence-highlighter-copy-button-icon">
+pre.editor-colors {
+  background-color: #282c34;
+  color: #abb2bf;
+}
+pre.editor-colors .line.cursor-line {
+  background-color: rgba(153, 187, 255, 0.04);
+}
+pre.editor-colors .invisible {
+  color: #abb2bf;
+}
+pre.editor-colors .cursor {
+  border-left: 2px solid #528bff;
+}
+pre.editor-colors .selection .region {
+  background-color: #3e4451;
+}
+pre.editor-colors .bracket-matcher .region {
+  border-bottom: 1px solid #528bff;
+  box-sizing: border-box;
+}
+pre.editor-colors .invisible-character {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .indent-guide {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .wrap-guide {
+  background-color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .find-result .region.region.region,
+pre.editor-colors .current-result .region.region.region {
+  border-radius: 2px;
+  background-color: rgba(82, 139, 255, 0.24);
+  transition: border-color 0.4s;
+}
+pre.editor-colors .find-result .region.region.region {
+  border: 2px solid transparent;
+}
+pre.editor-colors .current-result .region.region.region {
+  border: 2px solid #528bff;
+  transition-duration: .1s;
+}
+pre.editor-colors .gutter .line-number {
+  color: #636d83;
+  -webkit-font-smoothing: antialiased;
+}
+pre.editor-colors .gutter .line-number.cursor-line {
+  color: #abb2bf;
+  background-color: #3a3f4b;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection {
+  background-color: transparent;
+}
+pre.editor-colors .gutter .line-number .icon-right {
+  color: #abb2bf;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before {
+  bottom: -3px;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 25px;
+  border-bottom: 1px dotted rgba(224, 82, 82, 0.5);
+  pointer-events: none;
+}
+pre.editor-colors .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+pre.editor-colors .fold-marker:after {
+  color: #abb2bf;
+}
+.syntax--comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.syntax--comment .syntax--markup.syntax--link {
+  color: #5c6370;
+}
+.syntax--entity.syntax--name.syntax--type {
+  color: #e5c07b;
+}
+.syntax--entity.syntax--other.syntax--inherited-class {
+  color: #e5c07b;
+}
+.syntax--keyword {
+  color: #c678dd;
+}
+.syntax--keyword.syntax--control {
+  color: #c678dd;
+}
+.syntax--keyword.syntax--operator {
+  color: #c678dd;
+}
+.syntax--keyword.syntax--other.syntax--special-method {
+  color: #61afef;
+}
+.syntax--keyword.syntax--other.syntax--unit {
+  color: #d19a66;
+}
+.syntax--storage {
+  color: #c678dd;
+}
+.syntax--storage.syntax--type.syntax--annotation,
+.syntax--storage.syntax--type.syntax--primitive {
+  color: #c678dd;
+}
+.syntax--storage.syntax--modifier.syntax--package,
+.syntax--storage.syntax--modifier.syntax--import {
+  color: #abb2bf;
+}
+.syntax--constant {
+  color: #d19a66;
+}
+.syntax--constant.syntax--variable {
+  color: #d19a66;
+}
+.syntax--constant.syntax--character.syntax--escape {
+  color: #56b6c2;
+}
+.syntax--constant.syntax--numeric {
+  color: #d19a66;
+}
+.syntax--constant.syntax--other.syntax--color {
+  color: #56b6c2;
+}
+.syntax--constant.syntax--other.syntax--symbol {
+  color: #56b6c2;
+}
+.syntax--variable {
+  color: #e06c75;
+}
+.syntax--variable.syntax--interpolation {
+  color: #be5046;
+}
+.syntax--variable.syntax--parameter {
+  color: #abb2bf;
+}
+.syntax--string {
+  color: #98c379;
+}
+.syntax--string > .syntax--source,
+.syntax--string .syntax--embedded {
+  color: #abb2bf;
+}
+.syntax--string.syntax--regexp {
+  color: #56b6c2;
+}
+.syntax--string.syntax--regexp .syntax--source.syntax--ruby.syntax--embedded {
+  color: #e5c07b;
+}
+.syntax--string.syntax--other.syntax--link {
+  color: #e06c75;
+}
+.syntax--punctuation.syntax--definition.syntax--comment {
+  color: #5c6370;
+}
+.syntax--punctuation.syntax--definition.syntax--method-parameters,
+.syntax--punctuation.syntax--definition.syntax--function-parameters,
+.syntax--punctuation.syntax--definition.syntax--parameters,
+.syntax--punctuation.syntax--definition.syntax--separator,
+.syntax--punctuation.syntax--definition.syntax--seperator,
+.syntax--punctuation.syntax--definition.syntax--array {
+  color: #abb2bf;
+}
+.syntax--punctuation.syntax--definition.syntax--heading,
+.syntax--punctuation.syntax--definition.syntax--identity {
+  color: #61afef;
+}
+.syntax--punctuation.syntax--definition.syntax--bold {
+  color: #e5c07b;
+  font-weight: bold;
+}
+.syntax--punctuation.syntax--definition.syntax--italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.syntax--punctuation.syntax--section.syntax--embedded {
+  color: #be5046;
+}
+.syntax--punctuation.syntax--section.syntax--method,
+.syntax--punctuation.syntax--section.syntax--class,
+.syntax--punctuation.syntax--section.syntax--inner-class {
+  color: #abb2bf;
+}
+.syntax--support.syntax--class {
+  color: #e5c07b;
+}
+.syntax--support.syntax--type {
+  color: #56b6c2;
+}
+.syntax--support.syntax--function {
+  color: #56b6c2;
+}
+.syntax--support.syntax--function.syntax--any-method {
+  color: #61afef;
+}
+.syntax--entity.syntax--name.syntax--function {
+  color: #61afef;
+}
+.syntax--entity.syntax--name.syntax--class,
+.syntax--entity.syntax--name.syntax--type.syntax--class {
+  color: #e5c07b;
+}
+.syntax--entity.syntax--name.syntax--section {
+  color: #61afef;
+}
+.syntax--entity.syntax--name.syntax--tag {
+  color: #e06c75;
+}
+.syntax--entity.syntax--other.syntax--attribute-name {
+  color: #d19a66;
+}
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--id {
+  color: #61afef;
+}
+.syntax--meta.syntax--class {
+  color: #e5c07b;
+}
+.syntax--meta.syntax--class.syntax--body {
+  color: #abb2bf;
+}
+.syntax--meta.syntax--method-call,
+.syntax--meta.syntax--method {
+  color: #abb2bf;
+}
+.syntax--meta.syntax--definition.syntax--variable {
+  color: #e06c75;
+}
+.syntax--meta.syntax--link {
+  color: #d19a66;
+}
+.syntax--meta.syntax--require {
+  color: #61afef;
+}
+.syntax--meta.syntax--selector {
+  color: #c678dd;
+}
+.syntax--meta.syntax--separator {
+  color: #abb2bf;
+}
+.syntax--meta.syntax--tag {
+  color: #abb2bf;
+}
+.syntax--underline {
+  text-decoration: underline;
+}
+.syntax--none {
+  color: #abb2bf;
+}
+.syntax--invalid.syntax--deprecated {
+  color: #523d14 !important;
+  background-color: #e0c285 !important;
+}
+.syntax--invalid.syntax--illegal {
+  color: white !important;
+  background-color: #e05252 !important;
+}
+.syntax--markup.syntax--bold {
+  color: #d19a66;
+  font-weight: bold;
+}
+.syntax--markup.syntax--changed {
+  color: #c678dd;
+}
+.syntax--markup.syntax--deleted {
+  color: #e06c75;
+}
+.syntax--markup.syntax--italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.syntax--markup.syntax--heading {
+  color: #e06c75;
+}
+.syntax--markup.syntax--heading .syntax--punctuation.syntax--definition.syntax--heading {
+  color: #61afef;
+}
+.syntax--markup.syntax--link {
+  color: #56b6c2;
+}
+.syntax--markup.syntax--inserted {
+  color: #98c379;
+}
+.syntax--markup.syntax--quote {
+  color: #d19a66;
+}
+.syntax--markup.syntax--raw {
+  color: #98c379;
+}
+.syntax--source.syntax--cs .syntax--keyword.syntax--operator {
+  color: #c678dd;
+}
+.syntax--source.syntax--css .syntax--property-name,
+.syntax--source.syntax--css .syntax--property-value {
+  color: #828997;
+}
+.syntax--source.syntax--css .syntax--property-name.syntax--support,
+.syntax--source.syntax--css .syntax--property-value.syntax--support {
+  color: #abb2bf;
+}
+.syntax--source.syntax--elixir .syntax--source.syntax--embedded.syntax--source {
+  color: #abb2bf;
+}
+.syntax--source.syntax--elixir .syntax--constant.syntax--language,
+.syntax--source.syntax--elixir .syntax--constant.syntax--numeric,
+.syntax--source.syntax--elixir .syntax--constant.syntax--definition {
+  color: #61afef;
+}
+.syntax--source.syntax--elixir .syntax--variable.syntax--definition,
+.syntax--source.syntax--elixir .syntax--variable.syntax--anonymous {
+  color: #c678dd;
+}
+.syntax--source.syntax--elixir .syntax--parameter.syntax--variable.syntax--function {
+  color: #d19a66;
+  font-style: italic;
+}
+.syntax--source.syntax--elixir .syntax--quoted {
+  color: #98c379;
+}
+.syntax--source.syntax--elixir .syntax--keyword.syntax--special-method,
+.syntax--source.syntax--elixir .syntax--embedded.syntax--section,
+.syntax--source.syntax--elixir .syntax--embedded.syntax--source.syntax--empty {
+  color: #e06c75;
+}
+.syntax--source.syntax--elixir .syntax--readwrite.syntax--module .syntax--punctuation {
+  color: #e06c75;
+}
+.syntax--source.syntax--elixir .syntax--regexp.syntax--section,
+.syntax--source.syntax--elixir .syntax--regexp.syntax--string {
+  color: #be5046;
+}
+.syntax--source.syntax--elixir .syntax--separator,
+.syntax--source.syntax--elixir .syntax--keyword.syntax--operator {
+  color: #d19a66;
+}
+.syntax--source.syntax--elixir .syntax--variable.syntax--constant {
+  color: #e5c07b;
+}
+.syntax--source.syntax--elixir .syntax--array,
+.syntax--source.syntax--elixir .syntax--scope,
+.syntax--source.syntax--elixir .syntax--section {
+  color: #828997;
+}
+.syntax--source.syntax--gfm .syntax--markup {
+  -webkit-font-smoothing: auto;
+}
+.syntax--source.syntax--gfm .syntax--link .syntax--entity {
+  color: #61afef;
+}
+.syntax--source.syntax--ini .syntax--keyword.syntax--other.syntax--definition.syntax--ini {
+  color: #e06c75;
+}
+.syntax--source.syntax--java .syntax--storage.syntax--modifier.syntax--import {
+  color: #e5c07b;
+}
+.syntax--source.syntax--java .syntax--storage.syntax--type {
+  color: #e5c07b;
+}
+.syntax--source.syntax--java .syntax--keyword.syntax--operator.syntax--instanceof {
+  color: #c678dd;
+}
+.syntax--source.syntax--java-properties .syntax--meta.syntax--key-pair {
+  color: #e06c75;
+}
+.syntax--source.syntax--java-properties .syntax--meta.syntax--key-pair > .syntax--punctuation {
+  color: #abb2bf;
+}
+.syntax--source.syntax--ts .syntax--keyword.syntax--operator {
+  color: #56b6c2;
+}
+.syntax--source.syntax--flow .syntax--keyword.syntax--operator {
+  color: #56b6c2;
+}
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--string.syntax--quoted.syntax--json {
+  color: #e06c75;
+}
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--string.syntax--quoted.syntax--json > .syntax--punctuation.syntax--string {
+  color: #e06c75;
+}
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json,
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--array.syntax--json > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json,
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json > .syntax--punctuation,
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--array.syntax--json > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json > .syntax--punctuation {
+  color: #98c379;
+}
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--constant.syntax--language.syntax--json,
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--array.syntax--json > .syntax--constant.syntax--language.syntax--json {
+  color: #56b6c2;
+}
+.syntax--ng.syntax--interpolation {
+  color: #e06c75;
+}
+.syntax--ng.syntax--interpolation.syntax--begin,
+.syntax--ng.syntax--interpolation.syntax--end {
+  color: #61afef;
+}
+.syntax--ng.syntax--interpolation .syntax--function {
+  color: #e06c75;
+}
+.syntax--ng.syntax--interpolation .syntax--function.syntax--begin,
+.syntax--ng.syntax--interpolation .syntax--function.syntax--end {
+  color: #61afef;
+}
+.syntax--ng.syntax--interpolation .syntax--bool {
+  color: #d19a66;
+}
+.syntax--ng.syntax--interpolation .syntax--bracket {
+  color: #abb2bf;
+}
+.syntax--ng.syntax--pipe,
+.syntax--ng.syntax--operator {
+  color: #abb2bf;
+}
+.syntax--ng.syntax--tag {
+  color: #56b6c2;
+}
+.syntax--ng.syntax--attribute-with-value .syntax--attribute-name {
+  color: #e5c07b;
+}
+.syntax--ng.syntax--attribute-with-value .syntax--string {
+  color: #c678dd;
+}
+.syntax--ng.syntax--attribute-with-value .syntax--string.syntax--begin,
+.syntax--ng.syntax--attribute-with-value .syntax--string.syntax--end {
+  color: #abb2bf;
+}
+.syntax--source.syntax--php .syntax--class.syntax--bracket {
+  color: #abb2bf;
+}
+/*
+   This defines styling rules for syntax classes.
 
-     </div><span md-src-pos="2343..2347"></span><span md-src-pos="2347..2423">document.getElementById("demo").style.fontSize = "35px";</span>
-<span md-src-pos="2424..2424"></span><span md-src-pos="2404..2407"></span></code></pre>
-   <h3 md-src-pos="2409..2453">JavaScript Can Show / Hide HTML Elements</h3>
-   <p md-src-pos="2455..2528"><span md-src-pos="2455..2511">Showing/Hiding HTML elements can be done by changing the</span> <code md-src-pos="2512..2521">display</code> <span md-src-pos="2522..2527">style</span>:</p>
-   <pre class="code-fence" md-src-pos="2530..2666"><code md-src-pos="2530..2666">
-     <div class="code-fence-highlighter-copy-button" data-fence-content="ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImRlbW8iKS5zdHlsZS5kaXNwbGF5ID0gIm5vbmUiOyAvLyBoaWRlCmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJkZW1vIikuc3R5bGUuZGlzcGxheSA9ICJibG9jayI7IC8vIHNob3cK">
-    
-      <img class="code-fence-highlighter-copy-button-icon">
+   See the naming conventions for a list of syntax classes:
+   https://flight-manual.atom.io/hacking-atom/sections/syntax-naming-conventions
 
-     </div><span md-src-pos="2530..2534"></span><span md-src-pos="2534..2617">document.getElementById("demo").style.display = "none"; // hide</span>
-<span md-src-pos="2618..2702">document.getElementById("demo").style.display = "block"; // show</span>
-<span md-src-pos="2703..2703"></span><span md-src-pos="2663..2666"></span></code></pre>
-   <h2 md-src-pos="2668..2698">3. Where To Add JavaScript?</h2>
-   <h3 md-src-pos="2700..2722">The <code md-src-pos="2708..2718">&lt;script&gt;</code> Tag</h3>
-   <p md-src-pos="2724..2794"><span md-src-pos="2724..2732">In HTML,</span> <span md-src-pos="2733..2768">JavaScript code is inserted between</span> <code md-src-pos="2769..2788">&lt;script&gt;&lt;/script&gt;</code> <span md-src-pos="2789..2794">tags.</span></p>
-   <h3 md-src-pos="2796..2831">JavaScript Functions and Events</h3>
-   <p md-src-pos="2833..3022"><span md-src-pos="2833..2885">A JavaScript function is a block of JavaScript code,</span> <span md-src-pos="2886..2911">that can be executed when</span> "<span md-src-pos="2913..2919">called</span>" <span md-src-pos="2921..2925">for.</span> <span md-src-pos="2926..2929">For</span> <span md-src-pos="2931..2939">example,</span> <span md-src-pos="2940..2986">a function can be called when an event occurs,</span> <span md-src-pos="2987..3022">like when the user clicks a button.</span></p>
-   <h3 md-src-pos="3024..3062">JavaScript in <code md-src-pos="3042..3050">&lt;head&gt;</code> or <code md-src-pos="3054..3062">&lt;body&gt;</code></h3>
-   <p md-src-pos="3064..3216"><span md-src-pos="3064..3120">You can place any number of scripts in an HTML document.</span> <span md-src-pos="3121..3149">Scripts can be placed in the</span> <code md-src-pos="3150..3158">&lt;body&gt;</code><span md-src-pos="3158..3159">,</span> <span md-src-pos="3161..3170">or in the</span> <code md-src-pos="3171..3179">&lt;head&gt;</code> <span md-src-pos="3180..3204">section of an HTML page,</span> <span md-src-pos="3205..3216">or in both.</span></p>
-   <h3 md-src-pos="3218..3241">External JavaScript</h3>
-   <p md-src-pos="3243..3370"><span md-src-pos="3243..3288">Scripts can also be placed in external files.</span> <span md-src-pos="3289..3338">External scripts are practical when the same code</span> <span md-src-pos="3340..3370">is used in multiple web pages.</span></p>
-   <p md-src-pos="3372..3532"><span md-src-pos="3372..3412">A JavaScript file has the file extension</span> <code md-src-pos="3413..3418">.js</code><span md-src-pos="3418..3419">.</span> <span md-src-pos="3420..3446">To use an external script,</span> <span md-src-pos="3447..3466">put the name of the</span> <span md-src-pos="3468..3486">script file in the</span> <code md-src-pos="3487..3492">src</code> (<span md-src-pos="3494..3500">source</span>) <span md-src-pos="3502..3516">attribute of a</span> <code md-src-pos="3517..3527">&lt;script&gt;</code> <span md-src-pos="3528..3531">tag</span>:</p>
-   <pre class="code-fence" md-src-pos="3534..3577"><code md-src-pos="3534..3577">
-     <div class="code-fence-highlighter-copy-button" data-fence-content="PHNjcmlwdMKgc3JjPSJteVNjcmlwdC5qcyI+PC9zY3JpcHQ+Cg==">
-    
-      <img class="code-fence-highlighter-copy-button-icon">
-
-     </div><span md-src-pos="3534..3538"></span><span md-src-pos="3538..3595">&lt;script&nbsp;src="myScript.js"&gt;&lt;/script&gt;</span>
-<span md-src-pos="3596..3596"></span><span md-src-pos="3574..3577"></span></code></pre>
-   <h2 md-src-pos="3579..3612">4. Document Object Model (DOM)</h2>
-   <p md-src-pos="3615..3861"><span md-src-pos="3615..3641">When a web page is loaded,</span> <span md-src-pos="3642..3663">the browser creates a</span> <code md-src-pos="3664..3687">Document Object Model</code> <span md-src-pos="3688..3700">of the page.</span> <span md-src-pos="3701..3704">The</span> <code md-src-pos="3705..3715">HTML DOM</code> <span md-src-pos="3717..3750">model is constructed as a tree of</span> <code md-src-pos="3751..3760">Objects</code><span md-src-pos="3760..3761">.</span> <span md-src-pos="3762..3797">Elements are the tree of html tags.</span> <span md-src-pos="3798..3815">Elements can have</span> <span md-src-pos="3817..3835">attributes such as</span> <code md-src-pos="3836..3842">href</code><span md-src-pos="3842..3843">,</span> <code md-src-pos="3844..3848">id</code><span md-src-pos="3848..3849">,</span> <span md-src-pos="3850..3852">or</span> <code md-src-pos="3853..3860">class</code><span md-src-pos="3860..3861">.</span></p>
-   <p md-src-pos="3863..3965"><span md-src-pos="3863..3965">Dynamic web applications use JavaScript to access and manipulate objects in the DOM in different ways.</span></p>
-   <p md-src-pos="3969..3996"><img src="http://localhost:63342/4f800f8a-bbed-4dd8-b03c-00449c9f6698/266335661/fileSchemeResource/7c69c004731b27e3586e0e2726966b5e-dom.png?_ijt=1d5j0nkkem2me2jbs303i7f13h" alt="HTML DOM" __idea-generated="true" md-src-pos="3969..3996" data-original-src="file:/Users/tcm/OneDrive%20-%20College%20of%20Charleston/CSCI-215/01%20-%20Introduction/images/dom.png"></p>
-   <ul md-src-pos="3998..4401">
-    <li md-src-pos="3998..4055">JavaScript can change all the HTML elements in the page</li>
-    <li md-src-pos="4056..4115">JavaScript can change all the HTML attributes in the page</li>
-    <li md-src-pos="4116..4170">JavaScript can change all the CSS styles in the page</li>
-    <li md-src-pos="4171..4232">JavaScript can remove existing HTML elements and attributes</li>
-    <li md-src-pos="4233..4286">JavaScript can add new HTML elements and attributes</li>
-    <li md-src-pos="4287..4349">JavaScript can react to all existing HTML events in the page</li>
-    <li md-src-pos="4350..4401">JavaScript can create new HTML events in the page</li>
-   </ul>
-   <p md-src-pos="4403..4499"><span md-src-pos="4403..4412">More Info</span>: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" md-src-pos="4414..4499">https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction</a></p>
-  </div>
- </body>
-</html>
+   When styling rules conflict:
+   - The last rule overrides previous rules.
+   - The rule with most classes and pseudo-classes overrides the last rule.
+*/
+.syntax--keyword {
+  color: #c678dd;
+}
+.syntax--keyword.syntax--type {
+  color: #56b6c2;
+}
+.syntax--keyword.syntax--function {
+  color: #e06c75;
+}
+.syntax--keyword.syntax--variable {
+  color: #e06c75;
+}
+.syntax--entity {
+  color: #abb2bf;
+}
+.syntax--entity.syntax--parameter {
+  color: #abb2bf;
+}
+.syntax--entity.syntax--support {
+  color: #e06c75;
+}
+.syntax--entity.syntax--decorator:last-child {
+  color: #61afef;
+}
+.syntax--entity.syntax--label {
+  text-decoration: underline;
+}
+.syntax--entity.syntax--function {
+  color: #61afef;
+}
+.syntax--entity.syntax--operator {
+  color: #61afef;
+}
+.syntax--entity.syntax--operator.syntax--symbolic {
+  color: #abb2bf;
+}
+.syntax--entity.syntax--type {
+  color: #56b6c2;
+}
+.syntax--entity.syntax--tag {
+  color: #e06c75;
+}
+.syntax--entity.syntax--attribute {
+  color: #d19a66;
+}
+.syntax--punctuation {
+  color: #abb2bf;
+}
+.syntax--punctuation.syntax--accessor {
+  color: #abb2bf;
+}
+.syntax--punctuation.syntax--accessor.syntax--member,
+.syntax--punctuation.syntax--accessor.syntax--scope {
+  color: #c678dd;
+}
+.syntax--punctuation.syntax--embedded {
+  color: #c678dd;
+}
+.syntax--string {
+  color: #98c379;
+}
+.syntax--string.syntax--immutable {
+  color: #98c379;
+}
+.syntax--string.syntax--part {
+  color: #56b6c2;
+}
+.syntax--string.syntax--interpolation {
+  color: #c678dd;
+}
+.syntax--string.syntax--regexp {
+  color: #98c379;
+}
+.syntax--string.syntax--regexp.syntax--language {
+  color: #c678dd;
+}
+.syntax--string.syntax--regexp.syntax--variable {
+  color: #61afef;
+}
+.syntax--string.syntax--regexp.syntax--punctuation {
+  color: #c678dd;
+}
+.syntax--constant {
+  color: #d19a66;
+}
+.syntax--constant.syntax--character {
+  color: #98c379;
+}
+.syntax--constant.syntax--character.syntax--escape {
+  color: #98c379;
+}
+.syntax--constant.syntax--character.syntax--code {
+  color: #56b6c2;
+}
+.syntax--text {
+  color: #abb2bf;
+}
+.syntax--markup.syntax--heading {
+  color: #e06c75;
+}
+.syntax--markup.syntax--list.syntax--punctuation {
+  color: #e06c75;
+}
+.syntax--markup.syntax--quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.syntax--markup.syntax--bold {
+  color: #d19a66;
+  font-weight: bold;
+}
+.syntax--markup.syntax--italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.syntax--markup.syntax--underline {
+  color: #56b6c2;
+  text-decoration: underline;
+}
+.syntax--markup.syntax--strike {
+  color: #e06c75;
+}
+.syntax--markup.syntax--raw {
+  color: #98c379;
+}
+.syntax--markup.syntax--link {
+  color: #56b6c2;
+}
+.syntax--markup.syntax--alt {
+  color: #61afef;
+}
+.syntax--markup.syntax--inserted {
+  color: #98c379;
+}
+.syntax--markup.syntax--inserted .syntax--punctuation {
+  color: #98c379;
+}
+.syntax--markup.syntax--highlighted {
+  color: #98c379;
+}
+.syntax--markup.syntax--highlighted .syntax--punctuation {
+  color: #98c379;
+}
+.syntax--markup.syntax--deleted {
+  color: #e06c75;
+}
+.syntax--markup.syntax--deleted .syntax--punctuation {
+  color: #e06c75;
+}
+.syntax--markup.syntax--changed {
+  color: #c678dd;
+}
+.syntax--markup.syntax--changed .syntax--punctuation {
+  color: #c678dd;
+}
+.syntax--markup.syntax--commented {
+  color: #5c6370;
+}
+.syntax--markup.syntax--commented .syntax--punctuation {
+  color: #5c6370;
+}
+.syntax--comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.syntax--comment.syntax--caption {
+  color: #6a7181;
+  font-weight: bold;
+}
+.syntax--comment.syntax--term {
+  color: #707989;
+}
+.syntax--comment.syntax--punctuation {
+  color: #5c6370;
+  font-weight: normal;
+}
+.syntax--invalid:not(.syntax--punctuation).syntax--illegal {
+  color: white !important;
+  background-color: #e05252 !important;
+}
+.syntax--invalid:not(.syntax--punctuation).syntax--deprecated {
+  color: #523d14 !important;
+  background-color: #e0c285 !important;
+}
+.syntax--source.syntax--css .syntax--entity.syntax--function {
+  color: #828997;
+}
+.syntax--source.syntax--css .syntax--entity.syntax--function.syntax--support {
+  color: #56b6c2;
+}
+.syntax--source.syntax--css .syntax--entity.syntax--selector {
+  color: #d19a66;
+}
+.syntax--source.syntax--css .syntax--entity.syntax--selector.syntax--tag {
+  color: #e06c75;
+}
+.syntax--source.syntax--css .syntax--entity.syntax--selector.syntax--id {
+  color: #61afef;
+}
+.syntax--source.syntax--css .syntax--entity.syntax--property {
+  color: #828997;
+}
+.syntax--source.syntax--css .syntax--entity.syntax--property.syntax--support {
+  color: #abb2bf;
+}
+.syntax--source.syntax--css .syntax--entity.syntax--variable {
+  color: #e06c75;
+}
+.syntax--source.syntax--css .syntax--constant {
+  color: #828997;
+}
+.syntax--source.syntax--css .syntax--constant.syntax--support {
+  color: #abb2bf;
+}
+.syntax--source.syntax--css .syntax--constant.syntax--numeric {
+  color: #d19a66;
+}
+.syntax--source.syntax--css .syntax--constant.syntax--media {
+  color: #d19a66;
+}
+.syntax--source.syntax--css .syntax--constant.syntax--color {
+  color: #d19a66;
+}
+.syntax--source.syntax--css .syntax--constant.syntax--offset {
+  color: #abb2bf;
+}
+.syntax--source.syntax--css .syntax--constant.syntax--attribute-value {
+  color: #98c379;
+}
+.syntax--source.syntax--css .syntax--punctuation.syntax--selector {
+  color: #d19a66;
+}
+.syntax--source.syntax--css .syntax--punctuation.syntax--selector.syntax--wildcard {
+  color: #e06c75;
+}
+.syntax--source.syntax--css .syntax--punctuation.syntax--selector.syntax--id {
+  color: #61afef;
+}
+.syntax--source.syntax--css .syntax--punctuation.syntax--selector.syntax--attribute {
+  color: #abb2bf;
+}
+</style>
+        </head>
+        <body class='markdown-preview' data-use-github-style><h1 id="section-01-introduction-to-javascript">Section 01: Introduction to JavaScript</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>This section includes a high-level introduction to JavaScript and the Document Object Model or DOM.</p>
+<ul>
+<li>High-level intro to JavaScript features</li>
+<li>Where JavaScript is added in an HTML file</li>
+<li>Intro to Document Object Model (DOM)</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ol>
+<li>JavaScript Home - <a href="https://www.w3schools.com/js/default.asp">https://www.w3schools.com/js/default.asp</a></li>
+<li>JavaScript Introduction - <a href="https://www.w3schools.com/js/js_intro.asp">https://www.w3schools.com/js/js_intro.asp</a></li>
+<li>Where To Add JavaScript? - <a href="https://www.w3schools.com/js/js_whereto.asp">https://www.w3schools.com/js/js_whereto.asp</a></li>
+<li>Document Object Model (DOM) - <a href="https://www.w3schools.com/js/js_htmldom.asp">https://www.w3schools.com/js/js_htmldom.asp</a></li>
+</ol>
+<h2 id="1-home-why-study-javascript">1. Home: Why Study JavaScript?</h2>
+<ul>
+<li>JavaScript is the world's most popular programming language.</li>
+<li>JavaScript is the programming language of the Web.</li>
+<li>JavaScript is easy to learn.</li>
+</ul>
+<p>JavaScript is one of the 3 languages all web developers must learn:</p>
+<ol>
+<li><a href="https://www.w3schools.com/html/default.asp">HTML</a> to define the content of web pages.</li>
+<li><a href="https://www.w3schools.com/css/default.asp">CSS</a> to specify the layout of web pages.</li>
+<li><a href="https://www.w3schools.com/js/default.asp">JavaScript</a> to program the behavior of web pages.</li>
+</ol>
+<h2 id="2-introduction---what-can-javascript-do">2. Introduction - What can JavaScript do?</h2>
+<h3 id="javascript-can-change-html-content">JavaScript Can Change HTML Content</h3>
+<p>One of many JavaScript HTML methods is <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">getElementById()</code>.</p>
+<p>The example below "finds" an HTML element (with id="demo"), and changes the element content (innerHTML) to "Hello JavaScript":</p>
+<pre class="editor-colors lang-javascript"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--support syntax--variable syntax--dom">document</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--entity syntax--name syntax--function">getElementById</span><span class="syntax--punctuation syntax--definition syntax--parameters syntax--begin syntax--bracket syntax--round">(</span><span class="syntax--string syntax--quoted">"demo"</span><span class="syntax--punctuation syntax--definition syntax--parameters syntax--end syntax--bracket syntax--round">)</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--variable syntax--other syntax--object syntax--property syntax--unquoted">innerHTML</span> <span class="syntax--keyword syntax--operator syntax--js">=</span> <span class="syntax--string syntax--quoted">"Hello JavaScript"</span><span class="syntax--punctuation syntax--terminator syntax--statement syntax--semicolon">;</span></span></div></pre>
+<h3 id="javascript-can-change-html-attribute-values">JavaScript Can Change HTML Attribute Values</h3>
+<p>In this example JavaScript changes the value of the <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">src</code> (source) attribute of an <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;img&gt;</code> tag:</p>
+<pre class="editor-colors lang-javascript"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--keyword syntax--operator syntax--js">!</span><span class="syntax--meta syntax--class syntax--component syntax--jsx">DOCTYPE</span> <span class="syntax--entity syntax--other syntax--attribute-name">html</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--entity syntax--name syntax--tag">html</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="leading-whitespace">  </span><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--entity syntax--name syntax--tag">body</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div><div class="line"></div><div class="line"><span class="syntax--source syntax--js"><span class="leading-whitespace">    </span><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--keyword syntax--operator syntax--js">!</span><span class="syntax--keyword syntax--operator syntax--js">--</span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="leading-whitespace">         </span><span class="syntax--meta syntax--class syntax--component syntax--jsx">In</span> <span class="syntax--entity syntax--other syntax--attribute-name">this</span> <span class="syntax--entity syntax--other syntax--attribute-name">case</span> <span class="syntax--entity syntax--other syntax--attribute-name">JavaScript</span> <span class="syntax--entity syntax--other syntax--attribute-name">changes</span> <span class="syntax--entity syntax--other syntax--attribute-name">the</span> <span class="syntax--entity syntax--other syntax--attribute-name">value</span> <span class="syntax--entity syntax--other syntax--attribute-name">of</span> <span class="syntax--entity syntax--other syntax--attribute-name">the</span> <span class="syntax--entity syntax--other syntax--attribute-name">src</span> <span class="syntax--punctuation syntax--definition syntax--parameters syntax--begin syntax--bracket syntax--round">(</span><span class="syntax--entity syntax--other syntax--attribute-name">source</span><span class="syntax--punctuation syntax--definition syntax--parameters syntax--end syntax--bracket syntax--round">)</span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="leading-whitespace">         </span><span class="syntax--entity syntax--other syntax--attribute-name">attribute</span> <span class="syntax--entity syntax--other syntax--attribute-name">of</span> <span class="syntax--entity syntax--other syntax--attribute-name">an</span> <span class="syntax--entity syntax--other syntax--attribute-name">image</span><span class="syntax--meta syntax--delimiter syntax--period">.</span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="leading-whitespace">    </span><span class="syntax--keyword syntax--operator syntax--js">--</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div><div class="line"></div><div class="line"><span class="syntax--source syntax--js"><span class="leading-whitespace">    </span><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--entity syntax--name syntax--tag">button</span> <span class="syntax--entity syntax--other syntax--attribute-name">onclick</span><span class="syntax--keyword syntax--operator syntax--js">=</span><span class="syntax--string syntax--quoted">"document.getElementById('myImage').src='pic_bulbon.gif'"</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span>Turn on the light<span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--keyword syntax--operator syntax--js">/</span><span class="syntax--entity syntax--name syntax--tag">button</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div><div class="line"></div><div class="line"><span class="syntax--source syntax--js"><span class="leading-whitespace">    </span><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--entity syntax--name syntax--tag">img</span> <span class="syntax--entity syntax--other syntax--attribute-name">id</span><span class="syntax--keyword syntax--operator syntax--js">=</span><span class="syntax--string syntax--quoted">"myImage"</span> <span class="syntax--entity syntax--other syntax--attribute-name">src</span><span class="syntax--keyword syntax--operator syntax--js">=</span><span class="syntax--string syntax--quoted">"pic_bulboff.gif"</span> <span class="syntax--entity syntax--other syntax--attribute-name">style</span><span class="syntax--keyword syntax--operator syntax--js">=</span><span class="syntax--string syntax--quoted">"width:100px"</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div><div class="line"></div><div class="line"><span class="syntax--source syntax--js"><span class="leading-whitespace">    </span><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--entity syntax--name syntax--tag">button</span> <span class="syntax--entity syntax--other syntax--attribute-name">onclick</span><span class="syntax--keyword syntax--operator syntax--js">=</span><span class="syntax--string syntax--quoted">"document.getElementById('myImage').src='pic_bulboff.gif'"</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span>Turn off the light<span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--keyword syntax--operator syntax--js">/</span><span class="syntax--entity syntax--name syntax--tag">button</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div><div class="line"></div><div class="line"><span class="syntax--source syntax--js"><span class="leading-whitespace">  </span><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--keyword syntax--operator syntax--js">/</span><span class="syntax--entity syntax--name syntax--tag">body</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--keyword syntax--operator syntax--js">/</span><span class="syntax--entity syntax--name syntax--tag">html</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div></pre>
+<p>Link: <a href="https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb">https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb</a>        </p>
+<h3 id="javascript-can-change-html-styles-css">JavaScript Can Change HTML Styles (CSS)</h3>
+<p>Changing the style of an HTML element, is a variant of changing an HTML attribute:</p>
+<pre class="editor-colors lang-javascript"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--support syntax--variable syntax--dom">document</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--entity syntax--name syntax--function">getElementById</span><span class="syntax--punctuation syntax--definition syntax--parameters syntax--begin syntax--bracket syntax--round">(</span><span class="syntax--string syntax--quoted">"demo"</span><span class="syntax--punctuation syntax--definition syntax--parameters syntax--end syntax--bracket syntax--round">)</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--variable syntax--other syntax--object syntax--property syntax--unquoted">style</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--variable syntax--other syntax--object syntax--property syntax--unquoted">fontSize</span> <span class="syntax--keyword syntax--operator syntax--js">=</span> <span class="syntax--string syntax--quoted">"35px"</span><span class="syntax--punctuation syntax--terminator syntax--statement syntax--semicolon">;</span></span></div></pre>
+<h3 id="javascript-can-show--hide-html-elements">JavaScript Can Show / Hide HTML Elements</h3>
+<p>Showing/Hiding HTML elements can be done by changing the <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">display</code> style:</p>
+<pre class="editor-colors lang-javascript"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--support syntax--variable syntax--dom">document</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--entity syntax--name syntax--function">getElementById</span><span class="syntax--punctuation syntax--definition syntax--parameters syntax--begin syntax--bracket syntax--round">(</span><span class="syntax--string syntax--quoted">"demo"</span><span class="syntax--punctuation syntax--definition syntax--parameters syntax--end syntax--bracket syntax--round">)</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--variable syntax--other syntax--object syntax--property syntax--unquoted">style</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--variable syntax--other syntax--object syntax--property syntax--unquoted">display</span> <span class="syntax--keyword syntax--operator syntax--js">=</span> <span class="syntax--string syntax--quoted">"none"</span><span class="syntax--punctuation syntax--terminator syntax--statement syntax--semicolon">;</span> <span class="syntax--comment syntax--line">// hide</span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="syntax--support syntax--variable syntax--dom">document</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--entity syntax--name syntax--function">getElementById</span><span class="syntax--punctuation syntax--definition syntax--parameters syntax--begin syntax--bracket syntax--round">(</span><span class="syntax--string syntax--quoted">"demo"</span><span class="syntax--punctuation syntax--definition syntax--parameters syntax--end syntax--bracket syntax--round">)</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--variable syntax--other syntax--object syntax--property syntax--unquoted">style</span><span class="syntax--meta syntax--delimiter syntax--period">.</span><span class="syntax--variable syntax--other syntax--object syntax--property syntax--unquoted">display</span> <span class="syntax--keyword syntax--operator syntax--js">=</span> <span class="syntax--string syntax--quoted">"block"</span><span class="syntax--punctuation syntax--terminator syntax--statement syntax--semicolon">;</span> <span class="syntax--comment syntax--line">// show</span></span></div></pre>
+<h2 id="3-where-to-add-javascript">3. Where To Add JavaScript?</h2>
+<h3 id="the-script-tag">The <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;script&gt;</code> Tag</h3>
+<p>In HTML, JavaScript code is inserted between <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;script&gt;&lt;/script&gt;</code> tags.</p>
+<h3 id="javascript-functions-and-events">JavaScript Functions and Events</h3>
+<p>A JavaScript function is a block of JavaScript code, that can be executed when "called" for. For
+example, a function can be called when an event occurs, like when the user clicks a button.</p>
+<h3 id="javascript-in-head-or-body">JavaScript in <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;head&gt;</code> or <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;body&gt;</code></h3>
+<p>You can place any number of scripts in an HTML document. Scripts can be placed in the <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;body&gt;</code>,
+or in the <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;head&gt;</code> section of an HTML page, or in both.</p>
+<h3 id="external-javascript">External JavaScript</h3>
+<p>Scripts can also be placed in external files. External scripts are practical when the same code
+is used in multiple web pages.</p>
+<p>A JavaScript file has the file extension <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.js</code>. To use an external script, put the name of the
+script file in the <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">src</code> (source) attribute of a <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;script&gt;</code> tag:</p>
+<pre class="editor-colors lang-javascript"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--entity syntax--name syntax--tag">script</span> <span class="syntax--entity syntax--other syntax--attribute-name">src</span><span class="syntax--keyword syntax--operator syntax--js">=</span><span class="syntax--string syntax--quoted">"myScript.js"</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span><span class="syntax--keyword syntax--operator syntax--js">&lt;</span><span class="syntax--keyword syntax--operator syntax--js">/</span><span class="syntax--entity syntax--name syntax--tag">script</span><span class="syntax--keyword syntax--operator syntax--js">&gt;</span></span></div></pre>
+<h2 id="4-document-object-model-dom">4. Document Object Model (DOM)</h2>
+<p>When a web page is loaded, the browser creates a <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">Document Object Model</code> of the page. The <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">HTML DOM</code>
+model is constructed as a tree of <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">Objects</code>. Elements are the tree of html tags. Elements can have
+attributes such as <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">href</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">id</code>, or <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">class</code>.</p>
+<p>Dynamic web applications use JavaScript to access and manipulate objects in the DOM in different ways.</p>
+<p><img alt="HTML DOM" src="/Users/tcm/Library/CloudStorage/OneDrive-CollegeofCharleston/CSCI-215/01 - Introduction/images/dom.png"></p>
+<ul>
+<li>JavaScript can change all the HTML elements in the page</li>
+<li>JavaScript can change all the HTML attributes in the page</li>
+<li>JavaScript can change all the CSS styles in the page</li>
+<li>JavaScript can remove existing HTML elements and attributes</li>
+<li>JavaScript can add new HTML elements and attributes</li>
+<li>JavaScript can react to all existing HTML events in the page</li>
+<li>JavaScript can create new HTML events in the page</li>
+</ul>
+<p>More Info: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction</a></p></body>
+      </html>
