@@ -2,7 +2,10 @@
 
 ## Learning Outcomes
 Arrays and loops are an essential constructs in the majority of programing languages. The ability to define a list of values and iterate over the list performing operations is a critical skill to master.
-- **Arrays** - syntax, functions, sorting, conversions
+- **Arrays** - introduction
+  - syntax - 3 ways to declare arrays
+  - attributes - `lenght` and uses
+  - functions - `sort()`, `pop()`, and `push()`
 - **Loops** - `for` and `while` loops  
 
 ## Resources
@@ -19,7 +22,9 @@ Arrays and loops are an essential constructs in the majority of programing langu
 An array is a special variable, which can hold more than one value:
 
 ```javascript
-const cars = ["Saab", "Volvo", "BMW"];
+const cars = ["Saab","Volvo","BMW"];
+const daysOfTheWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const studentNames = ["Nash","Ridley","Ezra","Cora","Elsa","Mila"];
 ```
 
 ### Why Use an Array?
@@ -36,7 +41,7 @@ However, what if you want to loop through the cars and find a specific one? And 
 
 The solution is an array!
 
-An array can hold many values under a single name, and you can access the values by referring to an index number.       
+ Arrays help maintain large sets of data under a single variable name to avoid confusion that can occur when using several variables. A value in the array can be accessed via it's index number.    
 
 ### Creating an Array
 
@@ -54,7 +59,7 @@ const array_name = [item1, item2, ...];
 ```javascript
 Example:
 
-const cars = ["Saab", "Volvo", "BMW"];
+const daysOfTheWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 ```
 
 > Note the use of the `const` keyword which is recommended when declaring arrays.
