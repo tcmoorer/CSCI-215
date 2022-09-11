@@ -1,13 +1,12 @@
 # Section 5 - Conditionals and More Loops
 
-## Overview
+## Learning Outcomes
+Decision making and branching logic in applications is important in data driven and dynamic applications. This section will cover `if`/`else` statements as well as conditional operators that are used to make decisions in applications.
+- **Conditional Statements** - `if`/`else` syntax is discussed
+- **Comparison Operators** - these operators are used with `if`/`else` to make decisions
+- **Nested Loops** - Loops inside loops (nested loops) may been needed to process information or make decisions. 
 
-Arrays and loops are an essential constructs in the majority of programing languages. The ability
-to define a list of values and iterate over the list performing operations is a critical
-skill to master.
-
-## Content Links
-
+## Resources
 - Conditionals (if/else) - <https://www.w3schools.com/js/js_if_else.asp>
 - Boolean Expressions - <https://www.w3schools.com/js/js_booleans.asp>
 - Comparisons (see Section 3) - <https://www.w3schools.com/js/js_comparisons.asp>
@@ -28,34 +27,41 @@ In JavaScript, we have the following conditional statements:
 
 ### The `if` Statement
 
-Use the `if` statement to specify a block of JavaScript code to be executed if a condition 
-is `true`.
+Use the `if` statement to specify a block of JavaScript code to be executed if a condition is `true`.
 
-```
+```javascript
 Syntax:
 
-if (condition) {
+if (condition(s) that evaluate to true or false) {
   //  block of code to be executed if the condition is true
 }
 ```
-Make a "Good day" greeting if the hour is less than 18:00:
-```
+Make a "Good day" greeting if the hour is less than 18:00 using the 24hr time clock:
+```javascript
 Example:
 
+let hour = 4;
+let greeting = '';
+
 if (hour < 18) {
-  greeting = "Good day";
+    greeting = "Good day";
+}
+
+// using multiple conditions
+
+if (hour > 6 && hour < 18) {
+    greeting = "Good day";
 }
 ```
 
 ### The `else` Statement
 
-Use the `else` statement to specify a block of code to be executed if the condition is 
-`false`. 
+Use the `else` statement to specify a block of code to be executed if the condition is `false`.
 
-```
+```javascript
 Syntax:
 
-if (condition) {
+if (condition(s) that evaluate to true or false) {
   //  block of code to be executed if the condition is true
 } else {
   //  block of code to be executed if the condition is false
@@ -64,13 +70,16 @@ if (condition) {
 
 If the hour is less than 18, create a "Good day" greeting, otherwise "Good evening":
 
-```
+```javascript
 Example:
+    
+let hour = 4;
+let greeting = '';
 
-if (hour < 18) {
-  greeting = "Good day";
+if (hour < 12) {
+    greeting = "Good morning";
 } else {
-  greeting = "Good evening";
+    greeting = "Good afternoon";
 }
 ```
 
@@ -78,52 +87,55 @@ if (hour < 18) {
 
 Use the `else if` statement to specify a new condition if the first condition is `false`.
 
-```
+```javascript
 Syntax:
 
-if (condition1) {
+if (condition(s) that evaluate to true or false) {
   //  block of code to be executed if condition1 is true
-} else if (condition2) {
+} else if (condition(s) that evaluate to true or false) {
   //  block of code to be executed if the condition1 is false and condition2 is true
 } else {
   //  block of code to be executed if the condition1 is false and condition2 is false
 }
 ```
 
-If time is less than 10:00, create a "Good morning" greeting, if not, but time is less than 20:00, create a 
+If time is less than 10:00, create a "Good morning" greeting, if not, but time is less than 20:00, create a
 "Good day" greeting, otherwise a "Good evening":
 
-```
+```javascript
 Example:
 
-if (time < 10) {
-  greeting = "Good morning";
-} else if (time < 20) {
-  greeting = "Good day";
+let hour = 9;
+let greeting = '';
+
+if (hour < 6) {
+    greeting = "Why are you up so early?";
+} else if (hour >= 6 && hour < 12) {
+    greeting = "Good morning!";
+} else if (hour >= 12 && hour < 18) {
+    greeting = "Good afternoon!";
 } else {
-  greeting = "Good evening";
+    greeting = "Good evening";
 }
 ```
 
-## Boolean Expressions (true/false)
+## Boolean Expressions (`TRUE` or `FALSE`)
 
 Very often, in programming, you will need a data type that can only have one of two values, like
 
-- YES / NO
-- ON / OFF
-- TRUE / FALSE
+- `TRUE` or `FALSE`
 
 The `Boolean` value of an expression is the basis for all JavaScript comparisons and conditions.
 
-Refer back to `03 - Comparison and Logical Operators` the examples below use comparison operators 
-in `Boolean` expressions. The result of the expressions drive which statements in the program are 
+Refer back to `03 - Comparison and Logical Operators` the examples below use comparison operators
+in `Boolean` expressions. The result of the expressions drive which statements in the program are
 executed.   
 
 | Operator | Description | Example |
 |---------|------|-----|
-| `==`    | equal to | if (day == "Monday") |
-| `>`     | greater than | if (salary > 9000) |
-| `<`      | less than | if (age < 18) |
+| `==`    | equal to | `if (day == "Monday")` |
+| `>`     | greater than | `if (salary > 9000)` |
+| `<`      | less than | `if (age < 18)` |
 
 
 ## Comparisons and Logical Operators
@@ -132,7 +144,7 @@ Comparison and Logical operators are used to test for `true` or `false`.
 
 ### Comparison Operators
 
-Comparison operators are used in logical statements to determine equality or 
+Comparison operators are used in logical statements to determine equality or
 difference between variables or values.
 
 Given that `x = 5`, the table below explains the comparison operators:                             
@@ -161,41 +173,19 @@ Given that `x = 6` and `y = 3`, the table below explains the logical operators:
 | &#124;&#124; | or                  | `(x == 5 `&#124;&#124;` y == 5)` | `false` |
 | `!`          | not      | `!(x == y)`         | `true`  |
 
-## Loops: `break`, `continue` and nested loops
+## Nested Loops and `break`, `continue` with loops
 
-### `break` and `continue`
+### Nested loops
 
-The `break` statement "jumps out" of a loop.
+Loops can be nested (one loop inside another) as needed to process input or determine some business logic. Consider the following string of fruits (delimited with semicolons `;`) with counts (delimited with commas `,`) in the following pattern:
 
-```
-for (let i = 0; i < 10; i++) {
-  if (i === 3) { break; }
-  text += "The number is " + i + "<br>";
-}
-```
-
-The `continue` statement "jumps over" one iteration in the loop.
-
-```
-for (let i = 0; i < 10; i++) {
-  if (i === 3) { continue; }
-  text += "The number is " + i + "<br>";
-}
-```
-   
-### Nested loops 
-
-Loops can be nested (one loop inside another) as needed to process input or determine some business logic.
-Consider the following string of fruits (delimited with semicolons `;`) with counts 
-(delimited with commas `,`) in the following pattern:
-
-```
+```javascript
 fruit,count;fruit,count;fruit,count
 ```
 
 A nested `for` loop can be used to `split()` the string multiple times.           
 
-```
+```javascript
 Example:
 
 let input = "Apples,2;Bananas,12;Cherries,30";
@@ -207,4 +197,55 @@ for (let i=0; i<array1.length; i++) {
         document.write(`${i}{j}: ${array2[0]} = ${array2[1]}`);   
     }
 }
+```
+### `break` and `continue`
+
+The `break` statement terminates the current loop and transfers program control to the statement following the terminated statement. 
+
+```javascript
+// break with for loop
+let text = '';
+
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  text += "The number is: " + i;
+}
+
+console.log(text);
+
+// expected output:
+// The number is: 0
+// The number is: 1
+// The number is: 2
+```
+```javascript
+// break in while loop
+let i = 0;
+
+while (i < 6) {
+    if (i === 3) {
+        break;
+    }
+    i = i + 1;
+}
+
+console.log(i);
+
+// expected output: 3
+```
+
+The `continue` statement terminates execution of the statements in the current iteration of the curent loop, and continues execution of the loop with the next iteration.
+
+```javascript
+let text = '';
+
+for (let i = 0; i < 10; i++) {
+    if (i === 3) {
+        continue;
+    }
+    text = text + i;
+}
+
+console.log(text);
+// expected output: "012456789"
 ```
