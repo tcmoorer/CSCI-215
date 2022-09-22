@@ -1,6 +1,6 @@
 # Section 6 - Functions, Style and Best Practices
 
-## Overview
+## Learning Outcomes
 
 Functions isolate sections of code that perform specific tasks so that they can be reused. The use of common coding 
 styles and best practices within teams and organizations improve the quality, consistency, and maintainability of 
@@ -17,7 +17,7 @@ application code.
 A JavaScript function is a block of code designed to perform a particular 
 task. A JavaScript function is executed when "something" invokes it (calls it).
 
-```
+```javascript
 function myFunction(p1, p2) {
   return p1 * p2;   // The function returns the product of p1 and p2
 }
@@ -30,7 +30,7 @@ function myFunction(p1, p2) {
 - The parentheses may include parameter names separated by commas: (parameter1, parameter2, ...) 
 - The code to be executed by the function is placed inside curly brackets: {}
 
-```
+```javascript
 Syntax: 
 
 function name(parameter1, parameter2, parameter3) {
@@ -59,7 +59,7 @@ the code after the invoking statement.
 
 Functions often compute a `return` value. The return value is "returned" back to the "caller":
 
-```
+```javascript
 let x = myFunction(4, 3);   // Function is called, return value will end up in x (12)
 
 function myFunction(a, b) {
@@ -89,7 +89,7 @@ Coding conventions can be documented rules for teams to follow, or just be your 
 Use camelCase for identifier names (variables and functions).
 All names start with a letter.
   
-```
+```javascript
 let firstName = "John";
 let lastName = "Doe";
 
@@ -103,7 +103,7 @@ fullPrice = price + (price * tax);
 
 Always put spaces around operators ( = + - * / ), and after commas:
 
-```
+```javascript
 let x = y + z;
 const myArray = ["Volvo", "Saab", "Fiat"];
 ```
@@ -112,7 +112,7 @@ const myArray = ["Volvo", "Saab", "Fiat"];
 
 Always use 2 spaces for indentation of code blocks:
 
-```
+```javascript
 function toCelsius(fahrenheit) {
   return (5 / 9) * (fahrenheit - 32);
 }
@@ -124,7 +124,7 @@ General rules for simple statements:
 	
 - Always end a simple statement with a semicolon.
 
-```
+```javascript
 const cars = ["Volvo", "Saab", "Fiat"];
 
 const person = {
@@ -142,7 +142,7 @@ const person = {
 - Put the closing bracket on a new line, without leading spaces.
 - Do not end a complex statement with a semicolon.
 
-```
+```javascript
 Functions:
 
 function toCelsius(fahrenheit) {
@@ -197,7 +197,7 @@ This will:
 - Make it easier to avoid unwanted (implied) global variables
 - Reduce the possibility of unwanted re-declarations
 
-```
+```javascript
 // Declare at the beginning
 let firstName, lastName, price, discount, fullPrice;
 
@@ -225,21 +225,17 @@ Declare Arrays and Other Objects with `const`.
 
 Declaring arrays and objects with `const` will prevent any accidental change of type:
 
-```
+```javascript
 let car = {type:"Fiat", model:"500", color:"white"};
 car = "Fiat";      // Changes object to string
-
-vs.
 
 const car = {type:"Fiat", model:"500", color:"white"};
 car = "Fiat";      // Not possible
 ```
 
-```
+```javascript
 let cars = ["Saab", "Volvo", "BMW"];
 cars = 3;    // Changes array to number
-
-vs.
 
 const cars = ["Saab", "Volvo", "BMW"];
 cars = 3;    // Not possible
@@ -250,7 +246,7 @@ cars = 3;    // Not possible
 Recall that JavaScript is loosely typed. A variable can contain all data types. A 
 variable can change its data type:
                        
-```
+```javascript
 let x = "Hello";     // typeof x is a string
 x = 5;               // changes typeof x to a number
 ```
@@ -258,7 +254,7 @@ x = 5;               // changes typeof x to a number
 Beware that numbers can accidentally be converted to strings or NaN (Not a Number).
 When doing mathematical operations, JavaScript can convert numbers to strings:
 
-```
+```javascript
 let x = 5 + 7;       // x.valueOf() is 12,  typeof x is a number
 let x = 5 + "7";     // x.valueOf() is 57,  typeof x is a string
 let x = "5" + 7;     // x.valueOf() is 57,  typeof x is a string
