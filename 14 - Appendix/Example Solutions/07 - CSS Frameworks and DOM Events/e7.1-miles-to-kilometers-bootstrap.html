@@ -38,9 +38,16 @@
     </div>
 </div>
 <script>
+    const CONVERSION_FACTOR = 1.60934;
+
     /**
-     * Write a function that converts mi to km and update the webpage.
+     * function receives the event, performs the calculation and displays the result
      */
+    function convertMilesToKilometers() {
+        let miles = document.getElementById('miles').value;
+        let kilometers = miles * CONVERSION_FACTOR;
+        document.getElementById('kilometers').innerHTML = kilometers.toFixed(1);
+    }
 
 </script>
 </body>

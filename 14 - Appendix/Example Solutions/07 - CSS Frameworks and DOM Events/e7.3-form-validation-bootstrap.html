@@ -51,38 +51,85 @@
 <div>
 <script type="text/javascript">
 
+    const NAME_MAX_LENGTH = 20;
+    const COMMENT_MAX_LENGTH = 250;
+    let pageValid = false;
+
     /**
      * Display validation status
      */
     function sendContactInfo() {
+        if (pageValid) {
+            // adjust classes to display 'success' alert
+            document.getElementById('respMsgAlert').classList.remove('alert-danger');
+            document.getElementById('respMsgAlert').classList.add('alert-success');
+            // set alert text
+            document.getElementById('respMsgText').innerHTML = 'Form is valid :)';
+        } else {
+            // adjust classes to display 'danger' alert
+            document.getElementById('respMsgAlert').classList.remove('alert-success');
+            document.getElementById('respMsgAlert').classList.add('alert-danger');
+            // set alert text
+            document.getElementById('respMsgText').innerHTML = 'Form is not valid :(';
+        }
+        // show alert
+        document.getElementById('respMsgAlert').classList.remove('visually-hidden');
     }
 
     /**
      * Clear validation
      */
     function clearUserNameValidation() {
+        document.getElementById('userNameValidation').innerHTML = '';
     }
     function clearUserEmailValidation() {
+        document.getElementById('userEmailValidation').innerHTML = '';
     }
     function clearUserCommentsValidation() {
+        document.getElementById('userCommentsValidation').innerHTML = '';
     }
 
     /**
      * Validate the Name provided
      */
     function validateName() {
+        let userName = document.getElementById('userName').value;
+        if (userName.length === 0) {
+            document.getElementById('userNameValidation').innerHTML = 'Name is required!';
+            pageValid = false;
+        } else if (userName.length > NAME_MAX_LENGTH) {
+            document.getElementById('userNameValidation').innerHTML = `Name cannot exceed ${NAME_MAX_LENGTH} characters!`;
+            pageValid = false;
+        } else {
+            pageValid = true;
+        }
     }
 
     /**
      * Validate the email address using regex
      */
     function validateEmail() {
+        let regExEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+        let userEmail = document.getElementById('userEmail').value;
+        if (!regExEmail.test(userEmail)) {
+            document.getElementById('userEmailValidation').innerHTML = 'Email is invalid!';
+            pageValid = false;
+        } else {
+            pageValid = true;
+        }
     }
 
     /**
      * Validate the comments provided
      */
     function validateComments() {
+        let userComments = document.getElementById('userComments').value;
+        if (userComments.length > COMMENT_MAX_LENGTH) {
+            document.getElementById('userCommentsValidation').innerHTML = `Comments cannot exceed ${COMMENT_MAX_LENGTH} characters!`;
+            pageValid = false;
+        } else {
+            pageValid = true;
+        }
     }
 
 </script>

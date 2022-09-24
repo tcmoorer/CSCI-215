@@ -123,29 +123,75 @@
     </div>
 </div>
 <script>
+    const TACO_PRICE = 1.19;
+    const BURRITO_PRICE = 2.49;
+    const TAX = .065;
+    let tacoCount = 0;
+    let tacoTotal = 0;
+    let burritoCount = 0;
+    let burritoTotal = 0;
+    let subTotal = 0;
+    let taxTotal = 0;
+    let grandTotal = 0;
 
     /**
      * Do stuff when the page loads
      */
     function initPage() {
+        // style the menu board
+        document.getElementById('menuBoard').style.backgroundColor = '#456D6A';
+        document.getElementById('menuBoard').style.color = '#fff';
+        document.getElementById('menuBoard').style.borderWidth = '20px';
+        document.getElementById('menuBoard').style.borderColor = '#B6977D';
+        // set prices based on constant values
+        document.getElementById('tacoCost').innerHTML = String(TACO_PRICE);
+        document.getElementById('burritoCost').innerHTML = String(BURRITO_PRICE);
+        // init totals
+        calcTacoTotal();
+        calcBurritoTotal();
     }
 
     /**
      * Calc taco total
      */
     function calcTacoTotal() {
+        // get value from select list
+        tacoCount = document.getElementById('tacoCountChoose').value;
+        // calc order total
+        tacoTotal = tacoCount * TACO_PRICE;
+        // update UI
+        document.getElementById('tacoCount').innerHTML = tacoCount;
+        document.getElementById('tacoTotal').innerHTML = tacoTotal.toFixed(2);
+        // call common function to calc grand total
+        calcGrandTotal();
     }
 
     /**
      * Calc burrito total
      */
     function calcBurritoTotal() {
+        // get value from select list
+        burritoCount = document.getElementById('burritoCountChoose').value;
+        // calc order total
+        burritoTotal = burritoCount * BURRITO_PRICE;
+        // update UI
+        document.getElementById('burritoCount').innerHTML = burritoCount;
+        document.getElementById('burritoTotal').innerHTML = burritoTotal.toFixed(2);
+        // call common function to calc grand total
+        calcGrandTotal();
     }
 
     /**
      * Calculate totals
      */
     function calcGrandTotal() {
+        subTotal = tacoTotal + burritoTotal;
+        taxTotal = subTotal * TAX;
+        grandTotal = subTotal + taxTotal;
+        // update in UI
+        document.getElementById('subTotal').innerHTML = subTotal.toFixed(2);
+        document.getElementById('taxAmount').innerHTML = taxTotal.toFixed(2);
+        document.getElementById('grandTotal').innerHTML = grandTotal.toFixed(2);
     }
 
 </script>
