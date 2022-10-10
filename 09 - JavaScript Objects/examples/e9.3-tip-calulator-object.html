@@ -2,7 +2,7 @@
    Modify Tip Calculator
 
    In this in-class exercise, you will modify your Tip Calculator application from Quiz #5 and
-   modify it to use an object instead of different variables.
+   modify it to use an object instead of different variables and functions.
 
    The original solution used the following variables:
 
@@ -15,7 +15,8 @@
 
    - Define an object called 'tipCalculatorModel' with the attributes above.
    - Create an onload event that initializes the object with appropriate default values.
-   - Modify your existing application to use the 'tipCalculatorModel' instead of different variables.
+   - Modify your existing application to use the 'tipCalculatorModel' to hold values and
+     methods to perform the different calulations.
 
 -->
 <html>
@@ -27,14 +28,14 @@
 <script type="text/javascript">
 
     const tipCalculatorModel = {
-        "amount":  null
+
     };
 
     /**
      *  Create default values for your model
      */
     function init() {
-        tipCalculatorModel.amount = 0.00;
+        
     }
 
 </script>

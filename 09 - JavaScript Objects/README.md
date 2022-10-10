@@ -1,18 +1,19 @@
 # Section 9 - JavaScript Objects
 
-## Overview
+## Learning Outcomes
 
-JavaScript objects allow related attributes to be grouped together and are essential to advanced programs. 
-All that and they are easy to understand.  
+JavaScript objects allow related attributes to be grouped together and methods simplify "spaghetti code". All that and they are easy to understand.  
 
 ## Content Links
 
+- YouTube: OO Programming in 7 minutes - <https://www.youtube.com/watch?v=pTB0EiLXUC8>
 - JavaScript Objects - <https://www.w3schools.com/js/js_object_definition.asp>
 - Object Properties - <https://www.w3schools.com/js/js_object_properties.asp>
+- Object Methods - <https://www.w3schools.com/js/js_object_methods.asp>
 
 ## JavaScript Objects
 
-See variables from Section 2. 
+See variables from Section 2.
 
 If you understand objects, you understand JavaScript. In JavaScript, almost "everything" is an object. All JavaScript values, except primitives, are objects.
 
@@ -55,7 +56,7 @@ Primitive values are immutable (they are hardcoded and therefore cannot be chang
 
 JavaScript variables can contain single values:
 
-```
+```javascript
 let person = "John Doe";
 ```
 
@@ -63,18 +64,18 @@ JavaScript variables can also contain many values. Objects are variables too. Bu
 
 Object values are written as `name : value` pairs (name and value separated by a colon). It is a common practice to declare objects with the `const` keyword.
 
-```
+```javascript
 const person = {
-    firstName:"John", 
-    lastName:"Doe", 
-    age:50, 
+    firstName:"John",
+    lastName:"Doe",
+    age:50,
     eyeColor:"blue"
 };
 ```
 
 This example creates an empty JavaScript object, and then adds 4 properties:
-    
-```
+
+```javascript
 const person = {};
 person.firstName = "John";
 person.lastName = "Doe";
@@ -88,53 +89,68 @@ Objects are mutable: They are addressed by reference, not by value.
 
 If `person` is an object, the following statement will not create a copy of `person`:
 
-```
+```javascript
 const x = person;  // Will not create a copy of person.
 ```
 
 The object `x` is not a copy of person. It **is** `person`. Both `x` and `person` are the same object.
 
 Any changes to `x` will also change `person`, because `x` and `person` are the same object.
-                                                                      
-```
+
+```javascript
 const person = {
   firstName:"John",
   lastName:"Doe",
-  age:50, eyeColor:"blue"
+  age:50,
+  eyeColor:"blue"
 }
 
 const x = person;
 x.age = 10;      // Will change both x.age and person.age
 ```
-  
+
 ## Object Properties
 
-Properties are the most important part of any JavaScript object.
-
-Properties are the values associated with a JavaScript object.
-
-A JavaScript object is a collection of unordered properties.
-
-Properties can usually be changed, added, and deleted, but some are read only.
+- Properties are the most important part of any JavaScript object.
+- Properties are the values associated with a JavaScript object.
+- A JavaScript object is a collection of unordered properties.
+- Properties can usually be changed, added, and deleted, but some are read only.
 
 The syntax for accessing the property of an object is:
 
-```
+```javascript
 objectName.property      // person.age
 ```
 
 or
 
-```
+```javascript
 objectName["property"]   // person["age"]
+```
+### Object Methods
+
+JavaScript methods are actions that can be performed on objects. A JavaScript method is a property containing a function definition.
+
+```javascript
+const person = {
+    firstName: "",
+    lastName: "",
+    fullName: function() {
+        return this.lastName + ", " + this.firstName;
+    }
+}
+
+person.firstName = "Dave";
+person.lastName = "Jones";
+console.log(person.fullName()); // writes 'Jones, Dave' to console
 ```
 
 ### Nested Objects
 
 Values in an object can be another object:
-                                
-```
-myObj = {
+
+```javascript
+const person = {
   name:"John",
   age:30,
   cars: {
@@ -147,7 +163,7 @@ myObj = {
 
 You can access nested objects using the dot notation or the bracket notation:
 
-```
+```javascript
 myObj.cars.car2;
 ```
 
@@ -155,7 +171,7 @@ myObj.cars.car2;
 
 Values in objects can be arrays, and values in arrays can be objects:
 
-```
+```javascript
 const myObj = {
   name: "John",
   age: 30,
@@ -169,7 +185,7 @@ const myObj = {
 
 To access arrays inside arrays, use a for-in loop for each array:
 
-```
+```javascript
 for (let i in myObj.cars) {
   x += "<h1>" + myObj.cars[i].name + "</h1>";
   for (let j in myObj.cars[i].models) {
@@ -177,4 +193,3 @@ for (let i in myObj.cars) {
   }
 }
 ```
-

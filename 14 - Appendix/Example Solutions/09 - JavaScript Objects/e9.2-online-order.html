@@ -1,0 +1,81 @@
+<html>
+<head>
+</head>
+<body onload="init()">
+<h1>Online Order</h1>
+<h2>Customer Info</h2>
+<div id="customerInfo"></div>
+<h2>Cart Info</h2>
+<div id="cartInfo"></div>
+<script type="text/javascript">
+
+    /*
+        Model a customer order with customer info name, address, email, phone and an array of products in the cart
+     */
+
+    const orderInfo = {
+        customer: {
+            firstName: "",
+            lastName: "",
+            address: {
+                streetAddress: "",
+                city: "",
+                state: "",
+                postalCode: "",
+                country: ""
+            },
+            emailAddress: "",
+            phoneNumber: ""
+        },
+        cart: [],
+        printInfo: function() {
+            //customer info
+            let customerInfoOutput = `
+                <strong>${this.customer.firstName} ${this.customer.lastName}</strong><br/>
+                ${this.customer.address.streetAddress}<br/>
+                ${this.customer.address.city} ${this.customer.address.state} ${this.customer.address.postalCode}<br/>
+                ${this.customer.address.country}
+            `;
+            document.getElementById('customerInfo').innerHTML = customerInfoOutput;
+            //cart info
+            for (let i=0; i<this.cart.length; i++) {
+                let itemId = this.cart[i].id;
+                let itemDesc = this.cart[i].desc;
+                let itemValue = (this.cart[i].unitPrice * this.cart[i].quantity).toFixed(2);
+                document.getElementById('cartInfo').innerHTML += `(${itemId}) ${itemDesc}: $${itemValue} ($${this.cart[i].unitPrice} x ${this.cart[i].quantity})<br>`;
+            }
+        }
+    };
+
+    function init() {
+        // customer info
+        orderInfo.customer.firstName = "Bill";
+        orderInfo.customer.lastName = "Smith";
+        orderInfo.customer.emailAddress = "wildbill@aol.com";
+        orderInfo.customer.phoneNumber = "(843) 555-1212";
+        orderInfo.customer.address.streetAddress = "123 Main Street";
+        orderInfo.customer.address.city = "Charleston";
+        orderInfo.customer.address.state = "South Carolina";
+        orderInfo.customer.address.postalCode = "29407";
+        orderInfo.customer.address.country = "USA";
+
+        // cart info
+        orderInfo.cart = [
+            {
+                id: '121',
+                desc: 'Ping Pong Balls',
+                unitPrice: 3.45,
+                quantity: 5
+            }, {
+                id: '141',
+                desc: 'Tennis Balls',
+                unitPrice: 6.45,
+                quantity: 4
+            }
+        ];
+
+        orderInfo.printInfo();
+    }
+</script>
+</body>
+</html>

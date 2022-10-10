@@ -111,7 +111,7 @@ With PHP you are not limited to output HTML. You can output images, PDF files, a
 
 A PHP script is defined with the following syntax:
 
-```
+```php
 <?php
   // PHP code goes here
 ?>
@@ -125,7 +125,7 @@ A PHP file normally contains HTML tags, and some PHP scripting code. Below, we h
 
 In PHP, a variable starts with the `$` sign, followed by the name of the variable:
 
-```
+```php
 <?php
   $txt = "Hello world!";
   $x = 5;
@@ -216,34 +216,38 @@ The PHP logical operators are used to combine conditional statements.
 
 The `if` statement executes some code if one condition is `true`.
 
-```
-Syntax:
+```php
+<?php
 
 if (condition) {
   code to be executed if condition is true;
 }
+
+?>
 ```
 
 #### `if...else` Statement
 
 The `if...else` statement executes some code if a condition is `true` and another code if that condition is `false`.
 
-```
-Syntax:
+```php
+<?php
 
 if (condition) {
   code to be executed if condition is true;
 } else {
   code to be executed if condition is false;
 }
+
+?>
 ```
 
 #### `if...elseif...else` Statement
 
 The `if...elseif...else` statement executes different codes for more than two conditions.
 
-```
-Syntax:
+```php
+<?php
 
 if (condition) {
   code to be executed if this condition is true;
@@ -252,18 +256,22 @@ if (condition) {
 } else {
   code to be executed if all conditions are false;
 }
+
+?>
 ```
 
 ## Loops
 
 The `for` loop - Loops through a block of code a specified number of times.
 
-```
-Syntax:
+```php
+<?php
 
 for (init counter; test counter; increment counter) {
   code to be executed for each iteration;
 }
+
+?>
 ```
 
 Parameters:
@@ -272,11 +280,13 @@ Parameters:
 - **test counter**: Evaluated for each loop iteration. If it evaluates to TRUE, the loop continues. If it evaluates to FALSE, the loop ends.
 - **increment counter**: Increases the loop counter value
 
-```
+```php
 <?php
+
   for ($x = 0; $x <= 10; $x++) {
     echo "The number is: $x <br>";
   }
+
 ?>
 ```
 
@@ -286,16 +296,24 @@ There are two ways to create indexed arrays:
 
 The index can be assigned automatically (index always starts at 0), like this:
 
-```
+```php
+<?php
+
 $cars = array("Volvo", "BMW", "Toyota");
+
+?>
 ```
 
 or the index can be assigned manually:
 
-```
+```php
+<?php
+
 $cars[0] = "Volvo";
 $cars[1] = "BMW";
 $cars[2] = "Toyota";
+
+?>
 ```
 
 The following example creates an indexed array named $cars, assigns three elements to it, and then prints a text containing the array values:
@@ -327,7 +345,8 @@ GET is used to request data from a specified resource.
 
 Note that the query string (name/value pairs) is sent in the URL of a GET request:
 
-```
+
+```curl
 /test/demo_form.php?name1=value1&name2=value2
 ```
 
@@ -346,12 +365,12 @@ POST is used to send data to a server to create/update a resource.
 
 The data sent to the server with POST is stored in the request body of the HTTP request:
 
-```
+```curl
 POST /test/demo_form.php HTTP/1.1
 Host: w3schools.com
-
 name1=value1&name2=value2
 ```
+
 
 Some other notes on POST requests:
 

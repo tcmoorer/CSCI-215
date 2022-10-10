@@ -1,0 +1,83 @@
+<html>
+<body onLoad="init()">
+<h1>JavaScript Object Example</h1>
+<h1>Person</h1>
+<div id="personResults"></div>
+<h1>Order</h1>
+<div id="orderResults"></div>
+<script>
+    /*
+        Objects are all around us. That's why "object-oriented" programming is a very
+        natural way to organize information.
+
+        Model a person with attributes firstname and lastName and
+        a function to print the full name.
+
+        Model a menuItem to hold taco and burrito costs and food order that
+        holds the number of tacos and burritos ordered and performs the
+        following functions:
+        1. calculate the extended taco price
+        2. calculate the extended burrito price
+        3. calc the subtotal
+        4. calc the tax amount
+        5. calc the grand total
+
+     */
+
+    const person = {
+        firstName: "",
+        lastName: "",
+        fullName: function () {
+            return this.lastName + ", " + this.firstName;
+        }
+    }
+
+
+    const menuItem = {
+        tacoPrice: 1.99,
+        burritoPrice: 2.99
+    }
+
+    const foodOrder = {
+        tacos: 0,
+        burritos: 0,
+        tax: .065,
+        calcTacoTotal: function () {
+            return this.tacos * menuItem.tacoPrice;
+        },
+        calcBurritoTotal: function () {
+            return this.burritos * menuItem.burritoPrice;
+        },
+        calcSubtotal: function () {
+            let subTotal = this.calcTacoTotal() + this.calcBurritoTotal();
+            return Number(subTotal.toFixed(2));
+        },
+        calcTaxAmount: function () {
+            let taxAmount = this.calcSubtotal() * this.tax;
+            return Number(taxAmount.toFixed(2));
+        },
+        calcGrandTotal: function () {
+            let grandTotal = this.calcSubtotal() + this.calcTaxAmount();
+            return grandTotal.toFixed(2);
+        }
+    }
+
+    function init() {
+        person.firstName = "Dave";
+        person.lastName = "Jones";
+        document.getElementById('personResults').innerHTML = person.fullName();
+
+        foodOrder.tacos = 2;
+        foodOrder.burritos = 3;
+        let orderResults =
+            `Taco Total: $${foodOrder.calcTacoTotal()}<br/>
+             Burrito Total: $${foodOrder.calcBurritoTotal()}<br/>
+             SubTotal: $${foodOrder.calcSubtotal()}<br/>
+             Tax: $${foodOrder.calcTaxAmount()}<br/>
+             Grand Total: $${foodOrder.calcGrandTotal()}`;
+        document.getElementById('orderResults').innerHTML = orderResults;
+    }
+
+</script>
+</body>
+</html>
