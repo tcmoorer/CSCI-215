@@ -50,79 +50,14 @@
      * Process hello content
      */
     function processProducts(ajaxRequest) {
-        const products = JSON.parse(ajaxRequest.responseText);
-        let outputString = '';
-        for (let key in products) {
-            let product = products[key];
-            outputString += `<div class="row mt-5">
-                                <div class="col-2"><img class="img-fluid" src="https://tcmoorer.people.cofc.edu/CSCI215/Spring2022/11/images/${product.file}" alt="Image of ${product.file}"/></div>
-                                <div class="col-10">
-                                    <h4>${product.name}</h4>
-                                    <div class="row">
-                                        <div class="col-4">Unit Price: $${product.unitPrice}</div>
-                                        <div class="col-8">Id: ${product.id}</div>
-                                    </div>
-                                    <div>${product.description}</div>
-                                </div>
-                            </div>`;
-        }
-        document.getElementById("productList").innerHTML = outputString;
+        //TODO
     }
 
     /**
      * Process world content
      */
     function processCart(ajaxRequest) {
-        const cartItems = JSON.parse(ajaxRequest.responseText);
-        let subtotal = 0;
-        let taxAmount = 0;
-        let grandTotal = 0;
-        let outputString = '';
-        // header row
-        outputString += `<table class="table table-striped mt-5">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th class="text-end">Unit</th>
-                                    <th class="text-end">Qty</th>
-                                    <th class="text-end">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>`;
-        // cart content
-        for (let key in cartItems) {
-            let cartItem = cartItems[key];
-            subtotal += cartItem.unitPrice * cartItem.quantity;
-            outputString += `<tr>
-                                <td >${cartItem.name}</td>
-                                <td class="text-end">$${cartItem.unitPrice}</td>
-                                <td class="text-end">${cartItem.quantity}</td>
-                                <td class="text-end">$${(cartItem.unitPrice * cartItem.quantity).toFixed(2)}</td>
-                            </tr>`;
-        }
-        outputString += `</tbody>
-                         <tfoot>`;
-        // subtotal
-        outputString += `<tr>
-                            <td colspan="3" class="text-end">Sub Total:</td>
-                            <td class="text-end">$${(subtotal).toFixed(2)}</td>
-                         </tr>`;
-        //tax
-        taxAmount = subtotal + TAX_RATE;
-        outputString += `<tr>
-                            <td colspan="3" class="text-end">Tax Amount:</td>
-                            <td class="text-end">$${(taxAmount).toFixed(2)}</td>
-                         </tr>`;
-        //grand total
-        grandTotal = subtotal + taxAmount;
-        outputString += `<tr>
-                            <td colspan="3" class="text-end">Grand Total:</td>
-                            <td class="text-end">$${(grandTotal).toFixed(2)}</td>
-                         </tr>`;
-        // close tags
-        outputString += `</tfoot>
-                         </table>`;
-        document.getElementById("cartInfo").innerHTML = outputString;
+        //TODO
     }
 
 </script>

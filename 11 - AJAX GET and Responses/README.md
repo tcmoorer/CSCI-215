@@ -1,6 +1,6 @@
 # Section 11 - JSON, AJAX GET, and Handling Responses
 
-## Overview
+## Learning Outcomes
 
 A key concept with AJAX is the ability to transform data between systems.This section covers the techniques and 
 methods to transform objects into JSON and the reverse of JSON into objects.
@@ -28,14 +28,14 @@ See Section 10. Go on. Go back and look there.
 
 JSON stands for JavaScript Object Notation.
 
-	• JSON is a lightweight data-interchange format
-	• JSON is plain text written in JavaScript object notation
-	• JSON is used to send data between computers
-	• JSON is language independent *
+- JSON is a lightweight data-interchange format 
+- JSON is plain text written in JavaScript object notation 
+- JSON is used to send data between computers 
+- JSON is language independent *
 
 This example is a JSON string:
              
-```
+```json
 '{"name":"John", "age":30, "car":null}'
 ```
 
@@ -57,7 +57,7 @@ You can receive pure text from a server and use it as a JavaScript object.
 You can send a JavaScript object to a server in pure text format.
 You can work with data as JavaScript objects, with no complicated parsing and translations.
 
-JSON Format and Syntax Rules
+### JSON Format and Syntax Rules
 
 JSON syntax is derived from JavaScript object notation syntax:
 
@@ -70,7 +70,7 @@ JSON syntax is derived from JavaScript object notation syntax:
 
 JSON data is written as name/value pairs (aka key/value pairs). A name/value pair consists of a field name (in double quotes), followed by a colon, followed by a value:
 
-```
+```json
 "name":"John"
 ```
 
@@ -82,13 +82,13 @@ The JSON format is almost identical to JavaScript objects.
 
 In JSON, keys must be strings, written with double quotes:
 
-```
+```json
 {"name":"John"}
 ```
 
 In JavaScript, keys can be strings, numbers, or identifier names:
 
-```
+```javascript
 {name:"John"}
 ```
 
@@ -98,13 +98,13 @@ A common use of JSON is to exchange data to/from a web server. When receiving da
 
 Imagine we received this text from a web server:
 
-```
+```json
 '{"name":"John", "age":30, "city":"New York"}'
 ```
 
 Use the JavaScript function `JSON.parse()` to convert text into a JavaScript `object`:
           
-```
+```javascript
 const obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
 ```
                                           
@@ -112,7 +112,7 @@ const obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
 
 When using the `JSON.parse()` on a JSON derived from an `array`, the method will return a JavaScript `array`, instead of a JavaScript `object`.
 
-```
+```javascript
 const text = '["Ford", "BMW", "Audi", "Fiat"]';
 const myArr = JSON.parse(text);
 ```       
@@ -125,13 +125,13 @@ A common use of JSON is to exchange data to/from a web server. When sending data
 
 Imagine we have this object in JavaScript:
 
-```
+```javascript
 const obj = {name: "John", age: 30, city: "New York"};
 ```
 
 Use the JavaScript function `JSON.stringify()` to convert it into a string.
 
-```
+```javascript
 const myJSON = JSON.stringify(obj);
 ```
 
@@ -141,19 +141,19 @@ It is also possible to stringify JavaScript arrays:
 
 Imagine we have this array in JavaScript:
     
-```
+```javascript
 const arr = ["John", "Peter", "Sally", "Jane"];
 ```
 
 Use the JavaScript function `JSON.stringify()` to convert it into a string.
 
-```
+```javascript
 const myJSON = JSON.stringify(arr);
 ```
 
 `myJSON` is now a string, and ready to be sent to a server:
 
-```
+```javascript
 const arr = ["John", "Peter", "Sally", "Jane"];
 const myJSON = JSON.stringify(arr);
 ```
@@ -172,7 +172,7 @@ PHP supports the JavaScript Object Notation data-interchange format via the foll
 
 The `json_decode()` function is used to decode or convert a JSON object to a PHP object.
           
-```
+```injectablephp
 json_decode(string, assoc, depth, options)
 ```
 
@@ -186,7 +186,7 @@ json_decode(string, assoc, depth, options)
 
 Convert JSON String to PHP Object and access attribute values:
 
-```
+```injectablephp
 <?php
   $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
   
@@ -202,7 +202,7 @@ Convert JSON String to PHP Object and access attribute values:
 
 The `json_encode()` function is used to encode a value to JSON format.
 
-```
+```injectablephp
 json_encode(value, options, depth)
 ```
 
@@ -214,7 +214,7 @@ json_encode(value, options, depth)
 
 Convert a PHP array to JSON using `json_encode()`:
 
-```
+```injectablephp
 <?php
   $cars = array("Volvo", "BMW", "Toyota");
   
@@ -232,7 +232,7 @@ PHP `$_GET` is a PHP super global variable which is used to collect form data af
 
 `$_GET` can also collect data sent in the URL.
 
-```
+```html
 <html>
 <body>
 
@@ -246,7 +246,7 @@ When a user clicks on the link "Test `$GET`", the parameters "`subject`" and "`w
 
 The example below shows the code in "`test_get.php`":
 
-```
+```html
 <html>
 <body>
 
