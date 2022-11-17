@@ -13,32 +13,32 @@ This module builds on the topic of AJAX and PHP using JSON to send information b
 
 A simple POST request:
 
-```
-xhttp.open("POST", "demo_post.asp");
-xhttp.send();
+```javascript
+ajaxRequest.open("POST", "demo_post.asp");
+ajaxRequest.send();
 ```
 
 To POST data like an HTML form, add an HTTP header with `setRequestHeader()`. Specify the data you want to send in the `send()` method. This can either be formatted as name/value parameters or as a JSON formatted string to the server.
 
 The example below illustrates sending parameters in the POST body:
  
-```
-xhttp.open("POST", "ajax_test.asp");
-xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xhttp.send("fname=Henry&lname=Ford");
+```javascript
+ajaxRequest.open("POST", "ajax_test.asp");
+ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+ajaxRequest.send("fname=Henry&lname=Ford");
 ```
 
 This example, illustrates converting a JavaScript object to JSON using `JSON.stringify()` in the POST body. Recall that `JSON.stringify()` converts the JavaScript object into a JSON string.   
 
-```
-xhttp.open("POST", "ajax_test.asp");
+```javascript
+ajaxRequest.open("POST", "ajax_test.asp");
 
 const person = {};
 person.fname = 'Henry';
 person.lname = 'Ford';
 
-xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xhttp.send(JSON.stringify(person));
+ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+ajaxRequest.send(JSON.stringify(person));
 ```
 
 ## PHP and JSON Support
@@ -55,7 +55,7 @@ PHP supports the JavaScript Object Notation data-interchange format via the foll
 
 The `json_decode()` function is used to decode or convert a JSON object to a PHP object.
 
-```
+```injectablephp
 json_decode(string, assoc, depth, options)
 ```
 
@@ -69,7 +69,7 @@ json_decode(string, assoc, depth, options)
 
 Convert JSON String to PHP Object and access attribute values:
 
-```
+```injectablephp
 <?php
   $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
   
@@ -85,7 +85,7 @@ Convert JSON String to PHP Object and access attribute values:
 
 The `json_encode()` function is used to encode a value to JSON format.
 
-```
+```injectablephp
 json_encode(value, options, depth)
 ```
 
@@ -97,7 +97,7 @@ json_encode(value, options, depth)
 
 Convert a PHP array to JSON using `json_encode()`:
 
-```
+```injectablephp
 <?php
   $cars = array("Volvo", "BMW", "Toyota");
   
@@ -118,7 +118,7 @@ The example below shows a form with an input field and a submit button. When a u
 
 In this example, we point to the file itself for processing form data. If you wish to use another PHP file to process form data, replace that with the filename of your choice. Then, we can use the super global variable `$_POST` to collect the value of the input field:
   
-```
+```injectablephp
 <html>
 <body>
 
