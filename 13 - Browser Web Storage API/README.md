@@ -1,6 +1,6 @@
 # Section 13 - Browser Web Storage API
 
-## Overview
+## Learning Outcomes
 
 HTML5 included a standard API to store information in the browser. This section 
 provides an introduction to this feature and the basics of using it. At the end
@@ -16,12 +16,12 @@ access and update items saved using WebStorage.
 
 The Web Storage API is a simple syntax for storing and retrieving data in the browser. It is very easy to use:
  
-```
+```javascript
 localStorage.setItem("name", "John Doe");
 localStorage.getItem("name");
 ```
 
-###Two scopes:
+### Two scopes:
 
 1. **localStorage** - The localStorage object provides access to a local storage for a particular Web Site. It allows you to store, read, add, modify, and delete data items for that domain. The data is stored with no expiration date, and will not be deleted when the browser is closed. The data will be available for days, weeks, and years.
 
@@ -57,7 +57,7 @@ The `localStorage.setItem()` method stores a data item in a storage.
 
 It takes a name and a value as parameters:
 
-```
+```javascript
 localStorage.setItem("name", "John Doe");
 ```
 
@@ -67,7 +67,7 @@ The `localStorage.getItem()` method retrieves a data item from the storage.
 
 It takes a name as parameter:
 
-```
+```javascript
 localStorage.getItem("name");
 ```
 
@@ -81,7 +81,7 @@ The `sessionStorage.setItem()` method stores a data item in a storage.
 
 It takes a name and a value as parameters:
          
-```
+```javascript
 sessionStorage.setItem("name", "John Doe");
 ```
 
@@ -91,7 +91,7 @@ The `sessionStorage.getItem()` method retrieves a data item from the storage.
 
 It takes a name as parameter:
 
-```
+```javascript
 sessionStorage.getItem("name");
 ```
 
@@ -103,7 +103,7 @@ When storing data, the data has to be a certain format, and regardless of where 
 
 JSON makes it possible to store JavaScript objects as text.
 
-```
+```javascript
 // Storing data:
 const myObj = {name: "John", age: 31, city: "New York"};
 const myJSON = JSON.stringify(myObj);

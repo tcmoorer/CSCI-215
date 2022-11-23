@@ -81,7 +81,19 @@
      * @param itemQty the inital qty of the item in the session object
      */
     function addItem(itemName, itemPrice, itemQty) {
+        // 1. get items from storage and convert to object array
+        let items = JSON.parse(sessionStorage.getItem("items"));
 
+        // 2. add item to array
+        let item = { name: itemName, price: itemPrice, qty: itemQty };
+        items.push(item);
+
+        // 3. save updates in storage
+        let itemsJSON = JSON.stringify(items);
+        sessionStorage.setItem("items", itemsJSON);
+
+        // update total
+        calcTotal();
     }
 
     /**
@@ -95,7 +107,21 @@
      * @param itemName
      */
     function incrementQty(itemName) {
+        // get item from storage and increment qty by 1
+        let items = JSON.parse(sessionStorage.getItem("items"));
+        for (let i=0; i<items.length; i++) {
+            // increment the qty for the matching item
+            if (items[i].name === itemName) {
+                items[i].qty += 1;
+            }
+        }
 
+        // save the updated value back into storage
+        let itemsJSON = JSON.stringify(items);
+        sessionStorage.setItem("items", itemsJSON);
+
+        // call method to calculate the total and display
+        calcTotal();
     }
 
     /**
@@ -109,7 +135,21 @@
      * @param itemName
      */
     function decrementQty(itemName) {
+        // get item from storage and decrement qty by 1
+        let items = JSON.parse(sessionStorage.getItem("items"));
+        for (let i=0; i<items.length; i++) {
+            // increment the qty for the matching item
+            if (items[i].name === itemName) {
+                items[i].qty -= 1;
+            }
+        }
 
+        // save the updated value back into storage
+        let itemsJSON = JSON.stringify(items);
+        sessionStorage.setItem("items", itemsJSON);
+
+        // call method to calculate the total and display
+        calcTotal();
     }
 
     /**
@@ -118,11 +158,32 @@
      * 1. fetch the items from the session storage and store in an object
      * 2. loop through the items array
      * 3. for each loop iteration calc the extended price and add the row to cart
-     *
+     * 
      * @param itemName
      */
     function calcTotal() {
+        // get items from storage
+        let items = JSON.parse(sessionStorage.getItem("items"));
 
+        // clear cartBody so that it can be updated
+        let totalDiv = document.getElementById("cartBody");
+        totalDiv.innerHTML = "";
+
+        // loop and calc item total (price * qty)
+        for (let i=0; i<items.length; i++) {
+            // update div 'total' with
+            let cartRow = `<tr>
+								<td>${items[i].name}</td>
+								<td>$${items[i].price}</td>
+								<td>
+                                    ${items[i].qty}
+                                    <span onClick="incrementQty('${items[i].name}')" class="link">(+)</span>
+                                    <span onClick="decrementQty('${items[i].name}')" class="link">(-)</span>
+								</td>
+								<td>$${items[i].price * items[i].qty}</td>
+							</tr>`;
+            totalDiv.innerHTML += cartRow;
+        }
 
     }
 
