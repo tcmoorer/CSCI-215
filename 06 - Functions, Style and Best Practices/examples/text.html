@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      //let input = prompt("Enter Destinations:", "R,Calhoun Street,3.2;L,Concord Street,4.5;R,Wharf Street,0.1");
+      let direction = prompt("Provide directions", "R,Calhoun Street,3.2;L,Concord Street,4.5;R,Wharf Street,0.1");
+const direct_arr = direction.split(";");
+let instruct = ""
+
+for (i=0; i<direct_arr.length; i++) {
+   const direct_item = direct_arr[i].split(",");
+   let direct_line = ``
+   if (direct_item[0] == "R") {
+       direct_line += `-Go Right`;
+   } else {
+       direct_line += `-Go Left`;
+   }
+   direct_line += `on ${direct_item[1]} for ${direct_item[2]} miles</br>`;
+   instruct += direct_line;
+   console.log(instruct);
+
+   document.getElementById("directions").innerHTML=instruct;
+
+}
+
+    </script>
+
+  </body>
+</html>
