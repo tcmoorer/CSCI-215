@@ -3,6 +3,7 @@
 	<title>Welcome to CSCI-215!</title>
 </head>
 <body>
+	<h1 id="title">This is the page H1 tag</h1>
 <script type="text/Javascript">
 /*
 	Basic Prompt to Get Input
@@ -13,10 +14,15 @@
 */
 
 	// 1. collect input
+	let firstName = prompt("Enter first name");
+	let lastName = prompt("Enter last name");
 
 	// 2. perform calculations
+	let fullName = lastName + ", " + firstName;
 
 	// 3. display output
+	document.write(fullName);
+	document.getElementById('title').innerHTML = fullName;
 
 </script>
 </body>
